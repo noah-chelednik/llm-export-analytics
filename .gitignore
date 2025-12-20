@@ -1,0 +1,21 @@
+# Python environment
+.venv/
+
+# Raw exports
+**/conversations.json
+**/*.jsonl
+**/*.zip
+
+# Outputs (track folder, not contents)
+outputs/*
+!outputs/.gitkeep
+
+# Common artifacts
+**/*messages_normalized*.csv
+**/*monthly_stats*.csv
+
+# Python junk
+__pycache__/
+*.pyc
+.env
+.DS_Store
