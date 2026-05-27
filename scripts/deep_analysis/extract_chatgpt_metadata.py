@@ -21,19 +21,17 @@ import os
 import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any
-
 
 # ── Defaults ────────────────────────────────────────────────────────────────
 
 DEFAULT_INPUT_DIR = (
-    "/mnt/ai_workspace/Remembrancer/exports/"
+    "exports/"
     "61b85573cfbec86e6fc397dbfdca42f8117fe4ece43591c30e851c2fc1090356-"
     "2026-04-22-00-23-34-a5d95132b6894c289964b70e79488ade"
 )
 DEFAULT_OUTPUT = (
-    "/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/"
+    ""
     "chatgpt_metadata.json"
 )
 
@@ -412,7 +410,7 @@ def main() -> None:
     for i, fp in enumerate(shard_files):
         fname = os.path.basename(fp)
         print(f"  [{i + 1:>2}/{len(shard_files)}] Processing {fname} ...", end="", flush=True)
-        with open(fp, "r", encoding="utf-8") as fh:
+        with open(fp, encoding="utf-8") as fh:
             shard: list[dict[str, Any]] = json.load(fh)
 
         count = 0

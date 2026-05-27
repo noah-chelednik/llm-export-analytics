@@ -15,10 +15,8 @@ import json
 import os
 import random
 import re
-import sys
 from collections import Counter, defaultdict
-from pathlib import Path
-from typing import Optional
+from typing import Any
 
 # ---------------------------------------------------------------------------
 # Taxonomy: category -> list of keywords / phrases (all lowercase)
@@ -30,12 +28,36 @@ TOPIC_TAXONOMY = {
         "bug", "stack", "library", "framework", "module", "package",
         "repository", "commit", "branch", "merge", "pull request", "ide",
         "algorithm", "implementation",
+        # expanded keywords
+        "backend", "frontend", "react", "vue", "angular", "django", "flask",
+        "fastapi", "REST", "GraphQL", "microservice", "CI/CD", "linting",
+        "type checking", "dependency", "npm", "webpack", "vite", "typescript",
+        "javascript", "python", "java", "rust", "golang", "database",
+        "postgres", "mongodb", "redis", "container", "sql", "query",
+        "sorting", "data structure", "generics", "component", "render",
+        "normalization", "schema", "endpoint", "crud", "orm", "migration",
+        "babel", "eslint", "prettier", "junit", "pytest",
+        "unittest", "mocha", "jest", "cypress", "selenium", "swift",
+        "kotlin", "csharp", "dotnet", "rails", "laravel", "spring",
+        "express", "node", "deno", "bun", "regex", "parser", "compiler",
+        "interpreter", "syntax", "variable", "loop", "recursion",
+        "inheritance", "polymorphism", "interface", "generic", "async",
+        "await", "callback", "promise", "observable", "middleware",
     ],
     "Systems/Hardware/DevOps": [
         "pc", "bios", "gpu", "ram", "nvme", "linux", "ubuntu", "boot",
         "overclock", "kernel", "driver", "cpu", "motherboard", "ssd",
         "hardware", "terminal", "shell", "bash", "docker", "server",
         "network", "dns", "ssh", "firewall",
+        # expanded keywords
+        "shell scripting", "command line", "CLI", "systemd", "nginx",
+        "apache", "cron", "filesystem", "partition", "Raspberry Pi",
+        "homelab", "virtualization", "VMware", "proxmox", "ansible",
+        "terraform", "kubernetes", "k8s", "AWS", "azure", "GCP", "cloud",
+        "devops", "pipeline", "load balancer", "reverse proxy", "ssl",
+        "certificate", "monitoring", "logging", "grafana", "prometheus",
+        "nagios", "uptime", "backup", "raid", "iptables", "subnet",
+        "vlan", "dhcp", "tcp", "udp", "http", "ftp", "smtp",
     ],
     "AI/ML/LLM": [
         "ai", "llm", "model", "training", "neural", "machine learning",
@@ -43,52 +65,111 @@ TOPIC_TAXONOMY = {
         "inference", "token", "dataset", "evaluation", "benchmark",
         "reinforcement", "diffusion", "hallucination", "alignment", "rag",
         "vector", "agent",
+        # expanded keywords
+        "deep learning", "neural network", "vector database", "retrieval augmented",
+        "prompt injection", "chain of thought", "few-shot", "zero-shot",
+        "semantic search", "attention mechanism", "RLHF", "CUDA",
+        "quantization", "distillation", "vision model", "computer vision",
+        "NLP", "natural language", "chatbot", "fine-tuning", "LoRA",
+        "weights", "gradient", "backpropagation", "loss function",
+        "classification", "regression", "clustering", "supervised",
+        "unsupervised", "generative", "discriminative", "GAN", "VAE",
+        "autoencoder", "convolutional", "recurrent", "LSTM", "GPT-4",
+        "Gemini", "Llama", "Mistral", "Anthropic", "OpenAI",
     ],
     "Writing/Creative": [
         "poem", "story", "novel", "writing", "creative", "narrative",
         "essay", "article", "fiction", "prose", "poetry", "lyric",
         "screenplay", "dialogue", "character", "plot", "draft", "revision",
         "edit", "publish", "blog", "substack",
+        # expanded keywords
+        "brainstorm", "outline", "character development", "world building",
+        "tone", "voice", "editing", "rewrite", "paraphrase", "summarize",
+        "summary", "proofread", "copywriting", "content", "memoir",
+        "short story", "flash fiction", "script", "stanza", "rhyme",
+        "metaphor", "simile", "imagery", "theme", "genre", "prologue",
+        "epilogue", "climax", "protagonist", "antagonist",
     ],
     "Academic/Coursework": [
         "exam", "assignment", "class", "homework", "course", "final",
         "rubric", "grade", "university", "student", "quiz", "study",
         "lecture", "textbook", "semester", "credit", "gpa", "degree", "thesis",
+        # expanded keywords
+        "paper", "research paper", "citation", "reference", "methodology",
+        "abstract", "peer review", "dissertation", "undergraduate",
+        "graduate", "professor", "curriculum", "syllabus", "academic",
+        "scholarship", "enrollment", "transcript", "midterm",
     ],
     "Language/Linguistics": [
         "translate", "translation", "language", "vocabulary", "grammar",
         "conjugation", "declension", "etymology", "bilingual", "parallel",
         "corpus", "multilingual", "localization", "i18n",
+        # expanded keywords
+        "Spanish", "French", "German", "Chinese", "Japanese", "Korean",
+        "Arabic", "Portuguese", "Italian", "Hindi", "Russian", "Hebrew",
+        "Latin", "Greek", "Mandarin", "Cantonese", "dialect", "phonetics",
+        "morphology", "syntax", "semantics", "pragmatics", "idiom",
+        "proverb",
     ],
     "Research/Knowledge": [
         "research", "analysis", "history", "philosophy", "theory", "science",
         "study", "investigation", "survey", "literature review", "methodology",
         "hypothesis", "evidence", "synthesis", "bibliography",
+        # expanded keywords
+        "explain", "how does", "what is", "compare", "difference between",
+        "pros and cons", "overview", "introduction to", "guide", "tutorial",
+        "definition", "concept", "principle", "fundamentals", "basics",
     ],
     "Personal/Life": [
         "health", "skin", "hair", "diet", "moving", "dating", "identity",
         "name", "apartment", "relationship", "fitness", "wellness",
         "self-improvement", "lifestyle", "routine",
+        # expanded keywords
+        "advice", "help me", "recommend", "suggestion", "plan", "schedule",
+        "organize", "morning routine", "habit", "goal setting", "motivation",
+        "recipe", "cooking", "meal prep", "nutrition", "exercise", "yoga",
+        "meditation", "sleep", "travel", "itinerary", "vacation", "trip",
+        "packing", "hobby", "gardening", "pet", "parenting", "wedding",
+        "vegetarian", "vegan", "gluten-free",
     ],
     "Career/Professional": [
         "resume", "job", "interview", "application", "career", "hire",
         "salary", "cover letter", "linkedin", "portfolio", "qualification",
         "professional", "employer", "recruitment",
+        # expanded keywords
+        "networking", "negotiation", "promotion", "freelance", "side hustle",
+        "startup", "pitch", "business plan", "meeting", "presentation",
+        "email draft", "internship", "onboarding", "performance review",
+        "remote work", "coworker", "manager", "leadership",
     ],
     "Music/Audio": [
         "music", "song", "audio", "sound", "midi", "daw",
         "melody", "chord", "composition", "instrument", "synth", "mix",
         "master", "frequency", "beat", "tempo", "notation",
+        # expanded keywords
+        "playlist", "album", "genre", "lyrics", "recording", "producer",
+        "DJ", "podcast", "voice over", "equalizer", "reverb", "delay",
+        "compressor", "sample", "loop", "drum machine", "piano", "guitar",
     ],
     "Visual/Design": [
         "image", "design", "art", "logo", "brand", "aesthetic", "color",
         "layout", "typography", "illustration", "graphic", "mockup",
         "wireframe", "ui", "ux", "css", "style",
+        # expanded keywords
+        "Figma", "Photoshop", "Canva", "infographic", "presentation design",
+        "slide deck", "banner", "icon", "animation", "sketch", "prototype",
+        "responsive", "grid", "spacing", "palette", "contrast", "svg",
+        "pixel", "resolution", "vector graphic",
     ],
     "Finance/Business": [
         "money", "budget", "salary", "investment", "business", "startup",
         "revenue", "profit", "market", "stock", "crypto", "tax",
         "accounting", "financial", "llc", "incorporation",
+        # expanded keywords
+        "pricing", "subscription", "SaaS", "revenue model", "cost analysis",
+        "ROI", "invoice", "bookkeeping", "payment", "mortgage", "loan",
+        "interest rate", "401k", "retirement", "dividend", "portfolio",
+        "forex", "bitcoin", "ethereum", "defi", "nft",
     ],
     "Mythology/Philosophy": [
         "myth", "mythology", "god", "philosophy", "metaphysics", "ontology",
@@ -102,17 +183,34 @@ TOPIC_TAXONOMY = {
     "Gaming/Entertainment": [
         "game", "play", "rpg", "character sheet", "d&d", "dungeon", "quest",
         "total war", "strategy", "campaign", "mod",
+        # expanded keywords
+        "video game", "board game", "streaming", "Twitch", "YouTube",
+        "movie", "TV show", "anime", "manga", "book recommendation",
+        "Netflix", "console", "PlayStation", "Xbox", "Nintendo", "Steam",
+        "indie game", "esports", "speedrun", "walkthrough",
     ],
     "Legal": [
         "law", "legal", "court", "statute", "regulation", "compliance",
         "contract", "litigation", "attorney", "lawyer", "case law",
         "precedent", "jurisdiction",
+        # expanded keywords
+        "terms of service", "privacy policy", "patent", "copyright",
+        "trademark", "NDA", "liability", "insurance", "lease", "tenant",
+        "landlord", "eviction", "arbitration", "mediation",
     ],
     "Military/Strategy": [
         "military", "strategy", "war", "battle", "defense", "intelligence",
         "operation", "tactical", "weapons", "geopolitical", "nato",
+        # expanded keywords
+        "geopolitics", "foreign policy", "diplomacy", "conflict", "security",
+        "cyber", "surveillance", "sanctions", "treaty", "alliance",
     ],
 }
+
+# Pre-compiled regex patterns for structural pattern detection
+_RE_CODE_FENCE = re.compile(r'```')
+_RE_FILE_PATH = re.compile(r'/[a-zA-Z]+/[a-zA-Z]')
+_RE_URL = re.compile(r'https?://')
 
 # Compile regex patterns for each category (word-boundary matching)
 def _compile_patterns(taxonomy: dict[str, list[str]]) -> dict[str, list[tuple[str, re.Pattern]]]:
@@ -135,7 +233,7 @@ CATEGORY_PATTERNS = _compile_patterns(TOPIC_TAXONOMY)
 def load_project_keywords(config_path: str) -> dict:
     """Load project keyword definitions from a JSON config file."""
     try:
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError) as exc:
         print(f"  [WARN] Could not load project config from {config_path}: {exc}")
@@ -166,9 +264,9 @@ def _compile_project_patterns(proj_map: dict) -> dict[str, dict]:
 # Classification functions
 # ---------------------------------------------------------------------------
 
-def score_text(text: str, patterns_dict: dict[str, list[tuple[str, re.Pattern]]]) -> dict[str, int]:
+def score_text(text: str, patterns_dict: dict[str, list[tuple[str, re.Pattern]]]) -> dict[str, int]:  # type: ignore[type-arg]
     """Score a text against all categories and return per-category hit counts."""
-    scores = {}
+    scores: dict[str, int] = {}
     if not text:
         return scores
     for cat, patterns in patterns_dict.items():
@@ -181,19 +279,64 @@ def score_text(text: str, patterns_dict: dict[str, list[tuple[str, re.Pattern]]]
     return scores
 
 
-def classify_topics(text: str, method: str = "title") -> list[dict]:
-    """Return the top 1-2 topic categories for the given text."""
-    scores = score_text(text, CATEGORY_PATTERNS)
-    if not scores:
+def apply_structural_bonuses(scores: dict[str, int | float], text: str) -> dict[str, float]:
+    """Apply bonus points for structural patterns detected in text.
+
+    These act as tiebreakers -- applied after keyword scoring, before
+    final category selection.
+
+    - Code fences (triple backticks): +1 to Software Engineering
+    - File paths (/foo/bar): +1 to Systems/Hardware/DevOps
+    - URLs (http/https): +0.5 to Research/Knowledge
+    """
+    if not text:
+        return {k: float(v) for k, v in scores.items()}
+
+    boosted: dict[str, float] = {k: float(v) for k, v in scores.items()}
+
+    if _RE_CODE_FENCE.search(text):
+        boosted["Software Engineering"] = boosted.get("Software Engineering", 0) + 1
+
+    if _RE_FILE_PATH.search(text):
+        boosted["Systems/Hardware/DevOps"] = boosted.get("Systems/Hardware/DevOps", 0) + 1
+
+    if _RE_URL.search(text):
+        boosted["Research/Knowledge"] = boosted.get("Research/Knowledge", 0) + 0.5
+
+    return boosted
+
+
+def classify_topics(text: str, method: str = "title",
+                    structural_text: str = "") -> list[dict]:
+    """Return the top 1-2 topic categories for the given text.
+
+    Args:
+        text: The text to score keywords against.
+        method: Label for the classification method used.
+        structural_text: Optional additional text to scan for structural
+            patterns (code fences, file paths, URLs). If empty, ``text``
+            is used for structural detection as well.
+    """
+    raw_scores = score_text(text, CATEGORY_PATTERNS)
+    scores: dict[str, int | float] = dict(raw_scores)
+
+    # Apply structural pattern bonuses as tiebreakers
+    scan_text = structural_text or text
+    boosted = apply_structural_bonuses(scores, scan_text)
+
+    # Filter to only categories with positive scores
+    positive = {k: v for k, v in boosted.items() if v > 0}
+    if not positive:
         return []
-    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
+    ranked = sorted(positive.items(), key=lambda x: x[1], reverse=True)
     result = [{"category": ranked[0][0], "score": ranked[0][1], "method": method}]
     if len(ranked) > 1 and ranked[1][1] >= 1:
         result.append({"category": ranked[1][0], "score": ranked[1][1], "method": method})
     return result
 
 
-def classify_project(title: str, first_msg: str, platform: str, project_patterns: dict) -> Optional[dict]:
+def classify_project(title: str, first_msg: str, platform: str, project_patterns: dict) -> dict | None:
     """Attribute a conversation to a project based on keyword matching."""
     if not project_patterns:
         return None
@@ -241,7 +384,7 @@ def classify_project(title: str, first_msg: str, platform: str, project_patterns
     return None
 
 
-def is_empty_title(title: Optional[str]) -> bool:
+def is_empty_title(title: str | None) -> bool:
     """Check if a title is empty, null, or a generic placeholder."""
     if not title:
         return True
@@ -261,7 +404,7 @@ def load_chatgpt_conversations(shard_dir: str, num_shards: int = 19) -> list[dic
         if not os.path.exists(path):
             print(f"  [WARN] Shard not found: {path}")
             continue
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             data = json.load(f)
         for c in data:
             convos.append({
@@ -276,7 +419,7 @@ def load_claude_conversations(conv_path: str) -> list[dict]:
     """Load conversation uuid and name from Claude conversations JSON."""
     print(f"  Loading Claude conversations from {conv_path} ...")
     convos = []
-    with open(conv_path, "r", encoding="utf-8") as f:
+    with open(conv_path, encoding="utf-8") as f:
         data = json.load(f)
     for c in data:
         convos.append({
@@ -288,22 +431,59 @@ def load_claude_conversations(conv_path: str) -> list[dict]:
     return convos
 
 
-def load_first_messages(csv_path: str, platform: str) -> dict[str, str]:
-    """Load the first user message per conversation from a normalized CSV."""
+def load_conversation_content(csv_path: str, platform: str) -> dict[str, dict]:
+    """Load expanded conversation content per conversation from a normalized CSV.
+
+    Returns a dict mapping conversation_id -> {
+        "first_user": str (up to 2000 chars of first user message),
+        "first_assistant": str (up to 1000 chars of first assistant message),
+        "mid_message": str (message at the midpoint, for long conversations),
+        "msg_count": int (total messages in conversation),
+    }
+    """
     # Increase CSV field size limit to handle large message content
     csv.field_size_limit(10 * 1024 * 1024)  # 10 MB
-    first_msgs = {}
-    with open(csv_path, "r", encoding="utf-8") as f:
+
+    # First pass: collect all messages per conversation (ordered by CSV row)
+    convo_messages: dict[str, list[dict]] = defaultdict(list)
+    with open(csv_path, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
             cid = row["conversation_id"]
-            if cid in first_msgs:
-                continue  # already got the first message for this convo
-            if row["role"] == "user":
-                content = row.get("content", "")
-                # Take up to 500 chars for classification
-                first_msgs[cid] = content[:500] if content else ""
-    return first_msgs
+            convo_messages[cid].append({
+                "role": row["role"],
+                "content": row.get("content", "") or "",
+            })
+
+    # Second pass: extract the fields we need
+    result = {}
+    for cid, messages in convo_messages.items():
+        first_user = ""
+        first_assistant = ""
+        mid_message = ""
+        msg_count = len(messages)
+
+        for msg in messages:
+            if not first_user and msg["role"] == "user":
+                first_user = msg["content"][:2000]
+            elif not first_assistant and msg["role"] == "assistant":
+                first_assistant = msg["content"][:1000]
+            if first_user and first_assistant:
+                break
+
+        # Sample mid-conversation message for long conversations
+        if msg_count >= 10:
+            mid_idx = msg_count // 2
+            mid_message = messages[mid_idx]["content"][:1000]
+
+        result[cid] = {
+            "first_user": first_user,
+            "first_assistant": first_assistant,
+            "mid_message": mid_message,
+            "msg_count": msg_count,
+        }
+
+    return result
 
 
 # ---------------------------------------------------------------------------
@@ -317,7 +497,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--chatgpt-shard-dir",
-        default="/mnt/ai_workspace/Remembrancer/exports/"
+        default="exports/"
                 "61b85573cfbec86e6fc397dbfdca42f8117fe4ece43591c30e851c2fc1090356-"
                 "2026-04-22-00-23-34-a5d95132b6894c289964b70e79488ade",
         help="Directory containing ChatGPT conversation shard files",
@@ -328,33 +508,33 @@ def main() -> None:
     )
     parser.add_argument(
         "--claude-conv-path",
-        default="/mnt/ai_workspace/Remembrancer/exports/2026-04-21-claude/"
+        default="exports/2026-04-21-claude/"
                 "data-f8e36cd0-8ae1-4565-bbc6-da7cdab23edb-1776813907-"
                 "9aaf3227-batch-0000/conversations.json",
         help="Path to Claude conversations.json",
     )
     parser.add_argument(
         "--claude-projects-path",
-        default="/mnt/ai_workspace/Remembrancer/exports/2026-04-21-claude/"
+        default="exports/2026-04-21-claude/"
                 "data-f8e36cd0-8ae1-4565-bbc6-da7cdab23edb-1776813907-"
                 "9aaf3227-batch-0000/projects.json",
         help="Path to Claude projects.json",
     )
     parser.add_argument(
         "--chatgpt-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/"
+        default=""
                 "chatgpt_messages_normalized.csv",
         help="Path to ChatGPT normalized messages CSV",
     )
     parser.add_argument(
         "--claude-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/"
+        default=""
                 "claude_messages_normalized.csv",
         help="Path to Claude normalized messages CSV",
     )
     parser.add_argument(
         "--output",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/"
+        default=""
                 "classifications_and_projects.json",
         help="Output JSON path",
     )
@@ -409,17 +589,23 @@ def main() -> None:
     print(f"  Total conversations:   {len(all_convos)}")
 
     # -----------------------------------------------------------------------
-    # Step 2: Load first user messages from CSVs (for fallback + validation)
+    # Step 2: Load conversation content from CSVs (for fallback + validation)
     # -----------------------------------------------------------------------
-    print("\n[2/6] Loading first user messages from normalized CSVs ...")
-    chatgpt_first = load_first_messages(args.chatgpt_csv, "chatgpt")
-    print(f"  ChatGPT first messages: {len(chatgpt_first)}")
-    claude_first = load_first_messages(args.claude_csv, "claude")
-    print(f"  Claude first messages:  {len(claude_first)}")
+    print("\n[2/6] Loading conversation content from normalized CSVs ...")
+    chatgpt_content = load_conversation_content(args.chatgpt_csv, "chatgpt")
+    print(f"  ChatGPT conversations with content: {len(chatgpt_content)}")
+    claude_content = load_conversation_content(args.claude_csv, "claude")
+    print(f"  Claude conversations with content:  {len(claude_content)}")
 
     # Merge into single lookup
-    first_messages = {**chatgpt_first, **claude_first}
-    print(f"  Total first messages:   {len(first_messages)}")
+    conversation_content = {**chatgpt_content, **claude_content}
+    print(f"  Total conversations with content:   {len(conversation_content)}")
+
+    # Build a backward-compatible first_messages lookup for project attribution
+    first_messages = {
+        cid: info["first_user"]
+        for cid, info in conversation_content.items()
+    }
 
     # -----------------------------------------------------------------------
     # Step 3: Classify every conversation
@@ -434,22 +620,40 @@ def main() -> None:
         cid = convo["conversation_id"]
         title = convo["title"]
         platform = convo["platform"]
-        first_msg = first_messages.get(cid, "")
+        convo_info = conversation_content.get(cid, {})
+        first_user = convo_info.get("first_user", "")
+        first_assistant = convo_info.get("first_assistant", "")
+        mid_message = convo_info.get("mid_message", "")
+
+        # Build the deep content text for classification:
+        # - first 2000 chars of first user message
+        # - first 1000 chars of first assistant message
+        # - mid-conversation message for long conversations (10+ messages)
+        content_parts = [first_user, first_assistant]
+        if mid_message:
+            content_parts.append(mid_message)
+        deep_content = " ".join(p for p in content_parts if p)
+
+        # Structural text for pattern detection (code fences, paths, URLs)
+        structural_text = deep_content
 
         # Topic classification
         if is_empty_title(title):
             # Fallback to content
-            topics = classify_topics(first_msg, method="content")
+            topics = classify_topics(deep_content, method="content",
+                                     structural_text=structural_text)
             if topics:
                 content_fallback_count += 1
             else:
                 topics = [{"category": "Other", "score": 0, "method": "content"}]
                 no_class_count += 1
         else:
-            topics = classify_topics(title, method="title")
+            topics = classify_topics(title, method="title",
+                                     structural_text=structural_text)
             if not topics:
-                # Title had no keyword matches; try content
-                topics = classify_topics(first_msg, method="content")
+                # Title had no keyword matches; try deeper content
+                topics = classify_topics(deep_content, method="content",
+                                         structural_text=structural_text)
                 if topics:
                     content_fallback_count += 1
                 else:
@@ -458,7 +662,8 @@ def main() -> None:
             else:
                 title_only_count += 1
 
-        # Project attribution
+        # Project attribution (uses first user message for backward compat)
+        first_msg = first_user
         project = classify_project(title, first_msg, platform, project_patterns)
 
         results.append({
@@ -477,7 +682,7 @@ def main() -> None:
     # Step 4: Topic summary
     # -----------------------------------------------------------------------
     print("\n[4/6] Computing topic summary ...")
-    topic_counts = Counter()
+    topic_counts: Counter[str] = Counter()
     topic_scores = defaultdict(list)
     total = len(results)
 
@@ -517,7 +722,9 @@ def main() -> None:
     # Step 5: Project summary
     # -----------------------------------------------------------------------
     print("\n[5/6] Computing project summary ...")
-    project_summary = defaultdict(lambda: {"count": 0, "confidence_dist": {"high": 0, "medium": 0, "low": 0}})
+    project_summary: dict[str, dict[str, Any]] = defaultdict(
+        lambda: {"count": 0, "confidence_dist": {"high": 0, "medium": 0, "low": 0}}
+    )
 
     linked_count = 0
     for r in results:
@@ -528,7 +735,7 @@ def main() -> None:
             project_summary[pname]["confidence_dist"][conf] += 1
             linked_count += 1
 
-    project_summary = dict(project_summary)  # convert from defaultdict
+    project_summary = dict(project_summary)  # type: ignore[assignment]  # convert from defaultdict
 
     print(f"  Linked conversations: {linked_count} / {total} ({linked_count/total*100:.1f}%)")
     print(f"  {'Project':<30} {'Count':>6} {'High':>5} {'Med':>5} {'Low':>5}")
@@ -550,7 +757,7 @@ def main() -> None:
         by_category[primary].append(r)
 
     sample = []
-    for cat, members in by_category.items():
+    for _cat, members in by_category.items():
         n = max(1, len(members) // 10)
         sample.extend(random.sample(members, min(n, len(members))))
 
@@ -558,7 +765,7 @@ def main() -> None:
 
     # For each sample conversation, classify with BOTH title AND first message
     # Compare to the original (title-only or content-only) result
-    per_cat_agree = defaultdict(lambda: {"agree": 0, "total": 0})
+    per_cat_agree: dict[str, dict[str, int]] = defaultdict(lambda: {"agree": 0, "total": 0})
 
     for r in sample:
         cid = r["conversation_id"]
@@ -579,37 +786,40 @@ def main() -> None:
             per_cat_agree[original_primary]["agree"] += 1
 
     # Compute agreement rates
-    validation = {
-        "per_category_agreement": {},
-        "overall_agreement": 0.0,
-        "flagged_categories": [],
-    }
+    per_category_agreement: dict[str, float] = {}
+    flagged_categories: list[str] = []
     total_agree = 0
     total_checked = 0
 
     for cat in sorted(per_cat_agree.keys()):
         info = per_cat_agree[cat]
         rate = info["agree"] / info["total"] if info["total"] else 0
-        validation["per_category_agreement"][cat] = round(rate, 4)
+        per_category_agreement[cat] = round(rate, 4)
         total_agree += info["agree"]
         total_checked += info["total"]
         if rate < 0.75:
-            validation["flagged_categories"].append(cat)
+            flagged_categories.append(cat)
 
-    validation["overall_agreement"] = round(
+    overall_agreement = round(
         total_agree / total_checked if total_checked else 0, 4
     )
 
+    validation: dict[str, Any] = {
+        "per_category_agreement": per_category_agreement,
+        "overall_agreement": overall_agreement,
+        "flagged_categories": flagged_categories,
+    }
+
     print(f"\n  {'Category':<30} {'Agreement':>10} {'n':>5} {'Flag':>5}")
     print(f"  {'-'*30} {'-'*10} {'-'*5} {'-'*5}")
-    for cat in sorted(validation["per_category_agreement"].keys()):
-        rate = validation["per_category_agreement"][cat]
+    for cat in sorted(per_category_agreement.keys()):
+        rate = per_category_agreement[cat]
         n = per_cat_agree[cat]["total"]
-        flag = " !!!" if cat in validation["flagged_categories"] else ""
+        flag = " !!!" if cat in flagged_categories else ""
         print(f"  {cat:<30} {rate:>9.1%} {n:>5}{flag}")
-    print(f"\n  Overall agreement: {validation['overall_agreement']:.1%}")
-    if validation["flagged_categories"]:
-        print(f"  FLAGGED (<75% agreement): {', '.join(validation['flagged_categories'])}")
+    print(f"\n  Overall agreement: {overall_agreement:.1%}")
+    if flagged_categories:
+        print(f"  FLAGGED (<75% agreement): {', '.join(flagged_categories)}")
     else:
         print("  No categories flagged.")
 

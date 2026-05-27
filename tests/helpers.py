@@ -10,7 +10,7 @@ import sys
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPTS_DIR = os.path.join(REPO_ROOT, "scripts")
-DEEP_DIR = os.path.join(SCRIPTS_DIR, "deep-analysis")
+DEEP_DIR = os.path.join(SCRIPTS_DIR, "deep_analysis")
 EXAMPLES_DIR = os.path.join(REPO_ROOT, "examples")
 TEMPLATES_DIR = os.path.join(REPO_ROOT, "templates")
 

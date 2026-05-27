@@ -17,6 +17,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 # Some message content fields are very large (e.g. pasted documents)
 csv.field_size_limit(sys.maxsize)
@@ -41,7 +42,7 @@ def months_in_range(start_str: str, end_str: str) -> list[str]:
     return months
 
 
-def safe_int(val: object, default: int = 0) -> int:
+def safe_int(val: Any, default: int = 0) -> int:
     """Parse an int from a CSV field, returning default on failure."""
     try:
         return int(val)
@@ -49,7 +50,7 @@ def safe_int(val: object, default: int = 0) -> int:
         return default
 
 
-def safe_float(val: object, default: float = 0.0) -> float:
+def safe_float(val: Any, default: float = 0.0) -> float:
     """Parse a float from a CSV field, returning default on failure."""
     try:
         return float(val)
@@ -82,7 +83,7 @@ def load_messages(csv_path: str, platform_label: str) -> list[dict]:
     """Load a normalized messages CSV. Returns list of row dicts."""
     print(f"  Loading {platform_label} messages from {csv_path} ...")
     rows = []
-    with open(csv_path, "r", encoding="utf-8") as f:
+    with open(csv_path, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
             row["_platform"] = platform_label
@@ -94,7 +95,7 @@ def load_messages(csv_path: str, platform_label: str) -> list[dict]:
 def load_cost_log(path: str) -> list[dict]:
     """Load the subscription cost log from a JSON file."""
     print(f"  Loading cost log from {path} ...")
-    with open(path, "r") as f:
+    with open(path) as f:
         data = json.load(f)
     print(f"    -> {len(data)} subscription entries")
     return data
@@ -103,7 +104,7 @@ def load_cost_log(path: str) -> list[dict]:
 def load_classifications(path: str) -> dict:
     """Returns mapping of conversation_id -> list of category strings."""
     print(f"  Loading classifications from {path} ...")
-    with open(path, "r") as f:
+    with open(path) as f:
         data = json.load(f)
     conv_topics = {}
     for entry in data.get("per_conversation", []):
@@ -132,14 +133,14 @@ def compute_costs(cost_log: list[dict]) -> dict:
             month_subs[m].append((entry["platform"], entry["monthly_cost"]))
 
     # Per-month cost (simple: just sum all subscriptions active that month)
-    per_month = {}
+    per_month: dict[str, dict[str, float]] = {}
     for m in sorted(month_subs.keys()):
         per_month[m] = {}
         for platform, cost in month_subs[m]:
             per_month[m][platform] = per_month[m].get(platform, 0) + cost
 
     total_cost = sum(cost for m in per_month.values() for cost in m.values())
-    per_platform_total = defaultdict(float)
+    per_platform_total: dict[str, float] = defaultdict(float)
     for m_costs in per_month.values():
         for plat, cost in m_costs.items():
             per_platform_total[plat] += cost
@@ -189,17 +190,17 @@ def compute_pod(
     print("\n[3/6] Aggregating message statistics...")
 
     # Overall and per-platform
-    stats = {
+    stats: dict[str, dict[str, defaultdict[str, int]]] = {
         "overall": {"assistant": defaultdict(int), "user": defaultdict(int)},
         "chatgpt": {"assistant": defaultdict(int), "user": defaultdict(int)},
         "claude": {"assistant": defaultdict(int), "user": defaultdict(int)},
     }
 
     # Monthly stats: month -> platform -> role -> {words, tokens, chars, count}
-    monthly = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))
+    monthly: dict[str, Any] = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))
 
     # Per-conversation stats (for domain and modality)
-    conv_stats = defaultdict(lambda: {
+    conv_stats: dict[str, dict[str, Any]] = defaultdict(lambda: {
         "platform": None,
         "assistant_words": 0, "assistant_tokens": 0,
         "user_words": 0, "user_tokens": 0,
@@ -309,7 +310,10 @@ def compute_pod(
             "user_messages": stats[plat]["user"]["count"],
         }
         print(f"\n  {plat.upper()}:")
-        print(f"    Cost: ${plat_cost:,.0f}  |  POD(w): {plat_pod_w:,.1f}  |  POD(t): {plat_pod_t:,.1f}  |  Leverage: {plat_lev:.2f}x")
+        print(
+            f"    Cost: ${plat_cost:,.0f}  |  POD(w): {plat_pod_w:,.1f}  "
+            f"|  POD(t): {plat_pod_t:,.1f}  |  Leverage: {plat_lev:.2f}x"
+        )
 
     # ---- Monthly POD ----
     print("\n[5/6] Computing monthly POD...")
@@ -345,13 +349,16 @@ def compute_pod(
     print(f"  {'-'*10} {'-'*7} {'-'*12} {'-'*10} {'-'*10}")
     for m in sorted(monthly_results.keys()):
         r = monthly_results[m]
-        print(f"  {m:<10} ${r['cost']:>5,.0f} {r['output_words']:>12,} {r['pod_words']:>10,.1f} {r['leverage_ratio']:>10.2f}x")
+        print(
+            f"  {m:<10} ${r['cost']:>5,.0f} {r['output_words']:>12,} "
+            f"{r['pod_words']:>10,.1f} {r['leverage_ratio']:>10.2f}x"
+        )
 
     # ---- Per-domain POD ----
     print("\n[6/6] Computing per-domain POD...")
 
     # Aggregate per domain
-    domain_stats = defaultdict(lambda: {
+    domain_stats: dict[str, dict[str, Any]] = defaultdict(lambda: {
         "output_words": 0, "output_tokens": 0,
         "input_words": 0, "input_tokens": 0,
         "conversations": 0, "messages": 0,
@@ -402,7 +409,9 @@ def compute_pod(
             "conversations": ds["conversations"],
             "messages": ds["messages"],
             "cost_allocated": round(cost_share, 2),
-            "share_of_output": round(ds["output_words"] / total_domain_out_words * 100, 2) if total_domain_out_words else 0,
+            "share_of_output": (
+                round(ds["output_words"] / total_domain_out_words * 100, 2) if total_domain_out_words else 0
+            ),
             "leverage_ratio": round(lev, 2),
         }
 
@@ -411,7 +420,10 @@ def compute_pod(
     print(f"  {'-'*28} {'-'*12} {'-'*9} {'-'*10} {'-'*7} {'-'*10}")
     for cat in sorted(per_domain.keys(), key=lambda c: per_domain[c]["output_words"], reverse=True):
         d = per_domain[cat]
-        print(f"  {cat:<28} {d['output_words']:>12,} ${d['cost_allocated']:>7,.0f} {d['pod_words']:>10,.1f} {d['conversations']:>7,} {d['leverage_ratio']:>10.2f}x")
+        print(
+            f"  {cat:<28} {d['output_words']:>12,} ${d['cost_allocated']:>7,.0f} "
+            f"{d['pod_words']:>10,.1f} {d['conversations']:>7,} {d['leverage_ratio']:>10.2f}x"
+        )
 
     # ---- Modality split (conversational vs agentic) ----
     print("\n  Computing modality split (estimated from CSV patterns)...")
@@ -429,7 +441,7 @@ def compute_pod(
     conv_in_tokens = 0
     conv_convs = 0
 
-    for cid, cs in conv_stats.items():
+    for _cid, cs in conv_stats.items():
         # Determine if conversation is likely agentic
         is_agentic = False
 
@@ -466,8 +478,11 @@ def compute_pod(
 
     modality_split = {
         "method": "estimated from CSV patterns (file paths, code fences, message count, date heuristics)",
-        "note": "Modality classification is a heuristic estimate, not a measured value. "
-                "True agentic sessions (Claude Code / tool_use) cannot be reliably identified from normalized CSVs alone.",
+        "note": (
+            "Modality classification is a heuristic estimate, not a measured value. "
+            "True agentic sessions (Claude Code / tool_use) cannot be reliably "
+            "identified from normalized CSVs alone."
+        ),
         "conversational": {
             "pod_words": round(conv_words / conv_cost_share, 1) if conv_cost_share else 0,
             "pod_tokens": round(conv_tokens / conv_cost_share, 1) if conv_cost_share else 0,
@@ -530,34 +545,32 @@ def compute_pod(
 
 def main() -> None:
     """Parse CLI arguments and run the POD computation pipeline."""
-    base = "/mnt/ai_workspace/Remembrancer"
-
     parser = argparse.ArgumentParser(
         description="Compute Productive Output per Dollar (POD) metric."
     )
     parser.add_argument(
         "--chatgpt-csv",
-        default=f"{base}/analysis/latest-run/chatgpt_messages_normalized.csv",
+        default="outputs/chatgpt_messages_normalized.csv",
         help="Path to ChatGPT normalized messages CSV",
     )
     parser.add_argument(
         "--claude-csv",
-        default=f"{base}/analysis/latest-run/claude_messages_normalized.csv",
+        default="outputs/claude_messages_normalized.csv",
         help="Path to Claude normalized messages CSV",
     )
     parser.add_argument(
         "--cost-log",
-        default=f"{base}/analysis/deep-analysis/data/cost_log.json",
+        default="cost_log.json",
         help="Path to subscription cost log JSON",
     )
     parser.add_argument(
         "--classifications",
-        default=f"{base}/analysis/deep-analysis/data/classifications_and_projects.json",
+        default="outputs/classifications_and_projects.json",
         help="Path to conversation classifications JSON",
     )
     parser.add_argument(
         "--output",
-        default=f"{base}/analysis/deep-analysis/data/pod_results.json",
+        default="outputs/pod_results.json",
         help="Path to write POD results JSON",
     )
 

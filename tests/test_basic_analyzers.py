@@ -3,10 +3,7 @@
 import csv
 import os
 
-import pytest
-
 from tests.helpers import SCRIPTS_DIR, run_script
-
 
 # ---------------------------------------------------------------------------
 # ChatGPT analyzer

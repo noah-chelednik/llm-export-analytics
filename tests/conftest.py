@@ -5,15 +5,14 @@ import os
 import pytest
 
 from tests.helpers import (
-    SAMPLE_CHATGPT,
-    SAMPLE_CLAUDE,
+    BENCHMARKS_JSON,
     EXAMPLE_PROJECTS,
     QUALITY_PARAMS,
-    BENCHMARKS_JSON,
+    SAMPLE_CHATGPT,
+    SAMPLE_CLAUDE,
     SCRIPTS_DIR,
     run_script,
 )
-
 
 # ---------------------------------------------------------------------------
 # Fixtures -- sample data paths

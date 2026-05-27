@@ -4,8 +4,6 @@ import csv
 import json
 import os
 
-import pytest
-
 
 class TestPrivacy:
     def test_default_csv_has_no_content(self, basic_analysis_outputs):
@@ -53,7 +51,7 @@ class TestPrivacy:
         out_dir = basic_analysis_outputs["out_dir"]
         for fname in os.listdir(out_dir):
             fpath = os.path.join(out_dir, fname)
-            with open(fpath, "r", errors="replace") as f:
+            with open(fpath, errors="replace") as f:
                 file_content = f.read()
             for phrase in phrases:
                 assert phrase not in file_content, (

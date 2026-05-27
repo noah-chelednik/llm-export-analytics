@@ -3,17 +3,17 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import pandas as pd
 
 try:
     import tiktoken
 except ImportError:
-    tiktoken = None
+    tiktoken = None  # type: ignore[assignment]
 
 
-def parse_iso_z(s: Any, use_utc: bool = True) -> Optional[datetime]:
+def parse_iso_z(s: Any, use_utc: bool = True) -> datetime | None:
     """Parse timestamps like 2025-10-21T00:42:03.397014Z into datetime."""
     if not s or not isinstance(s, str):
         return None
@@ -45,7 +45,7 @@ def word_count(text: str) -> int:
     return len(re.findall(r"\w+", text))
 
 
-def normalize_role(sender: Any) -> Optional[str]:
+def normalize_role(sender: Any) -> str | None:
     """Claude uses sender=human or sender=assistant. Normalize to user/assistant."""
     if not sender:
         return None
@@ -57,13 +57,13 @@ def normalize_role(sender: Any) -> Optional[str]:
     return s
 
 
-def extract_text_from_blocks(msg_obj: Dict[str, Any]) -> str:
+def extract_text_from_blocks(msg_obj: dict[str, Any]) -> str:
     """Concatenate text-type content blocks from a Claude message object."""
     if not msg_obj:
         return ""
 
     blocks = msg_obj.get("content", None)
-    out_parts: List[str] = []
+    out_parts: list[str] = []
 
     if isinstance(blocks, list) and blocks:
         for b in blocks:
@@ -96,7 +96,7 @@ def get_token_counter(encoding_name: str = "cl100k_base"):
     return count_tokens
 
 
-def depth_distribution(convo_sizes: pd.Series) -> Dict[str, Any]:
+def depth_distribution(convo_sizes: pd.Series) -> dict[str, Any]:
     """Bucket conversation sizes into depth tiers and return counts with percentages."""
     total = int(convo_sizes.shape[0])
 
@@ -146,7 +146,7 @@ def main() -> None:
     if not isinstance(data, list):
         raise SystemExit("Unexpected Claude export structure: expected a JSON list of conversations.")
 
-    rows: List[Dict[str, Any]] = []
+    rows: list[dict[str, Any]] = []
 
     for conv in data:
         if not isinstance(conv, dict):
@@ -277,8 +277,12 @@ def main() -> None:
         print(f"Total assistant words OUT: {int(assistant_msgs.get('word_count', pd.Series(dtype=int)).sum())}")
         print(f"Total user tokens IN: {int(user_msgs.get('token_count', pd.Series(dtype=int)).sum())}")
         print(f"Total assistant tokens OUT: {int(assistant_msgs.get('token_count', pd.Series(dtype=int)).sum())}")
-        print(f"Longest user message (words): {int(user_msgs.get('word_count', pd.Series(dtype=int)).max()) if len(user_msgs) else 0}")
-        print(f"Longest assistant message (words): {int(assistant_msgs.get('word_count', pd.Series(dtype=int)).max()) if len(assistant_msgs) else 0}")
+        longest_user = int(user_msgs.get('word_count', pd.Series(dtype=int)).max()) if len(user_msgs) else 0
+        print(f"Longest user message (words): {longest_user}")
+        longest_asst = (
+            int(assistant_msgs.get('word_count', pd.Series(dtype=int)).max()) if len(assistant_msgs) else 0
+        )
+        print(f"Longest assistant message (words): {longest_asst}")
 
     print()
     print("Activity landmarks")

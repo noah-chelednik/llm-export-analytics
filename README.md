@@ -54,7 +54,7 @@ scripts/
   analyze_claude.py               # Claude export normalization and basic stats
   analyze_combined.py             # Combined cross-platform analysis
 
-scripts/deep-analysis/
+scripts/deep_analysis/
   extract_chatgpt_metadata.py     # Model versions, tools, branching, reasoning
   classify_and_link.py            # Topic classification + project attribution
   analyze_effectiveness.py        # Prompt techniques, outcomes, interaction patterns

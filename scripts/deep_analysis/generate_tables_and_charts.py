@@ -3,7 +3,7 @@
 generate_tables_and_charts.py
 
 Reads Phase 1 JSON data files and produces markdown tables and ASCII charts
-for embedding in the deep-analysis document.
+for embedding in the deep_analysis document.
 
 Inputs  (from data/):
     chatgpt_metadata.json
@@ -26,11 +26,9 @@ Outputs (to tables/):
 
 import argparse
 import json
-import math
 import os
 from collections import OrderedDict
 from pathlib import Path
-
 
 # ── Slug-to-human-name mapping ────────────────────────────────────────────────
 
@@ -350,7 +348,6 @@ def generate_project_attribution(classif: dict, out_dir: str) -> tuple[int, int]
 def generate_technique_adoption(eff: dict, out_dir: str, total_conversations: int) -> tuple[str, float]:
     """Generate the prompt technique adoption markdown table."""
     ta = eff["technique_adoption"]
-    tc = eff["platform_comparison"].get("technique_comparison", {})
 
     # Sort by total_pct descending
     rows = sorted(ta.items(), key=lambda kv: kv[1]["total_pct"], reverse=True)
@@ -697,40 +694,40 @@ def main() -> None:
     print("Generating tables and charts...")
 
     total_msgs, total_convs, model_count = generate_model_timeline(meta, out_dir)
-    print(f"  [1] model_timeline.md")
+    print("  [1] model_timeline.md")
 
     generate_model_migration_chart(meta, out_dir)
-    print(f"  [2] model_migration_chart.md")
+    print("  [2] model_migration_chart.md")
 
     generate_platform_share_chart(eff, out_dir)
-    print(f"  [3] platform_share_chart.md")
+    print("  [3] platform_share_chart.md")
 
     topic_cat_count, classified_pct, other_pct = generate_topic_distribution(
         classif, out_dir
     )
-    print(f"  [4] topic_distribution.md")
+    print("  [4] topic_distribution.md")
 
     total_linked, proj_count = generate_project_attribution(classif, out_dir)
-    print(f"  [5] project_attribution.md")
+    print("  [5] project_attribution.md")
 
     top_tech_name, top_tech_pct = generate_technique_adoption(
         eff, out_dir, total_conversations
     )
-    print(f"  [6] technique_adoption.md")
+    print("  [6] technique_adoption.md")
 
     generate_technique_growth_chart(eff, out_dir)
-    print(f"  [7] technique_growth_chart.md")
+    print("  [7] technique_growth_chart.md")
 
     converged_pct, frustrated_pct = generate_conversation_outcomes(
         eff, out_dir, total_conversations
     )
-    print(f"  [8] conversation_outcomes.md")
+    print("  [8] conversation_outcomes.md")
 
     sprint_pct, marathon_pct = generate_session_dynamics(eff, out_dir)
-    print(f"  [9] session_dynamics.md")
+    print("  [9] session_dynamics.md")
 
     tool_types_count = generate_tool_usage(meta, out_dir)
-    print(f"  [10] tool_usage.md")
+    print("  [10] tool_usage.md")
 
     computed = {
         "model_count": model_count,
@@ -741,7 +738,7 @@ def main() -> None:
         "marathon_pct": marathon_pct,
     }
     generate_summary_stats(meta, classif, eff, out_dir, computed)
-    print(f"  [+] summary_stats.json")
+    print("  [+] summary_stats.json")
 
     # Report file sizes
     print(f"\nOutput directory: {out_dir}")

@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-export-analytics"
+version = "2.0.0"
+description = "Privacy-first tools for analyzing personal LLM usage from official exports"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0,<3.0",
+    "numpy>=1.24,<3.0",
+    "tiktoken>=0.5,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "pandas-stubs",
+]
+
+[project.scripts]
+llm-analyze-chatgpt = "scripts.analyze_chatgpt:main"
+llm-analyze-claude = "scripts.analyze_claude:main"
+llm-analyze-combined = "scripts.analyze_combined:main"
+llm-extract-metadata = "scripts.deep_analysis.extract_chatgpt_metadata:main"
+llm-classify = "scripts.deep_analysis.classify_and_link:main"
+llm-effectiveness = "scripts.deep_analysis.analyze_effectiveness:main"
+llm-tables = "scripts.deep_analysis.generate_tables_and_charts:main"
+llm-pod = "scripts.deep_analysis.compute_pod:main"
+llm-dlod = "scripts.deep_analysis.compute_dlod:main"
+llm-poe = "scripts.deep_analysis.compute_poe:main"
+llm-benchmarks = "scripts.deep_analysis.compare_benchmarks:main"
+
+[tool.setuptools.packages.find]
+include = ["scripts*"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["scripts"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_return_any = false
+check_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

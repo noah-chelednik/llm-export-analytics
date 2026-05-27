@@ -14,9 +14,8 @@ Writes:
 
 import argparse
 import json
-import sys
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 
 
 def load_json(path: Path) -> dict:
@@ -50,7 +49,10 @@ def compute_direct_comparisons(pod: dict, dlod: dict, bench: dict) -> list[dict]
             "source": "Faros AI, March 2026 (22,000 developers)"
         },
         "user": {
-            "value": f"${cost_per_deliverable:.2f}/deliverable (total ${total_cost:,.0f} / {deliverables_count} verified deliverables)",
+            "value": (
+                f"${cost_per_deliverable:.2f}/deliverable "
+                f"(total ${total_cost:,.0f} / {deliverables_count} verified deliverables)"
+            ),
             "cost_per_deliverable": round(cost_per_deliverable, 2),
             "avg_verified_project_cost": round(avg_verified_cost, 2),
             "per_project_detail": {
@@ -58,9 +60,17 @@ def compute_direct_comparisons(pod: dict, dlod: dict, bench: dict) -> list[dict]
                 for k, v in verified_projects.items()
             }
         },
-        "ratio": f"User cost per deliverable (${cost_per_deliverable:.2f}) vs industry low-AI ($0.28/PR) and high-AI ($89.32/PR); deliverables are full projects, not PRs",
+        "ratio": (
+            f"User cost per deliverable (${cost_per_deliverable:.2f}) vs industry low-AI ($0.28/PR) "
+            f"and high-AI ($89.32/PR); deliverables are full projects, not PRs"
+        ),
         "comparable": True,
-        "note": "Unit mismatch: industry measures cost per merged PR (a single code change); user measures cost per full deliverable (an entire published project). Deliverables encompass dozens to hundreds of PR-equivalent units of work. On a per-PR basis, the cost would be far lower."
+        "note": (
+            "Unit mismatch: industry measures cost per merged PR (a single code change); "
+            "user measures cost per full deliverable (an entire published project). "
+            "Deliverables encompass dozens to hundreds of PR-equivalent units of work. "
+            "On a per-PR basis, the cost would be far lower."
+        )
     })
 
     # ── 2. AI code generation share ──
@@ -76,7 +86,11 @@ def compute_direct_comparisons(pod: dict, dlod: dict, bench: dict) -> list[dict]
         },
         "ratio": "User: 100% vs Industry: 26.9% = 3.72x; vs Copilot: 46% = 2.17x",
         "comparable": True,
-        "note": "Directly comparable on the metric of 'what share of code is AI-generated'. The directed-collaboration model is fundamentally different: 100% AI generation with human direction, not AI-assisted human coding."
+        "note": (
+            "Directly comparable on the metric of 'what share of code is AI-generated'. "
+            "The directed-collaboration model is fundamentally different: 100% AI generation "
+            "with human direction, not AI-assisted human coding."
+        )
     })
 
     # ── 3. METR RCT speed impact ──
@@ -98,13 +112,25 @@ def compute_direct_comparisons(pod: dict, dlod: dict, bench: dict) -> list[dict]
             "source": "METR randomized controlled trial, July 2025"
         },
         "user": {
-            "value": f"~{lines_per_day:.0f} lines/day average ({total_output_words:,} output words over {months_active} months) vs industry ~{industry_lines_per_day} lines/day = {lines_per_day/industry_lines_per_day:.1f}x",
+            "value": (
+                f"~{lines_per_day:.0f} lines/day average "
+                f"({total_output_words:,} output words over {months_active} months) "
+                f"vs industry ~{industry_lines_per_day} lines/day "
+                f"= {lines_per_day / industry_lines_per_day:.1f}x"
+            ),
             "lines_per_day_estimate": round(lines_per_day, 0),
             "detail": f"{total_output_words:,} output words over {months_active} months of activity"
         },
-        "ratio": f"Industry: -19% (slower). User: {lines_per_day/industry_lines_per_day:.1f}x output rate vs baseline",
+        "ratio": (
+            f"Industry: -19% (slower). "
+            f"User: {lines_per_day / industry_lines_per_day:.1f}x output rate vs baseline"
+        ),
         "comparable": True,
-        "note": "Methodological contrast. METR used an RCT; this data is observational. The directed-collaboration model (AI as primary generator, not assistant) may eliminate context-switching overhead captured in the METR RCT."
+        "note": (
+            "Methodological contrast. METR used an RCT; this data is observational. "
+            "The directed-collaboration model (AI as primary generator, not assistant) "
+            "may eliminate context-switching overhead captured in the METR RCT."
+        )
     })
 
     # ── 4. Code churn contrast ──
@@ -119,9 +145,17 @@ def compute_direct_comparisons(pod: dict, dlod: dict, bench: dict) -> list[dict]
             "value": f"Code persists in production across {verified_count} verified deliverable(s)",
             "detail": "Code serves published/deployed deliverables rather than speculative generation"
         },
-        "ratio": "Industry: 861% churn increase (most AI code deleted). User: code persists in deployed projects",
+        "ratio": (
+            "Industry: 861% churn increase (most AI code deleted). "
+            "User: code persists in deployed projects"
+        ),
         "comparable": True,
-        "note": "Both measure what happens to AI-generated code after creation. Industry data shows most AI code is throwaway; directed-collaboration code persists because it targets specific deliverables rather than speculative generation."
+        "note": (
+            "Both measure what happens to AI-generated code after creation. "
+            "Industry data shows most AI code is throwaway; directed-collaboration "
+            "code persists because it targets specific deliverables rather than "
+            "speculative generation."
+        )
     })
 
     return comparisons
@@ -154,9 +188,17 @@ def compute_contextual_comparisons(pod: dict, dlod: dict, bench: dict) -> list[d
             "monthly_avg": round(user_monthly, 2),
             "as_pct_of_enterprise_annual": round(user_as_pct_enterprise, 2)
         },
-        "ratio": f"User total (${total_cost:,.0f}) over {months_active} months = {user_as_pct_enterprise:.2f}% of one enterprise year (${enterprise_annual:,.0f})",
+        "ratio": (
+            f"User total (${total_cost:,.0f}) over {months_active} months = "
+            f"{user_as_pct_enterprise:.2f}% of one enterprise year (${enterprise_annual:,.0f})"
+        ),
         "comparable": False,
-        "note": "NOT directly comparable. Enterprise spend covers automated pipelines, hundreds of users, and API-based infrastructure. Individual practitioner uses subscription plans. The difference reflects entirely different use patterns, not efficiency."
+        "note": (
+            "NOT directly comparable. Enterprise spend covers automated pipelines, "
+            "hundreds of users, and API-based infrastructure. Individual practitioner "
+            "uses subscription plans. The difference reflects entirely different use "
+            "patterns, not efficiency."
+        )
     })
 
     # ── 2. Per-engineer cost ──
@@ -177,7 +219,11 @@ def compute_contextual_comparisons(pod: dict, dlod: dict, bench: dict) -> list[d
         },
         "ratio": f"Industry is {ratio_low:.0f}-{ratio_high:.0f}x more expensive per month",
         "comparable": False,
-        "note": "Comparable on cost INPUT (both measure what one person spends on AI tools), but NOT on cost OUTPUT. Industry per-engineer costs include API tokens for automated workflows; user cost is subscription-only."
+        "note": (
+            "Comparable on cost INPUT (both measure what one person spends on AI tools), "
+            "but NOT on cost OUTPUT. Industry per-engineer costs include API tokens for "
+            "automated workflows; user cost is subscription-only."
+        )
     })
 
     # ── 3. Copilot productivity ──
@@ -188,12 +234,22 @@ def compute_contextual_comparisons(pod: dict, dlod: dict, bench: dict) -> list[d
             "source": bench["copilot_speed"]["source"]
         },
         "user": {
-            "value": f"POD = {pod['overall']['pod_words']:.1f} words/dollar; total output = {pod['overall']['total_output_words']:,} words",
+            "value": (
+                f"POD = {pod['overall']['pod_words']:.1f} words/dollar; "
+                f"total output = {pod['overall']['total_output_words']:,} words"
+            ),
             "pod_words": pod["overall"]["pod_words"]
         },
-        "ratio": "Cannot compute -- Copilot measures speed improvement (%), POD measures output-per-dollar (words/$). Different units.",
+        "ratio": (
+            "Cannot compute -- Copilot measures speed improvement (%), "
+            "POD measures output-per-dollar (words/$). Different units."
+        ),
         "comparable": False,
-        "note": "Copilot's 55% is a SPEED metric (same task, less time). POD is an OUTPUT metric (words produced per dollar). To make these comparable, we would need baseline output per Copilot user in words/month, which is not reported."
+        "note": (
+            "Copilot's 55% is a SPEED metric (same task, less time). POD is an OUTPUT "
+            "metric (words produced per dollar). To make these comparable, we would need "
+            "baseline output per Copilot user in words/month, which is not reported."
+        )
     })
 
     # ── 4. HBS GPT-4 study ──
@@ -207,9 +263,17 @@ def compute_contextual_comparisons(pod: dict, dlod: dict, bench: dict) -> list[d
             "value": f"Quality measured by verified deliverables: {verified_count} verified deliverable(s)",
             "verified_deliverables": verified_count
         },
-        "ratio": "Cannot compute -- HBS measures % improvement on controlled tasks; quality here is measured by publication/deployment (binary: published or not)",
+        "ratio": (
+            "Cannot compute -- HBS measures % improvement on controlled tasks; "
+            "quality here is measured by publication/deployment (binary: published or not)"
+        ),
         "comparable": False,
-        "note": "Different quality metrics. HBS used blind ratings of consultant output on defined tasks. User quality is measured by real-world acceptance: published/deployed deliverables. Both suggest AI improves quality, but through incompatible measurement frameworks."
+        "note": (
+            "Different quality metrics. HBS used blind ratings of consultant output "
+            "on defined tasks. User quality is measured by real-world acceptance: "
+            "published/deployed deliverables. Both suggest AI improves quality, but "
+            "through incompatible measurement frameworks."
+        )
     })
 
     # ── 5. AI code vulnerabilities ──
@@ -224,7 +288,11 @@ def compute_contextual_comparisons(pod: dict, dlod: dict, bench: dict) -> list[d
         },
         "ratio": "Cannot compute -- no vulnerability data for user codebase",
         "comparable": False,
-        "note": "An important caveat for 100% AI-generated code claims. Industry data shows AI code has significantly more vulnerabilities. Without a security audit, this risk factor is unquantified."
+        "note": (
+            "An important caveat for 100% AI-generated code claims. Industry data shows "
+            "AI code has significantly more vulnerabilities. Without a security audit, "
+            "this risk factor is unquantified."
+        )
     })
 
     # ── 6. Nvidia VP quote (qualitative) ──
@@ -235,11 +303,21 @@ def compute_contextual_comparisons(pod: dict, dlod: dict, bench: dict) -> list[d
             "source": f"{bench['nvidia_vp_quote']['source']}, {bench['nvidia_vp_quote']['date']}"
         },
         "user": {
-            "value": f"AI compute cost: ${total_cost:,} over {months_active} months. Solo practitioner -- compute cost is a fraction of equivalent labor cost."
+            "value": (
+                f"AI compute cost: ${total_cost:,} over {months_active} months. "
+                f"Solo practitioner -- compute cost is a fraction of equivalent labor cost."
+            )
         },
-        "ratio": f"Directionally opposite: Nvidia's compute exceeds employee cost; user's compute (${total_cost:,}) is negligible compared to equivalent labor",
+        "ratio": (
+            f"Directionally opposite: Nvidia's compute exceeds employee cost; "
+            f"user's compute (${total_cost:,}) is negligible compared to equivalent labor"
+        ),
         "comparable": False,
-        "note": "Qualitative contrast. At enterprise scale (Nvidia), AI compute dominates budgets. At individual practitioner scale, AI subscriptions are trivial. This highlights the scale-dependent economics of AI adoption."
+        "note": (
+            "Qualitative contrast. At enterprise scale (Nvidia), AI compute dominates "
+            "budgets. At individual practitioner scale, AI subscriptions are trivial. "
+            "This highlights the scale-dependent economics of AI adoption."
+        )
     })
 
     return comparisons
@@ -247,8 +325,6 @@ def compute_contextual_comparisons(pod: dict, dlod: dict, bench: dict) -> list[d
 
 def compute_anti_efficiency_contrast(pod: dict, dlod: dict, bench: dict) -> dict:
     """Compute the tokenmaxxing anti-efficiency contrast."""
-    total_cost = pod["total_cost"]
-
     # Tokenmaxxing efficiency ratio: 2x throughput at 10x cost = 0.2x
     tokenmaxxing_efficiency = 2.0 / 10.0  # 0.2x
 
@@ -282,7 +358,10 @@ def compute_anti_efficiency_contrast(pod: dict, dlod: dict, bench: dict) -> dict
             "throughput_gain": "2x",
             "cost_increase": "10x",
             "efficiency_ratio": tokenmaxxing_efficiency,
-            "interpretation": "For every dollar spent, tokenmaxxing produces 0.2x the output of the pre-AI baseline",
+            "interpretation": (
+                "For every dollar spent, tokenmaxxing produces "
+                "0.2x the output of the pre-AI baseline"
+            ),
             "code_churn": "861% increase -- most AI-generated code is deleted",
             "source": "Faros AI, March 2026"
         },
@@ -302,18 +381,35 @@ def compute_anti_efficiency_contrast(pod: dict, dlod: dict, bench: dict) -> dict
             "output_growth_ratio": round(output_growth, 2),
             "cost_growth_ratio": round(cost_growth, 2),
             "efficiency_ratio": round(user_efficiency_ratio, 2),
-            "interpretation": f"Output grew {output_growth:.1f}x while cost grew {cost_growth:.1f}x = {user_efficiency_ratio:.2f}x efficiency ratio"
+            "interpretation": (
+                f"Output grew {output_growth:.1f}x while cost grew "
+                f"{cost_growth:.1f}x = {user_efficiency_ratio:.2f}x efficiency ratio"
+            )
         },
         "contrast": {
             "tokenmaxxing_efficiency": tokenmaxxing_efficiency,
             "user_efficiency": round(user_efficiency_ratio, 2),
-            "ratio": f"User efficiency ratio ({user_efficiency_ratio:.2f}x) vs tokenmaxxing (0.20x) = {user_efficiency_ratio/tokenmaxxing_efficiency:.1f}x better",
-            "key_difference": "Tokenmaxxing treats AI as a volume tool (generate more, delete more). Directed collaboration treats AI as a production tool (generate what is needed, keep what is produced)."
+            "ratio": (
+                f"User efficiency ratio ({user_efficiency_ratio:.2f}x) vs tokenmaxxing "
+                f"(0.20x) = {user_efficiency_ratio / tokenmaxxing_efficiency:.1f}x better"
+            ),
+            "key_difference": (
+                "Tokenmaxxing treats AI as a volume tool (generate more, delete more). "
+                "Directed collaboration treats AI as a production tool (generate what is "
+                "needed, keep what is produced)."
+            )
         },
         "code_persistence": {
             "industry": "861% code churn -- most AI code deleted shortly after generation",
-            "user": f"{total_output_words:,} output words across {verified_count} verified deliverable(s); code serves deployed deliverables",
-            "interpretation": "The anti-efficiency of tokenmaxxing is driven by waste: generating code that gets thrown away. The directed-collaboration model avoids this by targeting specific, pre-planned deliverables."
+            "user": (
+                f"{total_output_words:,} output words across {verified_count} "
+                f"verified deliverable(s); code serves deployed deliverables"
+            ),
+            "interpretation": (
+                "The anti-efficiency of tokenmaxxing is driven by waste: generating "
+                "code that gets thrown away. The directed-collaboration model avoids "
+                "this by targeting specific, pre-planned deliverables."
+            )
         }
     }
 
@@ -350,7 +446,10 @@ def build_summary_table(direct: list[dict], contextual: list[dict], anti_eff: di
         "industry": "0.20x (tokenmaxxing: 2x throughput at 10x cost)",
         "user": f"{anti_eff['user']['efficiency_ratio']}x ({anti_eff['user']['interpretation']})",
         "comparable": True,
-        "note": "Both measure how efficiency scales with AI spending. Tokenmaxxing shows diminishing returns; directed collaboration shows whether output scales with cost."
+        "note": (
+            "Both measure how efficiency scales with AI spending. Tokenmaxxing shows "
+            "diminishing returns; directed collaboration shows whether output scales with cost."
+        )
     })
 
     return table

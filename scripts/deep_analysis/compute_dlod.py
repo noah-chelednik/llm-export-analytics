@@ -11,12 +11,12 @@ a more conservative cousin of POD (Productive Output per Dollar).
 Inputs (defaults):
   - analysis/latest-run/chatgpt_messages_normalized.csv
   - analysis/latest-run/claude_messages_normalized.csv
-  - analysis/deep-analysis/data/classifications_and_projects.json
-  - analysis/deep-analysis/data/cost_log.json
-  - analysis/deep-analysis/data/deliverable_inventory.json
+  - analysis/deep_analysis/data/classifications_and_projects.json
+  - analysis/deep_analysis/data/cost_log.json
+  - analysis/deep_analysis/data/deliverable_inventory.json
 
 Output:
-  - analysis/deep-analysis/data/dlod_results.json
+  - analysis/deep_analysis/data/dlod_results.json
 """
 
 import argparse
@@ -113,22 +113,22 @@ def main() -> None:
     )
     parser.add_argument(
         "--chatgpt-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/chatgpt_messages_normalized.csv",
+        default="chatgpt_messages_normalized.csv",
         help="Path to ChatGPT normalized messages CSV",
     )
     parser.add_argument(
         "--claude-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/claude_messages_normalized.csv",
+        default="claude_messages_normalized.csv",
         help="Path to Claude normalized messages CSV",
     )
     parser.add_argument(
         "--classifications",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/classifications_and_projects.json",
+        default="classifications_and_projects.json",
         help="Path to classifications_and_projects.json",
     )
     parser.add_argument(
         "--cost-log",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/cost_log.json",
+        default="cost_log.json",
         help="Path to cost_log.json",
     )
     parser.add_argument(
@@ -140,7 +140,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--output",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/dlod_results.json",
+        default="dlod_results.json",
         help="Path for output JSON",
     )
     args = parser.parse_args()
@@ -239,7 +239,6 @@ def main() -> None:
     df_assistant = df[df["role"] == "assistant"].copy()
     total_assistant_msgs = len(df_assistant)
     total_output_words = int(df_assistant["word_count"].sum())
-    total_output_tokens = int(df_assistant["token_count"].sum())
     total_conversations = df["conversation_id"].nunique()
 
     print(f"  Total assistant messages: {total_assistant_msgs:,}")
@@ -267,8 +266,6 @@ def main() -> None:
     # 5. DLOD by confidence threshold
     # ------------------------------------------------------------------
     print("\n[5] Computing DLOD by confidence threshold ...")
-
-    confidence_levels = {"high": 1, "medium": 2, "low": 3}
 
     def compute_threshold(df_src: pd.DataFrame, allowed_confidences: set[str]) -> dict:
         mask = df_src["confidence"].isin(allowed_confidences)

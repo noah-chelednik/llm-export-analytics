@@ -32,7 +32,6 @@ Methodology:
 import argparse
 import json
 import re
-import sys
 import time
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -125,7 +124,7 @@ def classify_conversations(df: pd.DataFrame) -> dict[str, dict]:
     df = df.copy()
     df["created_dt"] = pd.to_datetime(df["created"], utc=True, errors="coerce")
 
-    results = {}
+    results: dict[str, dict] = {}  # type: ignore[type-arg]
     conv_groups = df.groupby("conversation_id")
 
     for conv_id, grp in conv_groups:
@@ -157,7 +156,7 @@ def classify_conversations(df: pd.DataFrame) -> dict[str, dict]:
             else:
                 outcome = "neutral"
 
-        results[conv_id] = {
+        results[str(conv_id)] = {
             "outcome": outcome,
             "assistant_words": assistant_words,
             "platform": platform,
@@ -209,7 +208,7 @@ def compute_poe(
     monthly_raw_output: dict[str, float] = defaultdict(float)
 
     # Summary counters
-    outcome_dist = Counter()
+    outcome_dist: Counter[str] = Counter()
     attributed_count = 0
     branched_count = 0
     total_conversations = len(conv_data)
@@ -334,42 +333,42 @@ def main():
     )
     parser.add_argument(
         "--chatgpt-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/chatgpt_messages_normalized.csv",
+        default="chatgpt_messages_normalized.csv",
         help="Path to ChatGPT normalized messages CSV",
     )
     parser.add_argument(
         "--claude-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/claude_messages_normalized.csv",
+        default="claude_messages_normalized.csv",
         help="Path to Claude normalized messages CSV",
     )
     parser.add_argument(
         "--pod-results",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/pod_results.json",
+        default="pod_results.json",
         help="Path to pod_results.json",
     )
     parser.add_argument(
         "--quality-params",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/quality_params.json",
+        default="quality_params.json",
         help="Path to quality_params.json with Q configurations",
     )
     parser.add_argument(
         "--classifications",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/classifications_and_projects.json",
+        default="classifications_and_projects.json",
         help="Path to classifications_and_projects.json",
     )
     parser.add_argument(
         "--chatgpt-metadata",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/chatgpt_metadata.json",
+        default="chatgpt_metadata.json",
         help="Path to chatgpt_metadata.json",
     )
     parser.add_argument(
         "--cost-log",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/cost_log.json",
+        default="cost_log.json",
         help="Path to cost_log.json",
     )
     parser.add_argument(
         "--output",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/poe_results.json",
+        default="poe_results.json",
         help="Path for output JSON",
     )
     args = parser.parse_args()
@@ -413,7 +412,7 @@ def main():
 
     print(f"Loading cost log: {args.cost_log}")
     with open(args.cost_log) as f:
-        cost_log = json.load(f)
+        json.load(f)  # validate JSON but data not directly used
 
     # ---- Extract reference values ----
     total_cost = pod_data["total_cost"]
@@ -486,7 +485,8 @@ def main():
         label = q_configs[cfg_name].get("label", cfg_name)
         pr = result["poe_range"][cfg_name]
         print(
-            f"{cfg_name:<12s} {label:<35s} {pr['poe_words']:<12.1f} {pr['effective_q']:<10.4f} {pr['ratio_to_pod']:<12.4f}"
+            f"{cfg_name:<12s} {label:<35s} {pr['poe_words']:<12.1f} "
+            f"{pr['effective_q']:<10.4f} {pr['ratio_to_pod']:<12.4f}"
         )
 
     print(f"\nRaw POD (no quality adjustment): {raw_pod_words:.1f} words/$")
@@ -506,7 +506,7 @@ def main():
     print("PER-CONVERSATION SUMMARY")
     print("-" * 70)
     print(f"  Total conversations: {pcs['total_conversations']}")
-    print(f"  Outcome distribution:")
+    print("  Outcome distribution:")
     for label, count in sorted(pcs["outcome_distribution"].items(), key=lambda x: -x[1]):
         pct = count / pcs["total_conversations"] * 100
         print(f"    {label:<12s}: {count:>5d} ({pct:5.1f}%)")
@@ -522,7 +522,8 @@ def main():
     for month in sorted(result["monthly_poe_q_mid"].keys()):
         m = result["monthly_poe_q_mid"][month]
         print(
-            f"{month:<10s} ${m['cost']:<7.0f} {m['output_words']:<14,.0f} {m['weighted_output']:<14,.1f} {m['poe_words']:<12.1f}"
+            f"{month:<10s} ${m['cost']:<7.0f} {m['output_words']:<14,.0f} "
+            f"{m['weighted_output']:<14,.1f} {m['poe_words']:<12.1f}"
         )
 
     # ---- Write output ----

@@ -4,17 +4,17 @@ import re
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import pandas as pd
 
 try:
     import tiktoken
 except ImportError:
-    tiktoken = None
+    tiktoken = None  # type: ignore[assignment]
 
 
-def to_dt(ts: Any, use_utc: bool = True) -> Optional[datetime]:
+def to_dt(ts: Any, use_utc: bool = True) -> datetime | None:
     """Convert epoch seconds to datetime."""
     if ts is None:
         return None
@@ -58,7 +58,7 @@ def get_token_counter(encoding_name: str = "cl100k_base"):
     return count_tokens
 
 
-def extract_text_from_message(message_obj: Dict[str, Any]) -> str:
+def extract_text_from_message(message_obj: dict[str, Any]) -> str:
     """Extract and concatenate text parts from a ChatGPT message object."""
     if not message_obj:
         return ""
@@ -69,7 +69,7 @@ def extract_text_from_message(message_obj: Dict[str, Any]) -> str:
     if not parts:
         return ""
 
-    out_parts: List[str] = []
+    out_parts: list[str] = []
     for p in parts:
         if p is None:
             continue
@@ -81,26 +81,26 @@ def extract_text_from_message(message_obj: Dict[str, Any]) -> str:
     return "\n".join(out_parts).strip()
 
 
-def get_role(message_obj: Dict[str, Any]) -> Optional[str]:
+def get_role(message_obj: dict[str, Any]) -> str | None:
     """Extract the author role string from a message object."""
     author = (message_obj or {}).get("author", {})
     role = author.get("role", None)
     return role
 
 
-def reconstruct_main_path(mapping: Dict[str, Any], current_node_id: Optional[str] = None) -> List[str]:
+def reconstruct_main_path(mapping: dict[str, Any], current_node_id: str | None = None) -> list[str]:
     """Walk parent pointers from the latest leaf to reconstruct the primary conversation path."""
     if not mapping:
         return []
 
-    def node_create_time(node: Dict[str, Any]) -> Optional[float]:
+    def node_create_time(node: dict[str, Any] | None) -> float | None:
         msg = node.get("message") if node else None
         if not msg:
             return None
         return msg.get("create_time")
 
     if not current_node_id or current_node_id not in mapping:
-        leaf_ids: List[str] = []
+        leaf_ids: list[str] = []
         for node_id, node in mapping.items():
             if not node:
                 continue
@@ -122,7 +122,7 @@ def reconstruct_main_path(mapping: Dict[str, Any], current_node_id: Optional[str
 
         current_node_id = best_id if best_id else candidates[0]
 
-    path: List[str] = []
+    path: list[str] = []
     seen = set()
     nid = current_node_id
     while nid and nid in mapping and nid not in seen:
@@ -134,7 +134,7 @@ def reconstruct_main_path(mapping: Dict[str, Any], current_node_id: Optional[str
     return path
 
 
-def depth_distribution(convo_sizes: pd.Series) -> Dict[str, Any]:
+def depth_distribution(convo_sizes: pd.Series) -> dict[str, Any]:
     """Bucket conversation sizes into depth tiers and return counts with percentages."""
     total = int(convo_sizes.shape[0])
 
@@ -184,7 +184,7 @@ def main() -> None:
     if not isinstance(data, list):
         raise SystemExit("Unexpected ChatGPT export structure: expected a JSON list of conversations.")
 
-    rows: List[Dict[str, Any]] = []
+    rows: list[dict[str, Any]] = []
 
     for conv in data:
         if not isinstance(conv, dict):
@@ -219,7 +219,7 @@ def main() -> None:
             if not text:
                 continue
 
-            row: Dict[str, Any] = {
+            row: dict[str, Any] = {
                 "platform": "chatgpt",
                 "conversation_id": conv_id,
                 "message_id": msg.get("id", node_id),
@@ -320,7 +320,8 @@ def main() -> None:
         print("-" * 62)
         print(f"Total user words IN: {int(user_msgs['word_count'].sum())}")
         print(f"Total assistant words OUT: {int(assistant_msgs['word_count'].sum())}")
-        print(f"Avg user words/message: {float(user_msgs['word_count'].mean()):.1f}" if len(user_msgs) else "Avg user words/message: 0.0")
+        avg_user_wpm = f"{float(user_msgs['word_count'].mean()):.1f}" if len(user_msgs) else "0.0"
+        print(f"Avg user words/message: {avg_user_wpm}")
         print(
             f"Avg assistant words/message: {float(assistant_msgs['word_count'].mean()):.1f}"
             if len(assistant_msgs)
@@ -328,7 +329,8 @@ def main() -> None:
         )
         print(f"Total user tokens IN: {int(user_msgs['token_count'].sum())}")
         print(f"Total assistant tokens OUT: {int(assistant_msgs['token_count'].sum())}")
-        print(f"Avg user tokens/message: {float(user_msgs['token_count'].mean()):.1f}" if len(user_msgs) else "Avg user tokens/message: 0.0")
+        avg_user_tpm = f"{float(user_msgs['token_count'].mean()):.1f}" if len(user_msgs) else "0.0"
+        print(f"Avg user tokens/message: {avg_user_tpm}")
         print(
             f"Avg assistant tokens/message: {float(assistant_msgs['token_count'].mean()):.1f}"
             if len(assistant_msgs)
@@ -348,7 +350,8 @@ def main() -> None:
         print(f"Most active day: {most_active_day} ({max_msgs_day} messages)")
         print(f"Most active month: {most_active_month} ({most_active_month_msgs} messages)")
         print(f"Longest user message (words): {int(user_msgs['word_count'].max()) if len(user_msgs) else 0}")
-        print(f"Longest assistant message (words): {int(assistant_msgs['word_count'].max()) if len(assistant_msgs) else 0}")
+        longest_asst = int(assistant_msgs['word_count'].max()) if len(assistant_msgs) else 0
+        print(f"Longest assistant message (words): {longest_asst}")
 
     print()
     print("Depth distribution (messages per conversation)")

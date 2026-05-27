@@ -1,11 +1,11 @@
 import argparse
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 import pandas as pd
 
 
-def depth_distribution(convo_sizes: pd.Series) -> Dict[str, Any]:
+def depth_distribution(convo_sizes: pd.Series) -> dict[str, Any]:
     """Bucket conversation sizes into depth tiers and return counts with percentages."""
     total = int(convo_sizes.shape[0])
 
@@ -31,7 +31,7 @@ def has_cols(df: pd.DataFrame, cols: list) -> bool:
     return all(c in df.columns for c in cols)
 
 
-def safe_sum(df: pd.DataFrame, col: str) -> Optional[int]:
+def safe_sum(df: pd.DataFrame, col: str) -> int | None:
     """Return the integer sum of a numeric column, or None if the column is missing."""
     if col not in df.columns:
         return None
@@ -41,7 +41,7 @@ def safe_sum(df: pd.DataFrame, col: str) -> Optional[int]:
         return None
 
 
-def safe_max(df: pd.DataFrame, col: str) -> Optional[int]:
+def safe_max(df: pd.DataFrame, col: str) -> int | None:
     """Return the integer max of a numeric column, or None if the column is missing."""
     if col not in df.columns:
         return None
@@ -56,7 +56,9 @@ def safe_max(df: pd.DataFrame, col: str) -> Optional[int]:
 
 def main() -> None:
     """Merge ChatGPT and Claude normalized CSVs and print combined analytics."""
-    parser = argparse.ArgumentParser(description="Combine normalized ChatGPT + Claude CSVs and compute aggregate stats.")
+    parser = argparse.ArgumentParser(
+        description="Combine normalized ChatGPT + Claude CSVs and compute aggregate stats."
+    )
     parser.add_argument("--chatgpt", required=True, help="Path to outputs/chatgpt_messages_normalized.csv")
     parser.add_argument("--claude", required=True, help="Path to outputs/claude_messages_normalized.csv")
     parser.add_argument("--utc", action="store_true", help="Parse created timestamps as UTC (recommended)")

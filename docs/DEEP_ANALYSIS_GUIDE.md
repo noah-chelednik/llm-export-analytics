@@ -57,7 +57,7 @@ If you only use one platform, that is fine. Just skip the flags for the platform
 **Command:**
 
 ```bash
-python scripts/deep-analysis/extract_chatgpt_metadata.py \
+python scripts/deep_analysis/extract_chatgpt_metadata.py \
   --input-dir /path/to/chatgpt/export/ \
   --output outputs/chatgpt_metadata.json
 ```
@@ -81,7 +81,7 @@ If you only use Claude, skip this step. The later scripts will work without it.
 **Command:**
 
 ```bash
-python scripts/deep-analysis/classify_and_link.py \
+python scripts/deep_analysis/classify_and_link.py \
   --chatgpt-shard-dir /path/to/chatgpt/export/ \
   --claude-conv-path /path/to/claude/conversations.json \
   --chatgpt-csv outputs/chatgpt_messages_normalized.csv \
@@ -99,7 +99,7 @@ If you also have a Claude projects.json from your export, add:
 
 **Optional: project attribution.** The script has a built-in set of project keywords that were designed for the original case study. If you want project attribution for your own projects, you have two options:
 
-1. **Edit the script directly.** Open `scripts/deep-analysis/classify_and_link.py` and modify the `PROJECT_KEYWORDS` dictionary near the top of the file. Each project entry looks like this:
+1. **Edit the script directly.** Open `scripts/deep_analysis/classify_and_link.py` and modify the `PROJECT_KEYWORDS` dictionary near the top of the file. Each project entry looks like this:
 
 ```python
 "My Project Name": {
@@ -117,7 +117,7 @@ If you also have a Claude projects.json from your export, add:
 **Command:**
 
 ```bash
-python scripts/deep-analysis/analyze_effectiveness.py \
+python scripts/deep_analysis/analyze_effectiveness.py \
   --chatgpt-csv outputs/chatgpt_messages_normalized.csv \
   --claude-csv outputs/claude_messages_normalized.csv \
   --output outputs/effectiveness_and_patterns.json
@@ -139,7 +139,7 @@ python scripts/deep-analysis/analyze_effectiveness.py \
 **Command:**
 
 ```bash
-python scripts/deep-analysis/generate_tables_and_charts.py \
+python scripts/deep_analysis/generate_tables_and_charts.py \
   --data-dir outputs \
   --out-dir outputs/tables
 ```
@@ -196,7 +196,7 @@ If you upgraded plans partway through (e.g., from ChatGPT Plus at $20/month to P
 POD measures raw output volume per dollar: total assistant words divided by total cost.
 
 ```bash
-python scripts/deep-analysis/compute_pod.py \
+python scripts/deep_analysis/compute_pod.py \
   --chatgpt-csv outputs/chatgpt_messages_normalized.csv \
   --claude-csv outputs/claude_messages_normalized.csv \
   --cost-log my_cost_log.json \
@@ -238,7 +238,7 @@ Edit it to list your actual deliverables with verification artifacts:
 Then run:
 
 ```bash
-python scripts/deep-analysis/compute_dlod.py \
+python scripts/deep_analysis/compute_dlod.py \
   --chatgpt-csv outputs/chatgpt_messages_normalized.csv \
   --claude-csv outputs/claude_messages_normalized.csv \
   --classifications outputs/classifications_and_projects.json \
@@ -256,7 +256,7 @@ POE is the quality-adjusted version of POD. Instead of treating all output words
 POE is reported as a range across five configurations from optimistic to maximum skepticism. The configurations are defined in `templates/quality_params.json`.
 
 ```bash
-python scripts/deep-analysis/compute_poe.py \
+python scripts/deep_analysis/compute_poe.py \
   --chatgpt-csv outputs/chatgpt_messages_normalized.csv \
   --claude-csv outputs/claude_messages_normalized.csv \
   --pod-results outputs/pod_results.json \
@@ -272,7 +272,7 @@ python scripts/deep-analysis/compute_poe.py \
 Compare your POD and DLOD metrics against curated industry benchmark data. This requires that you have already computed POD (Step 6b) and DLOD (Step 6c).
 
 ```bash
-python scripts/deep-analysis/compare_benchmarks.py \
+python scripts/deep_analysis/compare_benchmarks.py \
   --pod outputs/pod_results.json \
   --dlod outputs/dlod_results.json \
   --benchmarks templates/benchmarks.json \
@@ -299,7 +299,7 @@ Running this pipeline gives you a data-driven picture of how you actually use AI
 
 ### Adding your own topic categories
 
-Open `scripts/deep-analysis/classify_and_link.py` and find the `TOPIC_TAXONOMY` dictionary near the top. Each category is a key mapping to a list of keywords. To add a new category:
+Open `scripts/deep_analysis/classify_and_link.py` and find the `TOPIC_TAXONOMY` dictionary near the top. Each category is a key mapping to a list of keywords. To add a new category:
 
 ```python
 TOPIC_TAXONOMY = {

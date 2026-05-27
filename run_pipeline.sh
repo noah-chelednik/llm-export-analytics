@@ -101,7 +101,7 @@ info "Dependencies installed"
 step "2/8  Configuring input data..."
 
 OUTPUT_DIR="$SCRIPT_DIR/outputs"
-DATA_DIR="$OUTPUT_DIR/deep-analysis-data"
+DATA_DIR="$OUTPUT_DIR/deep_analysis-data"
 TABLES_DIR="$OUTPUT_DIR/tables"
 
 mkdir -p "$OUTPUT_DIR" "$DATA_DIR" "$TABLES_DIR"
@@ -192,7 +192,7 @@ if [ -n "$CHATGPT_INPUT" ]; then
     SHARD_BASENAME="$(basename "$CHATGPT_INPUT")"
     ln -sf "$(realpath "$CHATGPT_INPUT")" "$SHARD_DIR/$SHARD_BASENAME"
 
-    $PYTHON "$SCRIPT_DIR/scripts/deep-analysis/extract_chatgpt_metadata.py" \
+    $PYTHON "$SCRIPT_DIR/scripts/deep_analysis/extract_chatgpt_metadata.py" \
         --input-dir "$SHARD_DIR" \
         --shard-pattern "$SHARD_BASENAME" \
         --output "$METADATA_OUTPUT"
@@ -262,7 +262,7 @@ if [ -z "$CL_CLAUDE_CSV" ]; then
     echo 'platform,conversation_id,message_id,role,created,content,word_count,char_count,token_count,date,hour,month' > "$CL_CLAUDE_CSV"
 fi
 
-$PYTHON "$SCRIPT_DIR/scripts/deep-analysis/classify_and_link.py" \
+$PYTHON "$SCRIPT_DIR/scripts/deep_analysis/classify_and_link.py" \
     --chatgpt-shard-dir "$SHARD_DIR" \
     --num-shards 1 \
     --claude-conv-path "$CLAUDE_CONV_PATH" \
@@ -296,7 +296,7 @@ if [ -z "$EFF_CLAUDE_CSV" ]; then
     echo 'platform,conversation_id,message_id,role,created,content,word_count,char_count,token_count,date,hour,month' > "$EFF_CLAUDE_CSV"
 fi
 
-$PYTHON "$SCRIPT_DIR/scripts/deep-analysis/analyze_effectiveness.py" \
+$PYTHON "$SCRIPT_DIR/scripts/deep_analysis/analyze_effectiveness.py" \
     --chatgpt-csv "$EFF_CHATGPT_CSV" \
     --claude-csv "$EFF_CLAUDE_CSV" \
     --output "$EFFECTIVENESS_OUTPUT"
@@ -310,7 +310,7 @@ echo ""
 # ── Step 7: Generate tables and charts ──────────────────────────────────────
 step "7/8  Generating summary tables and charts..."
 
-$PYTHON "$SCRIPT_DIR/scripts/deep-analysis/generate_tables_and_charts.py" \
+$PYTHON "$SCRIPT_DIR/scripts/deep_analysis/generate_tables_and_charts.py" \
     --data-dir "$DATA_DIR" \
     --out-dir "$TABLES_DIR"
 

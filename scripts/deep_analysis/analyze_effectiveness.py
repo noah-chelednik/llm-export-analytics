@@ -10,13 +10,12 @@ Inputs (defaults):
   - analysis/latest-run/claude_messages_normalized.csv
 
 Output:
-  - analysis/deep-analysis/data/effectiveness_and_patterns.json
+  - analysis/deep_analysis/data/effectiveness_and_patterns.json
 """
 
 import argparse
 import json
 import re
-import sys
 import time
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -276,7 +275,7 @@ def compute_conversation_outcomes(df: pd.DataFrame, df_user: pd.DataFrame) -> di
     # Group by conversation
     conv_groups = df.groupby("conversation_id")
 
-    convergence_counts = Counter()
+    convergence_counts: Counter[str] = Counter()
     convergence_monthly: dict[str, Counter] = defaultdict(Counter)
     correction_counts: list[int] = []
     correction_monthly: dict[str, list] = defaultdict(list)
@@ -284,11 +283,11 @@ def compute_conversation_outcomes(df: pd.DataFrame, df_user: pd.DataFrame) -> di
     efficiency_monthly: dict[str, list] = defaultdict(list)
     efficiency_platform: dict[str, list] = defaultdict(list)
     iteration_depth_vals: list[float] = []
-    session_types = Counter()
+    session_types: Counter[str] = Counter()
     session_types_platform: dict[str, Counter] = defaultdict(Counter)
 
     n_convs = 0
-    for conv_id, grp in conv_groups:
+    for _conv_id, grp in conv_groups:
         n_convs += 1
         grp = grp.sort_values("created_dt")
         total_msgs = len(grp)
@@ -390,7 +389,7 @@ def compute_conversation_outcomes(df: pd.DataFrame, df_user: pd.DataFrame) -> di
             }
 
     # Efficiency by platform
-    eff_by_platform = {}
+    eff_by_platform: dict[str, dict[str, float | None]] = {}
     for plat in ("chatgpt", "claude"):
         vals = efficiency_platform.get(plat, [])
         if vals:
@@ -493,10 +492,10 @@ def compute_usage_modes(df_all: pd.DataFrame, df_user: pd.DataFrame) -> dict:
     print("[Part 3b] Classifying usage modes per conversation ...")
     t0 = time.time()
 
-    mode_counts = Counter()
+    mode_counts: Counter[str] = Counter()
     conv_groups = df_user.groupby("conversation_id")
 
-    for conv_id, grp in conv_groups:
+    for _conv_id, grp in conv_groups:
         contents = grp["content"].fillna("").tolist()
         n = len(contents)
         if n == 0:
@@ -506,7 +505,9 @@ def compute_usage_modes(df_all: pd.DataFrame, df_user: pd.DataFrame) -> dict:
         avg_wc = grp["word_count"].mean()
 
         # Check each mode
-        n_teaching = sum(1 for c in contents if TEACHING_RE.search(c) and ("?" in c or QUESTION_STARTERS.match(c.strip())))
+        n_teaching = sum(
+            1 for c in contents if TEACHING_RE.search(c) and ("?" in c or QUESTION_STARTERS.match(c.strip()))
+        )
         n_production = sum(1 for c in contents if PRODUCTION_RE.search(c) and IMPERATIVE_VERBS.match(c.strip()))
         n_synthesis = sum(1 for c in contents if SYNTHESIS_RE.search(c))
         n_debug = sum(1 for c in contents if DEBUG_CODE_RE.search(c) and DEBUG_FIX_RE.search(c))
@@ -578,9 +579,9 @@ def compute_platform_comparison(
     for plat in ("chatgpt", "claude"):
         plat_df = df[df["platform"] == plat]
         conv_groups = plat_df.groupby("conversation_id")
-        conv_counts = Counter()
+        conv_counts: Counter[str] = Counter()
         corr_list = []
-        for conv_id, grp in conv_groups:
+        for _conv_id, grp in conv_groups:
             grp = grp.sort_values("created")
             total_msgs = len(grp)
             user_msgs = grp[grp["role"] == "user"]
@@ -631,17 +632,17 @@ def main():
     )
     parser.add_argument(
         "--chatgpt-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/chatgpt_messages_normalized.csv",
+        default="chatgpt_messages_normalized.csv",
         help="Path to ChatGPT normalized messages CSV",
     )
     parser.add_argument(
         "--claude-csv",
-        default="/mnt/ai_workspace/Remembrancer/analysis/latest-run/claude_messages_normalized.csv",
+        default="claude_messages_normalized.csv",
         help="Path to Claude normalized messages CSV",
     )
     parser.add_argument(
         "--output",
-        default="/mnt/ai_workspace/Remembrancer/analysis/deep-analysis/data/effectiveness_and_patterns.json",
+        default="effectiveness_and_patterns.json",
         help="Path for output JSON",
     )
     args = parser.parse_args()
@@ -712,7 +713,8 @@ def main():
     print(f"\n  Correction density (mean per conv): {outcome_stats['correction_density']['overall_mean']:.3f}")
     print(f"  Efficiency ratio (median):          {outcome_stats['efficiency_ratio']['overall_median']:.3f}")
     print(f"  Efficiency ratio (mean):            {outcome_stats['efficiency_ratio']['overall_mean']:.3f}")
-    print(f"  Iteration depth (mean):             {outcome_stats['iteration_depth']['mean_last_correction_position']:.3f}")
+    iter_depth = outcome_stats['iteration_depth']['mean_last_correction_position']
+    print(f"  Iteration depth (mean):             {iter_depth:.3f}")
 
     print("\n  Session types:")
     for stype, count in sorted(outcome_stats["session_types"].items(), key=lambda x: -x[1]):

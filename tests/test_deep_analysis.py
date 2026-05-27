@@ -1,19 +1,15 @@
-"""Tests for deep-analysis scripts."""
+"""Tests for deep_analysis scripts."""
 
 import json
 import os
 import shutil
 
-import pytest
-
 from tests.helpers import (
     DEEP_DIR,
-    EXAMPLES_DIR,
     SAMPLE_CHATGPT,
     SAMPLE_CLAUDE,
     run_script,
 )
-
 
 # ---------------------------------------------------------------------------
 # extract_chatgpt_metadata.py
