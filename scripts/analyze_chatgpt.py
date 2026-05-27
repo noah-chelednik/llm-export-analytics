@@ -29,6 +29,7 @@ def to_dt(ts: Any, use_utc: bool = True) -> Optional[datetime]:
 
 
 def clean_text(s: Any) -> str:
+    """Strip whitespace from a value, coercing non-strings to str."""
     if s is None:
         return ""
     if not isinstance(s, str):
@@ -37,14 +38,12 @@ def clean_text(s: Any) -> str:
 
 
 def word_count(text: str) -> int:
+    """Count words in text using word-boundary regex."""
     return len(re.findall(r"\w+", text))
 
 
 def get_token_counter(encoding_name: str = "cl100k_base"):
-    """
-    Token counting is optional.
-    If tiktoken is not installed, return a dummy counter.
-    """
+    """Return a token-counting callable, or a dummy if tiktoken is unavailable."""
     if tiktoken is None:
         return lambda _text: 0
 
@@ -60,11 +59,7 @@ def get_token_counter(encoding_name: str = "cl100k_base"):
 
 
 def extract_text_from_message(message_obj: Dict[str, Any]) -> str:
-    """
-    ChatGPT export message content often looks like:
-      {'content': {'parts': [...]}}
-    Some parts may be dicts/lists; stringify them.
-    """
+    """Extract and concatenate text parts from a ChatGPT message object."""
     if not message_obj:
         return ""
 
@@ -87,21 +82,14 @@ def extract_text_from_message(message_obj: Dict[str, Any]) -> str:
 
 
 def get_role(message_obj: Dict[str, Any]) -> Optional[str]:
+    """Extract the author role string from a message object."""
     author = (message_obj or {}).get("author", {})
     role = author.get("role", None)
     return role
 
 
 def reconstruct_main_path(mapping: Dict[str, Any], current_node_id: Optional[str] = None) -> List[str]:
-    """
-    Reconstruct the primary linear conversation path using parent pointers.
-
-    Strategy:
-    - If current_node_id exists and is valid, start there.
-    - Else choose the leaf node with the latest create_time as the endpoint.
-    - Walk parent links back to root.
-    - Reverse to get chronological order.
-    """
+    """Walk parent pointers from the latest leaf to reconstruct the primary conversation path."""
     if not mapping:
         return []
 
@@ -147,6 +135,7 @@ def reconstruct_main_path(mapping: Dict[str, Any], current_node_id: Optional[str
 
 
 def depth_distribution(convo_sizes: pd.Series) -> Dict[str, Any]:
+    """Bucket conversation sizes into depth tiers and return counts with percentages."""
     total = int(convo_sizes.shape[0])
 
     under_10 = int((convo_sizes < 10).sum())
@@ -167,6 +156,7 @@ def depth_distribution(convo_sizes: pd.Series) -> Dict[str, Any]:
 
 
 def main() -> None:
+    """Parse ChatGPT export JSON, normalize messages, and print aggregate analytics."""
     parser = argparse.ArgumentParser(
         description="Extract and analyze ChatGPT export data (primary path) into normalized message records."
     )

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Deliverable Name",
+    "type": "code | prose | data | academic | other",
+    "description": "One line description of the deliverable",
+    "project_names": [
+      "Project Name A (as used in projects.json keywords)",
+      "Project Name B (if multiple projects feed this deliverable)"
+    ],
+    "verification": {
+      "method": "repository | published_document | published_articles | transcript",
+      "artifact": "URL or description of verifiable artifact"
+    },
+    "conversations_attributed": 0,
+    "high_confidence": 0,
+    "active_period": "YYYY-MM to YYYY-MM"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "description": "Q coefficient configurations for POE computation. Each configuration assigns weights to quality proxies. POE = (output_words * Q) / cost. Multiple configurations are reported as a range.",
+  "proxies": {
+    "frustrated_discount": "Weight applied to output from conversations classified as 'frustrated' (3+ corrections or explicit frustration). Lower = more discounting.",
+    "standard_weight": "Weight applied to output from conversations with standard completion (no explicit positive or negative signal).",
+    "converged_weight": "Weight applied to output from conversations with explicit positive feedback.",
+    "deliverable_linked_bonus": "Multiplier for output from conversations with project attribution.",
+    "unlinked_discount": "Weight applied to output from conversations with no project attribution.",
+    "branched_discount": "Weight applied to output from conversations with regeneration/branching (ChatGPT only)."
+  },
+  "configurations": {
+    "q_low": {
+      "label": "Pessimistic",
+      "frustrated_discount": 0.0,
+      "standard_weight": 0.3,
+      "converged_weight": 0.8,
+      "deliverable_linked_bonus": 1.0,
+      "unlinked_discount": 0.2,
+      "branched_discount": 0.25
+    },
+    "q_mid": {
+      "label": "Balanced",
+      "frustrated_discount": 0.25,
+      "standard_weight": 0.6,
+      "converged_weight": 1.0,
+      "deliverable_linked_bonus": 1.0,
+      "unlinked_discount": 0.5,
+      "branched_discount": 0.5
+    },
+    "q_high": {
+      "label": "Optimistic",
+      "frustrated_discount": 0.5,
+      "standard_weight": 0.8,
+      "converged_weight": 1.0,
+      "deliverable_linked_bonus": 1.0,
+      "unlinked_discount": 0.7,
+      "branched_discount": 0.75
+    },
+    "q_floor": {
+      "label": "Stress test (maximum skepticism)",
+      "frustrated_discount": 0.0,
+      "standard_weight": 0.1,
+      "converged_weight": 0.5,
+      "deliverable_linked_bonus": 1.0,
+      "unlinked_discount": 0.0,
+      "branched_discount": 0.0
+    },
+    "q_unit": {
+      "label": "No adjustment (Q=1.0, equivalent to POD)",
+      "frustrated_discount": 1.0,
+      "standard_weight": 1.0,
+      "converged_weight": 1.0,
+      "deliverable_linked_bonus": 1.0,
+      "unlinked_discount": 1.0,
+      "branched_discount": 1.0
+    }
+  }
+}

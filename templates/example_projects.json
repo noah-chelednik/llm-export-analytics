@@ -1,0 +1,18 @@
+{
+  "My Web App": {
+    "keywords": ["webapp", "frontend", "react", "deploy", "dashboard"],
+    "platform": "both"
+  },
+  "Thesis Research": {
+    "keywords": ["thesis", "research", "literature review", "methodology"],
+    "platform": "both"
+  },
+  "Side Project CLI": {
+    "keywords": ["cli tool", "command line", "argparse", "terminal app"],
+    "platform": "chatgpt"
+  },
+  "Data Pipeline": {
+    "keywords": ["etl", "pipeline", "data ingestion", "warehouse", "spark"],
+    "platform": "both"
+  }
+}

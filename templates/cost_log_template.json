@@ -1,0 +1,16 @@
+[
+  {
+    "platform": "chatgpt",
+    "plan": "Plus",
+    "monthly_cost": 20,
+    "start": "YYYY-MM",
+    "end": "YYYY-MM"
+  },
+  {
+    "platform": "claude",
+    "plan": "Pro",
+    "monthly_cost": 20,
+    "start": "YYYY-MM",
+    "end": "YYYY-MM"
+  }
+]

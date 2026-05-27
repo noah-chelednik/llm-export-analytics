@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+
+      - name: Lint check (py_compile)
+        run: |
+          find scripts/ -name '*.py' -print0 | xargs -0 -n1 python -m py_compile
+
+      - name: Run tests
+        run: |
+          python -m pytest tests/ -v --tb=short
+
+      - name: Pipeline smoke test
+        run: |
+          chmod +x run_pipeline.sh
+          ./run_pipeline.sh --sample
+
+      - name: Privacy check (no content leakage without --include-content)
+        run: |
+          # Run analyzers WITHOUT --include-content
+          mkdir -p /tmp/privacy-check
+          python scripts/analyze_chatgpt.py \
+            --input examples/sample_chatgpt_export.json \
+            --out /tmp/privacy-check \
+            --utc
+          python scripts/analyze_claude.py \
+            --input examples/sample_claude_export.json \
+            --out /tmp/privacy-check \
+            --utc
+
+          # Verify that neither word_count nor content appear as CSV columns
+          for csv in /tmp/privacy-check/*_messages_normalized.csv; do
+            header=$(head -1 "$csv")
+            if echo "$header" | grep -q "word_count"; then
+              echo "FAIL: $csv contains word_count column"
+              exit 1
+            fi
+            if echo "$header" | grep -q "content"; then
+              echo "FAIL: $csv contains content column"
+              exit 1
+            fi
+            echo "OK: $(basename "$csv") has no content or word_count columns"
+          done

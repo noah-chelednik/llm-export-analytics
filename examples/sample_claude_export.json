@@ -1,0 +1,322 @@
+[
+  {
+    "uuid": "c01a2b3c-4d5e-6f78-9012-abcdef123456",
+    "name": "TypeScript generics explained",
+    "created_at": "2025-01-20T14:30:00.000000Z",
+    "updated_at": "2025-01-20T14:35:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m01-u01",
+        "sender": "human",
+        "created_at": "2025-01-20T14:30:10.000000Z",
+        "content": [{"type": "text", "text": "Can you explain TypeScript generics with a simple example?"}]
+      },
+      {
+        "uuid": "m01-a01",
+        "sender": "assistant",
+        "created_at": "2025-01-20T14:30:40.000000Z",
+        "content": [{"type": "text", "text": "Generics let you write functions and types that work with any type while preserving type safety. Think of them as type variables: function identity<T>(arg: T): T { return arg; }"}]
+      }
+    ]
+  },
+  {
+    "uuid": "c02b3c4d-5e6f-7890-1234-bcdef1234567",
+    "name": "Brainstorm blog post ideas",
+    "created_at": "2025-02-05T09:15:00.000000Z",
+    "updated_at": "2025-02-05T09:25:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m02-u01",
+        "sender": "human",
+        "created_at": "2025-02-05T09:15:10.000000Z",
+        "content": [{"type": "text", "text": "I want to start a tech blog. Give me 5 post ideas for someone learning web development."}]
+      },
+      {
+        "uuid": "m02-a01",
+        "sender": "assistant",
+        "created_at": "2025-02-05T09:15:50.000000Z",
+        "content": [{"type": "text", "text": "Here are 5 ideas: 1) What I learned building my first full-stack app. 2) CSS Grid vs Flexbox: when to use each. 3) My journey from tutorial hell to shipping code. 4) Deploying a side project for free in 2025. 5) Why I switched from REST to GraphQL (and back)."}]
+      },
+      {
+        "uuid": "m02-u02",
+        "sender": "human",
+        "created_at": "2025-02-05T09:20:00.000000Z",
+        "content": [{"type": "text", "text": "I like idea 3. Can you outline that post?"}]
+      },
+      {
+        "uuid": "m02-a02",
+        "sender": "assistant",
+        "created_at": "2025-02-05T09:21:00.000000Z",
+        "content": [{"type": "text", "text": "Outline for 'From Tutorial Hell to Shipping Code': Intro (the trap of endless tutorials), Section 1 (recognizing the pattern), Section 2 (picking a real project), Section 3 (learning to be stuck), Section 4 (shipping imperfect code), Conclusion (progress over perfection)."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c03c4d5e-6f78-9012-3456-cdef12345678",
+    "name": "Analyze poem structure",
+    "created_at": "2025-02-18T16:45:00.000000Z",
+    "updated_at": "2025-02-18T16:50:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m03-u01",
+        "sender": "human",
+        "created_at": "2025-02-18T16:45:10.000000Z",
+        "content": [{"type": "text", "text": "What is the rhyme scheme and meter of a Shakespearean sonnet?"}]
+      },
+      {
+        "uuid": "m03-a01",
+        "sender": "assistant",
+        "created_at": "2025-02-18T16:45:40.000000Z",
+        "content": [{"type": "text", "text": "A Shakespearean sonnet has 14 lines in iambic pentameter with rhyme scheme ABAB CDCD EFEF GG. Three quatrains develop the theme and the final couplet provides a turn or resolution."}]
+      },
+      {
+        "uuid": "m03-u02",
+        "sender": "human",
+        "created_at": "2025-02-18T16:48:00.000000Z",
+        "content": [{"type": "text", "text": "How does that differ from a Petrarchan sonnet?"}]
+      },
+      {
+        "uuid": "m03-a02",
+        "sender": "assistant",
+        "created_at": "2025-02-18T16:48:30.000000Z",
+        "content": [{"type": "text", "text": "A Petrarchan sonnet splits into an octave (ABBAABBA) and a sestet (CDCDCD or CDECDE). The volta (thematic turn) occurs between octave and sestet rather than at the final couplet."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c04d5e6f-7890-1234-5678-def123456789",
+    "name": "Python data pipeline architecture",
+    "created_at": "2025-03-10T11:00:00.000000Z",
+    "updated_at": "2025-03-10T11:20:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m04-u01",
+        "sender": "human",
+        "created_at": "2025-03-10T11:00:10.000000Z",
+        "content": [{"type": "text", "text": "I need to build a data pipeline that reads from an API, transforms JSON, and loads into PostgreSQL. What's a good architecture?"}]
+      },
+      {
+        "uuid": "m04-a01",
+        "sender": "assistant",
+        "created_at": "2025-03-10T11:01:00.000000Z",
+        "content": [{"type": "text", "text": "A classic ETL approach works well here. Use requests or httpx for extraction, pandas or polars for transformation, and SQLAlchemy or psycopg2 for loading. For orchestration, consider Prefect or Dagster."}]
+      },
+      {
+        "uuid": "m04-u02",
+        "sender": "human",
+        "created_at": "2025-03-10T11:05:00.000000Z",
+        "content": [{"type": "text", "text": "Should I use Airflow instead of Prefect?"}]
+      },
+      {
+        "uuid": "m04-a02",
+        "sender": "assistant",
+        "created_at": "2025-03-10T11:05:40.000000Z",
+        "content": [{"type": "text", "text": "Airflow is battle-tested but heavyweight. Prefect is lighter and more Pythonic. For a single pipeline, Prefect is simpler to set up. Airflow shines when you have dozens of interdependent DAGs."}]
+      },
+      {
+        "uuid": "m04-u03",
+        "sender": "human",
+        "created_at": "2025-03-10T11:10:00.000000Z",
+        "content": [{"type": "text", "text": "How do I handle API rate limits gracefully?"}]
+      },
+      {
+        "uuid": "m04-a03",
+        "sender": "assistant",
+        "created_at": "2025-03-10T11:10:50.000000Z",
+        "content": [{"type": "text", "text": "Implement exponential backoff with jitter. Check response headers for rate limit info. Use a token bucket or leaky bucket locally. Cache responses when possible to reduce API calls."}]
+      },
+      {
+        "uuid": "m04-u04",
+        "sender": "human",
+        "created_at": "2025-03-10T11:15:00.000000Z",
+        "content": [{"type": "text", "text": "What about error handling and retries?"}]
+      },
+      {
+        "uuid": "m04-a04",
+        "sender": "assistant",
+        "created_at": "2025-03-10T11:15:50.000000Z",
+        "content": [{"type": "text", "text": "Use tenacity for retries with configurable strategies. Log failures to a dead letter queue. Implement idempotent writes so retries don't create duplicates. Always set timeouts on HTTP requests."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c05e6f78-9012-3456-7890-ef1234567890",
+    "name": "Cover letter for marketing role",
+    "created_at": "2025-03-25T08:30:00.000000Z",
+    "updated_at": "2025-03-25T08:35:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m05-u01",
+        "sender": "human",
+        "created_at": "2025-03-25T08:30:10.000000Z",
+        "content": [{"type": "text", "text": "Help me write a cover letter for a digital marketing manager position. I have 3 years experience in social media and content."}]
+      },
+      {
+        "uuid": "m05-a01",
+        "sender": "assistant",
+        "created_at": "2025-03-25T08:31:00.000000Z",
+        "content": [{"type": "text", "text": "Here is a draft opening: Dear Hiring Manager, I am excited to apply for the Digital Marketing Manager role. With three years of experience growing social media audiences and creating data-driven content strategies, I bring both creative vision and analytical rigor."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c06f7890-1234-5678-9012-f01234567890",
+    "name": "Explain database normalization",
+    "created_at": "2025-04-08T13:00:00.000000Z",
+    "updated_at": "2025-04-08T13:10:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m06-u01",
+        "sender": "human",
+        "created_at": "2025-04-08T13:00:10.000000Z",
+        "content": [{"type": "text", "text": "Explain database normalization through 3NF with examples."}]
+      },
+      {
+        "uuid": "m06-a01",
+        "sender": "assistant",
+        "created_at": "2025-04-08T13:01:00.000000Z",
+        "content": [{"type": "text", "text": "1NF: eliminate repeating groups, each cell has one value. 2NF: remove partial dependencies on composite keys. 3NF: remove transitive dependencies. Example: a table with order_id, product_name, and supplier_phone violates 3NF because supplier_phone depends on product_name, not order_id."}]
+      },
+      {
+        "uuid": "m06-u02",
+        "sender": "human",
+        "created_at": "2025-04-08T13:05:00.000000Z",
+        "content": [{"type": "text", "text": "When is it okay to denormalize?"}]
+      },
+      {
+        "uuid": "m06-a02",
+        "sender": "assistant",
+        "created_at": "2025-04-08T13:05:40.000000Z",
+        "content": [{"type": "text", "text": "Denormalize when read performance is critical and you can tolerate some data redundancy. Common in analytics tables, caching layers, and read-heavy applications. Always keep the normalized source of truth."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c07a8901-2345-6789-0123-a12345678901",
+    "name": "Travel itinerary for Tokyo",
+    "created_at": "2025-04-22T10:00:00.000000Z",
+    "updated_at": "2025-04-22T10:15:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m07-u01",
+        "sender": "human",
+        "created_at": "2025-04-22T10:00:10.000000Z",
+        "content": [{"type": "text", "text": "Plan a 5-day Tokyo itinerary for a first-time visitor interested in food, temples, and technology."}]
+      },
+      {
+        "uuid": "m07-a01",
+        "sender": "assistant",
+        "created_at": "2025-04-22T10:01:00.000000Z",
+        "content": [{"type": "text", "text": "Day 1: Shibuya and Harajuku. Day 2: Asakusa, Senso-ji, and Akihabara. Day 3: Tsukiji outer market and teamLab. Day 4: Day trip to Kamakura. Day 5: Shinjuku and Meiji Shrine. Budget about 5000 yen per day for food."}]
+      },
+      {
+        "uuid": "m07-u02",
+        "sender": "human",
+        "created_at": "2025-04-22T10:05:00.000000Z",
+        "content": [{"type": "text", "text": "Should I get a Japan Rail Pass for 5 days in Tokyo only?"}]
+      },
+      {
+        "uuid": "m07-a02",
+        "sender": "assistant",
+        "created_at": "2025-04-22T10:05:40.000000Z",
+        "content": [{"type": "text", "text": "No, a JR Pass is not cost-effective for Tokyo-only travel. Get a Suica or Pasmo IC card instead. The JR Pass is worth it only if you are taking Shinkansen to other cities like Kyoto or Osaka."}]
+      },
+      {
+        "uuid": "m07-u03",
+        "sender": "human",
+        "created_at": "2025-04-22T10:10:00.000000Z",
+        "content": [{"type": "text", "text": "What about pocket WiFi vs SIM card?"}]
+      },
+      {
+        "uuid": "m07-a03",
+        "sender": "assistant",
+        "created_at": "2025-04-22T10:10:40.000000Z",
+        "content": [{"type": "text", "text": "eSIM is the easiest option if your phone supports it. Otherwise, a data-only SIM from the airport works well. Pocket WiFi is better if you are traveling as a group and want to share one connection."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c08b9012-3456-7890-1234-b23456789012",
+    "name": "CSS flexbox alignment issues",
+    "created_at": "2025-05-05T15:20:00.000000Z",
+    "updated_at": "2025-05-05T15:30:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m08-u01",
+        "sender": "human",
+        "created_at": "2025-05-05T15:20:10.000000Z",
+        "content": [{"type": "text", "text": "My flexbox items are not centering vertically. I have display: flex and align-items: center on the container but it does not work."}]
+      },
+      {
+        "uuid": "m08-a01",
+        "sender": "assistant",
+        "created_at": "2025-05-05T15:20:50.000000Z",
+        "content": [{"type": "text", "text": "The container needs an explicit height for align-items: center to work. If the container has no height set, it collapses to the content height. Try adding height: 100vh or a specific pixel value."}]
+      },
+      {
+        "uuid": "m08-u02",
+        "sender": "human",
+        "created_at": "2025-05-05T15:25:00.000000Z",
+        "content": [{"type": "text", "text": "That fixed it. What is the difference between align-items and align-content?"}]
+      },
+      {
+        "uuid": "m08-a02",
+        "sender": "assistant",
+        "created_at": "2025-05-05T15:25:40.000000Z",
+        "content": [{"type": "text", "text": "align-items aligns individual items on the cross axis within their row. align-content distributes space between rows when there are multiple lines (requires flex-wrap: wrap). For a single row, only align-items matters."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c09c0123-4567-8901-2345-c34567890123",
+    "name": "Explain statistical significance",
+    "created_at": "2025-05-20T19:00:00.000000Z",
+    "updated_at": "2025-05-20T19:10:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m09-u01",
+        "sender": "human",
+        "created_at": "2025-05-20T19:00:10.000000Z",
+        "content": [{"type": "text", "text": "Explain p-values and statistical significance in plain language."}]
+      },
+      {
+        "uuid": "m09-a01",
+        "sender": "assistant",
+        "created_at": "2025-05-20T19:00:50.000000Z",
+        "content": [{"type": "text", "text": "A p-value answers: if there were truly no effect, how likely would we see results this extreme? A p-value of 0.03 means there is a 3% chance of seeing this result by random chance alone. Below 0.05 is conventionally called statistically significant."}]
+      },
+      {
+        "uuid": "m09-u02",
+        "sender": "human",
+        "created_at": "2025-05-20T19:05:00.000000Z",
+        "content": [{"type": "text", "text": "Why do people say p-values are often misinterpreted?"}]
+      },
+      {
+        "uuid": "m09-a02",
+        "sender": "assistant",
+        "created_at": "2025-05-20T19:05:50.000000Z",
+        "content": [{"type": "text", "text": "Common mistakes: a p-value is not the probability the hypothesis is true, it does not measure effect size, and a non-significant result does not prove no effect exists. Also, p-hacking (testing many comparisons until one is significant) inflates false positives."}]
+      }
+    ]
+  },
+  {
+    "uuid": "c10d1234-5678-9012-3456-d45678901234",
+    "name": "Vegetarian recipe ideas",
+    "created_at": "2025-06-12T12:00:00.000000Z",
+    "updated_at": "2025-06-12T12:05:00.000000Z",
+    "chat_messages": [
+      {
+        "uuid": "m10-u01",
+        "sender": "human",
+        "created_at": "2025-06-12T12:00:10.000000Z",
+        "content": [{"type": "text", "text": "Give me 3 quick vegetarian dinner recipes that take under 30 minutes."}]
+      },
+      {
+        "uuid": "m10-a01",
+        "sender": "assistant",
+        "created_at": "2025-06-12T12:01:00.000000Z",
+        "content": [{"type": "text", "text": "1) Black bean tacos with avocado and pickled onion (15 min). 2) Caprese pasta with fresh mozzarella, cherry tomatoes, and basil (20 min). 3) Chickpea stir-fry with ginger, garlic, and soy sauce over rice (25 min)."}]
+      }
+    ]
+  }
+]

@@ -3,6 +3,8 @@
 
 # Raw exports
 **/conversations.json
+**/conversations_merged.json
+**/conversations-*.json
 **/*.jsonl
 **/*.zip
 
@@ -10,12 +12,28 @@
 outputs/*
 !outputs/.gitkeep
 
-# Common artifacts
+# Generated data files (contain personal usage data)
 **/*messages_normalized*.csv
 **/*monthly_stats*.csv
+**/*_results.json
+**/*_metadata.json
+**/*_comparison.json
+**/classifications_and_projects.json
+**/effectiveness_and_patterns.json
+**/cost_log.json
+**/deliverable_inventory.json
+
+# Test artifacts
+.pytest_cache/
+htmlcov/
+.coverage
 
 # Python junk
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
 .env
 .DS_Store

@@ -32,6 +32,7 @@ def parse_iso_z(s: Any, use_utc: bool = True) -> Optional[datetime]:
 
 
 def clean_text(s: Any) -> str:
+    """Strip whitespace from a value, coercing non-strings to str."""
     if s is None:
         return ""
     if not isinstance(s, str):
@@ -40,6 +41,7 @@ def clean_text(s: Any) -> str:
 
 
 def word_count(text: str) -> int:
+    """Count words in text using word-boundary regex."""
     return len(re.findall(r"\w+", text))
 
 
@@ -56,13 +58,7 @@ def normalize_role(sender: Any) -> Optional[str]:
 
 
 def extract_text_from_blocks(msg_obj: Dict[str, Any]) -> str:
-    """
-    Claude message format:
-      - content: list of blocks
-      - text blocks have type="text" and text="..."
-    Concatenate only text blocks in order, separated by newline.
-    Fallback to msg_obj["text"] if content blocks missing.
-    """
+    """Concatenate text-type content blocks from a Claude message object."""
     if not msg_obj:
         return ""
 
@@ -85,10 +81,7 @@ def extract_text_from_blocks(msg_obj: Dict[str, Any]) -> str:
 
 
 def get_token_counter(encoding_name: str = "cl100k_base"):
-    """
-    Token counting is optional.
-    If tiktoken is not installed, return a dummy counter.
-    """
+    """Return a token-counting callable, or a dummy if tiktoken is unavailable."""
     if tiktoken is None:
         return lambda _text: 0
 
@@ -104,6 +97,7 @@ def get_token_counter(encoding_name: str = "cl100k_base"):
 
 
 def depth_distribution(convo_sizes: pd.Series) -> Dict[str, Any]:
+    """Bucket conversation sizes into depth tiers and return counts with percentages."""
     total = int(convo_sizes.shape[0])
 
     under_10 = int((convo_sizes < 10).sum())
@@ -124,6 +118,7 @@ def depth_distribution(convo_sizes: pd.Series) -> Dict[str, Any]:
 
 
 def main() -> None:
+    """Parse Claude export JSON, normalize messages, and print aggregate analytics."""
     parser = argparse.ArgumentParser(
         description="Extract and analyze Claude export data (text blocks only) into normalized message records."
     )

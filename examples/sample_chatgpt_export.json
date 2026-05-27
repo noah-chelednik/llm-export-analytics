@@ -1,0 +1,1376 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "title": "Debug React component re-rendering",
+    "create_time": 1736899200.0,
+    "update_time": 1736899500.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-01": {
+        "id": "node-root-01",
+        "parent": null,
+        "children": ["node-sys-01"],
+        "message": null
+      },
+      "node-sys-01": {
+        "id": "node-sys-01",
+        "parent": "node-root-01",
+        "children": ["node-u01"],
+        "message": {
+          "id": "msg-sys-01",
+          "author": {"role": "system"},
+          "create_time": 1736899200.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u01": {
+        "id": "node-u01",
+        "parent": "node-sys-01",
+        "children": ["node-a01"],
+        "message": {
+          "id": "msg-u01",
+          "author": {"role": "user"},
+          "create_time": 1736899210.0,
+          "content": {"content_type": "text", "parts": ["My React component keeps re-rendering in an infinite loop. I'm using useEffect with a dependency array. What could cause this?"]},
+          "metadata": {}
+        }
+      },
+      "node-a01": {
+        "id": "node-a01",
+        "parent": "node-u01",
+        "children": ["node-u02"],
+        "message": {
+          "id": "msg-a01",
+          "author": {"role": "assistant"},
+          "create_time": 1736899230.0,
+          "content": {"content_type": "text", "parts": ["Infinite re-renders with useEffect usually happen when a dependency changes on every render. Check if you're passing an object or array literal in the dependency array."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u02": {
+        "id": "node-u02",
+        "parent": "node-a01",
+        "children": ["node-a02"],
+        "message": {
+          "id": "msg-u02",
+          "author": {"role": "user"},
+          "create_time": 1736899300.0,
+          "content": {"content_type": "text", "parts": ["I have [filters] in the dependency array and filters is defined inside the component. Is that the problem?"]},
+          "metadata": {}
+        }
+      },
+      "node-a02": {
+        "id": "node-a02",
+        "parent": "node-u02",
+        "children": ["node-u03"],
+        "message": {
+          "id": "msg-a02",
+          "author": {"role": "assistant"},
+          "create_time": 1736899320.0,
+          "content": {"content_type": "text", "parts": ["Yes, that's the issue. Arrays and objects are compared by reference in JavaScript. Move it outside the component or wrap it with useMemo."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u03": {
+        "id": "node-u03",
+        "parent": "node-a02",
+        "children": ["node-a03"],
+        "message": {
+          "id": "msg-u03",
+          "author": {"role": "user"},
+          "create_time": 1736899400.0,
+          "content": {"content_type": "text", "parts": ["That fixed it, thanks!"]},
+          "metadata": {}
+        }
+      },
+      "node-a03": {
+        "id": "node-a03",
+        "parent": "node-u03",
+        "children": [],
+        "message": {
+          "id": "msg-a03",
+          "author": {"role": "assistant"},
+          "create_time": 1736899420.0,
+          "content": {"content_type": "text", "parts": ["Glad it worked! Remember to use useMemo for computed values and useCallback for functions in dependency arrays."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a03",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+    "title": "Essay outline for history class",
+    "create_time": 1737504000.0,
+    "update_time": 1737504300.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-02": {
+        "id": "node-root-02",
+        "parent": null,
+        "children": ["node-sys-02"],
+        "message": null
+      },
+      "node-sys-02": {
+        "id": "node-sys-02",
+        "parent": "node-root-02",
+        "children": ["node-u04"],
+        "message": {
+          "id": "msg-sys-02",
+          "author": {"role": "system"},
+          "create_time": 1737504000.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u04": {
+        "id": "node-u04",
+        "parent": "node-sys-02",
+        "children": ["node-a04"],
+        "message": {
+          "id": "msg-u04",
+          "author": {"role": "user"},
+          "create_time": 1737504010.0,
+          "content": {"content_type": "text", "parts": ["I need an essay outline about the causes of the French Revolution for my history class. Around 5 pages."]},
+          "metadata": {}
+        }
+      },
+      "node-a04": {
+        "id": "node-a04",
+        "parent": "node-u04",
+        "children": [],
+        "message": {
+          "id": "msg-a04",
+          "author": {"role": "assistant"},
+          "create_time": 1737504050.0,
+          "content": {"content_type": "text", "parts": ["Here is a 5-page essay outline covering economic crisis, social inequality, Enlightenment ideas, weak leadership, and the immediate triggers of 1789."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a04",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+    "title": "Python sorting algorithms comparison",
+    "create_time": 1738108800.0,
+    "update_time": 1738109400.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-03": {
+        "id": "node-root-03",
+        "parent": null,
+        "children": ["node-sys-03"],
+        "message": null
+      },
+      "node-sys-03": {
+        "id": "node-sys-03",
+        "parent": "node-root-03",
+        "children": ["node-u05"],
+        "message": {
+          "id": "msg-sys-03",
+          "author": {"role": "system"},
+          "create_time": 1738108800.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u05": {
+        "id": "node-u05",
+        "parent": "node-sys-03",
+        "children": ["node-a05"],
+        "message": {
+          "id": "msg-u05",
+          "author": {"role": "user"},
+          "create_time": 1738108810.0,
+          "content": {"content_type": "text", "parts": ["Compare quicksort, mergesort, and heapsort. When should I use each?"]},
+          "metadata": {}
+        }
+      },
+      "node-a05": {
+        "id": "node-a05",
+        "parent": "node-u05",
+        "children": ["node-u06"],
+        "message": {
+          "id": "msg-a05",
+          "author": {"role": "assistant"},
+          "create_time": 1738108840.0,
+          "content": {"content_type": "text", "parts": ["Quicksort is fastest on average but O(n^2) worst case. Mergesort is stable with guaranteed O(n log n). Heapsort is in-place with O(n log n) but poor cache performance."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u06": {
+        "id": "node-u06",
+        "parent": "node-a05",
+        "children": ["node-a06"],
+        "message": {
+          "id": "msg-u06",
+          "author": {"role": "user"},
+          "create_time": 1738108900.0,
+          "content": {"content_type": "text", "parts": ["What about Timsort? Python uses that by default right?"]},
+          "metadata": {}
+        }
+      },
+      "node-a06": {
+        "id": "node-a06",
+        "parent": "node-u06",
+        "children": ["node-u07"],
+        "message": {
+          "id": "msg-a06",
+          "author": {"role": "assistant"},
+          "create_time": 1738108930.0,
+          "content": {"content_type": "text", "parts": ["Yes, Python's built-in sort uses Timsort, a hybrid of mergesort and insertion sort. It excels on partially sorted data and is stable."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u07": {
+        "id": "node-u07",
+        "parent": "node-a06",
+        "children": ["node-a07"],
+        "message": {
+          "id": "msg-u07",
+          "author": {"role": "user"},
+          "create_time": 1738109000.0,
+          "content": {"content_type": "text", "parts": ["Can you show me a simple quicksort implementation in Python?"]},
+          "metadata": {}
+        }
+      },
+      "node-a07": {
+        "id": "node-a07",
+        "parent": "node-u07",
+        "children": [],
+        "message": {
+          "id": "msg-a07",
+          "author": {"role": "assistant"},
+          "create_time": 1738109050.0,
+          "content": {"content_type": "text", "parts": ["Here is a basic recursive quicksort using Lomuto partitioning. It picks the last element as pivot and partitions in-place."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a07",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+    "title": "Resume feedback for software engineer",
+    "create_time": 1738713600.0,
+    "update_time": 1738713900.0,
+    "default_model_slug": "gpt-5",
+    "mapping": {
+      "node-root-04": {
+        "id": "node-root-04",
+        "parent": null,
+        "children": ["node-sys-04"],
+        "message": null
+      },
+      "node-sys-04": {
+        "id": "node-sys-04",
+        "parent": "node-root-04",
+        "children": ["node-u08"],
+        "message": {
+          "id": "msg-sys-04",
+          "author": {"role": "system"},
+          "create_time": 1738713600.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u08": {
+        "id": "node-u08",
+        "parent": "node-sys-04",
+        "children": ["node-a08"],
+        "message": {
+          "id": "msg-u08",
+          "author": {"role": "user"},
+          "create_time": 1738713610.0,
+          "content": {"content_type": "text", "parts": ["Can you review my resume? I'm a mid-level software engineer with 4 years of experience looking to move up."]},
+          "metadata": {}
+        }
+      },
+      "node-a08": {
+        "id": "node-a08",
+        "parent": "node-u08",
+        "children": ["node-u09"],
+        "message": {
+          "id": "msg-a08",
+          "author": {"role": "assistant"},
+          "create_time": 1738713650.0,
+          "content": {"content_type": "text", "parts": ["I'd be happy to review your resume. Please paste the text and I'll provide specific feedback on structure, impact statements, and areas to strengthen."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u09": {
+        "id": "node-u09",
+        "parent": "node-a08",
+        "children": ["node-a09"],
+        "message": {
+          "id": "msg-u09",
+          "author": {"role": "user"},
+          "create_time": 1738713700.0,
+          "content": {"content_type": "text", "parts": ["Here it is: Software Engineer at Acme Corp. Built REST APIs, managed databases, deployed to AWS. 4 years experience."]},
+          "metadata": {}
+        }
+      },
+      "node-a09": {
+        "id": "node-a09",
+        "parent": "node-u09",
+        "children": [],
+        "message": {
+          "id": "msg-a09",
+          "author": {"role": "assistant"},
+          "create_time": 1738713750.0,
+          "content": {"content_type": "text", "parts": ["Good start. Focus on quantifying impact: how many users, what performance improvements, what cost savings. Use the XYZ formula: Accomplished X by doing Y, resulting in Z."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a09",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+    "title": "Explain quantum computing basics",
+    "create_time": 1739318400.0,
+    "update_time": 1739318700.0,
+    "default_model_slug": "gpt-5",
+    "mapping": {
+      "node-root-05": {
+        "id": "node-root-05",
+        "parent": null,
+        "children": ["node-sys-05"],
+        "message": null
+      },
+      "node-sys-05": {
+        "id": "node-sys-05",
+        "parent": "node-root-05",
+        "children": ["node-u10"],
+        "message": {
+          "id": "msg-sys-05",
+          "author": {"role": "system"},
+          "create_time": 1739318400.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u10": {
+        "id": "node-u10",
+        "parent": "node-sys-05",
+        "children": ["node-a10"],
+        "message": {
+          "id": "msg-u10",
+          "author": {"role": "user"},
+          "create_time": 1739318410.0,
+          "content": {"content_type": "text", "parts": ["Explain quantum computing to me like I'm a CS undergrad. What's different from classical computing?"]},
+          "metadata": {}
+        }
+      },
+      "node-a10": {
+        "id": "node-a10",
+        "parent": "node-u10",
+        "children": ["node-u11"],
+        "message": {
+          "id": "msg-a10",
+          "author": {"role": "assistant"},
+          "create_time": 1739318450.0,
+          "content": {"content_type": "text", "parts": ["Classical computers use bits (0 or 1). Quantum computers use qubits that can be in superposition, representing both states simultaneously. This enables parallel exploration of solution spaces."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u11": {
+        "id": "node-u11",
+        "parent": "node-a10",
+        "children": ["node-a11"],
+        "message": {
+          "id": "msg-u11",
+          "author": {"role": "user"},
+          "create_time": 1739318500.0,
+          "content": {"content_type": "text", "parts": ["What's entanglement and why does it matter?"]},
+          "metadata": {}
+        }
+      },
+      "node-a11": {
+        "id": "node-a11",
+        "parent": "node-u11",
+        "children": ["node-u12"],
+        "message": {
+          "id": "msg-a11",
+          "author": {"role": "assistant"},
+          "create_time": 1739318540.0,
+          "content": {"content_type": "text", "parts": ["Entanglement is a quantum correlation where measuring one qubit instantly determines the state of its partner. It enables quantum algorithms to process information in ways classical computers cannot."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u12": {
+        "id": "node-u12",
+        "parent": "node-a11",
+        "children": ["node-a12"],
+        "message": {
+          "id": "msg-u12",
+          "author": {"role": "user"},
+          "create_time": 1739318600.0,
+          "content": {"content_type": "text", "parts": ["What problems can quantum computers actually solve better?"]},
+          "metadata": {}
+        }
+      },
+      "node-a12": {
+        "id": "node-a12",
+        "parent": "node-u12",
+        "children": [],
+        "message": {
+          "id": "msg-a12",
+          "author": {"role": "assistant"},
+          "create_time": 1739318650.0,
+          "content": {"content_type": "text", "parts": ["Factoring large numbers (Shor's algorithm), searching unsorted databases (Grover's algorithm), simulating molecular systems, and certain optimization problems. Not everything is faster on a quantum computer."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a12",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+    "title": "Meal prep ideas for busy week",
+    "create_time": 1739923200.0,
+    "update_time": 1739923400.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-06": {
+        "id": "node-root-06",
+        "parent": null,
+        "children": ["node-sys-06"],
+        "message": null
+      },
+      "node-sys-06": {
+        "id": "node-sys-06",
+        "parent": "node-root-06",
+        "children": ["node-u13"],
+        "message": {
+          "id": "msg-sys-06",
+          "author": {"role": "system"},
+          "create_time": 1739923200.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u13": {
+        "id": "node-u13",
+        "parent": "node-sys-06",
+        "children": ["node-a13"],
+        "message": {
+          "id": "msg-u13",
+          "author": {"role": "user"},
+          "create_time": 1739923210.0,
+          "content": {"content_type": "text", "parts": ["I need healthy meal prep ideas for a busy work week. Budget-friendly, around 30 minutes prep time total."]},
+          "metadata": {}
+        }
+      },
+      "node-a13": {
+        "id": "node-a13",
+        "parent": "node-u13",
+        "children": [],
+        "message": {
+          "id": "msg-a13",
+          "author": {"role": "assistant"},
+          "create_time": 1739923250.0,
+          "content": {"content_type": "text", "parts": ["Try batch cooking rice and roasted vegetables on Sunday. Pair with rotating proteins: grilled chicken, baked tofu, or canned beans. Total cost around $25 for 5 lunches."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a13",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "07a8b9c0-d1e2-3456-abcd-567890123456",
+    "title": "SQL query optimization tips",
+    "create_time": 1740528000.0,
+    "update_time": 1740528600.0,
+    "default_model_slug": "gpt-5",
+    "mapping": {
+      "node-root-07": {
+        "id": "node-root-07",
+        "parent": null,
+        "children": ["node-sys-07"],
+        "message": null
+      },
+      "node-sys-07": {
+        "id": "node-sys-07",
+        "parent": "node-root-07",
+        "children": ["node-u14"],
+        "message": {
+          "id": "msg-sys-07",
+          "author": {"role": "system"},
+          "create_time": 1740528000.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u14": {
+        "id": "node-u14",
+        "parent": "node-sys-07",
+        "children": ["node-a14"],
+        "message": {
+          "id": "msg-u14",
+          "author": {"role": "user"},
+          "create_time": 1740528010.0,
+          "content": {"content_type": "text", "parts": ["My SQL query on a 10M row table takes 45 seconds. How do I optimize it?"]},
+          "metadata": {}
+        }
+      },
+      "node-a14": {
+        "id": "node-a14",
+        "parent": "node-u14",
+        "children": ["node-u15"],
+        "message": {
+          "id": "msg-a14",
+          "author": {"role": "assistant"},
+          "create_time": 1740528050.0,
+          "content": {"content_type": "text", "parts": ["Start with EXPLAIN ANALYZE to see the query plan. Common fixes: add indexes on WHERE/JOIN columns, avoid SELECT *, use pagination, and check for N+1 query patterns."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u15": {
+        "id": "node-u15",
+        "parent": "node-a14",
+        "children": ["node-a15"],
+        "message": {
+          "id": "msg-u15",
+          "author": {"role": "user"},
+          "create_time": 1740528200.0,
+          "content": {"content_type": "text", "parts": ["The EXPLAIN shows a sequential scan. I have an index on user_id but it's not being used."]},
+          "metadata": {}
+        }
+      },
+      "node-a15": {
+        "id": "node-a15",
+        "parent": "node-u15",
+        "children": ["node-u16"],
+        "message": {
+          "id": "msg-a15",
+          "author": {"role": "assistant"},
+          "create_time": 1740528250.0,
+          "content": {"content_type": "text", "parts": ["The planner may skip the index if it estimates the query will return a large portion of the table. Check your WHERE clause selectivity and run ANALYZE to update table statistics."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u16": {
+        "id": "node-u16",
+        "parent": "node-a15",
+        "children": ["node-a16"],
+        "message": {
+          "id": "msg-u16",
+          "author": {"role": "user"},
+          "create_time": 1740528400.0,
+          "content": {"content_type": "text", "parts": ["Running ANALYZE fixed it. Query went from 45 seconds to 200ms. Thank you!"]},
+          "metadata": {}
+        }
+      },
+      "node-a16": {
+        "id": "node-a16",
+        "parent": "node-u16",
+        "children": [],
+        "message": {
+          "id": "msg-a16",
+          "author": {"role": "assistant"},
+          "create_time": 1740528430.0,
+          "content": {"content_type": "text", "parts": ["Great improvement! Consider scheduling regular ANALYZE runs or enabling autovacuum to keep statistics fresh."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a16",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "18b9c0d1-e2f3-4567-bcde-678901234567",
+    "title": "Help me understand Git rebase vs merge",
+    "create_time": 1741132800.0,
+    "update_time": 1741133100.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-08": {
+        "id": "node-root-08",
+        "parent": null,
+        "children": ["node-sys-08"],
+        "message": null
+      },
+      "node-sys-08": {
+        "id": "node-sys-08",
+        "parent": "node-root-08",
+        "children": ["node-u17"],
+        "message": {
+          "id": "msg-sys-08",
+          "author": {"role": "system"},
+          "create_time": 1741132800.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u17": {
+        "id": "node-u17",
+        "parent": "node-sys-08",
+        "children": ["node-a17"],
+        "message": {
+          "id": "msg-u17",
+          "author": {"role": "user"},
+          "create_time": 1741132810.0,
+          "content": {"content_type": "text", "parts": ["When should I use git rebase vs git merge? My team argues about this constantly."]},
+          "metadata": {}
+        }
+      },
+      "node-a17": {
+        "id": "node-a17",
+        "parent": "node-u17",
+        "children": [],
+        "message": {
+          "id": "msg-a17",
+          "author": {"role": "assistant"},
+          "create_time": 1741132860.0,
+          "content": {"content_type": "text", "parts": ["Use merge to preserve the full branch history. Use rebase for a clean, linear history. Golden rule: never rebase commits that have been pushed to a shared branch."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a17",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "29c0d1e2-f3a4-5678-cdef-789012345678",
+    "title": "Creative writing short story prompt",
+    "create_time": 1741737600.0,
+    "update_time": 1741738200.0,
+    "default_model_slug": "gpt-5",
+    "mapping": {
+      "node-root-09": {
+        "id": "node-root-09",
+        "parent": null,
+        "children": ["node-sys-09"],
+        "message": null
+      },
+      "node-sys-09": {
+        "id": "node-sys-09",
+        "parent": "node-root-09",
+        "children": ["node-u18"],
+        "message": {
+          "id": "msg-sys-09",
+          "author": {"role": "system"},
+          "create_time": 1741737600.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u18": {
+        "id": "node-u18",
+        "parent": "node-sys-09",
+        "children": ["node-a18"],
+        "message": {
+          "id": "msg-u18",
+          "author": {"role": "user"},
+          "create_time": 1741737610.0,
+          "content": {"content_type": "text", "parts": ["Write a short story opening about a lighthouse keeper who discovers a door at the bottom of the ocean."]},
+          "metadata": {}
+        }
+      },
+      "node-a18": {
+        "id": "node-a18",
+        "parent": "node-u18",
+        "children": ["node-u19"],
+        "message": {
+          "id": "msg-a18",
+          "author": {"role": "assistant"},
+          "create_time": 1741737670.0,
+          "content": {"content_type": "text", "parts": ["The beam swept the water every seven seconds, just as it had for forty years. But tonight, when the light passed over the cove, Elara saw something that shouldn't exist: a door, standing upright on the seafloor, visible through water as clear as glass."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u19": {
+        "id": "node-u19",
+        "parent": "node-a18",
+        "children": ["node-a19"],
+        "message": {
+          "id": "msg-u19",
+          "author": {"role": "user"},
+          "create_time": 1741737750.0,
+          "content": {"content_type": "text", "parts": ["That's great! Can you continue the story for another two paragraphs?"]},
+          "metadata": {}
+        }
+      },
+      "node-a19": {
+        "id": "node-a19",
+        "parent": "node-u19",
+        "children": ["node-u20"],
+        "message": {
+          "id": "msg-a19",
+          "author": {"role": "assistant"},
+          "create_time": 1741737800.0,
+          "content": {"content_type": "text", "parts": ["She pressed her forehead against the cold glass of the lantern room, certain her eyes were deceiving her. The door was oak, ancient, with iron hinges green from centuries of salt. It stood in perhaps ten feet of water, perfectly upright, as though hung on invisible walls."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u20": {
+        "id": "node-u20",
+        "parent": "node-a19",
+        "children": ["node-a20"],
+        "message": {
+          "id": "msg-u20",
+          "author": {"role": "user"},
+          "create_time": 1741737900.0,
+          "content": {"content_type": "text", "parts": ["Now write a twist: the door opens by itself."]},
+          "metadata": {}
+        }
+      },
+      "node-a20": {
+        "id": "node-a20",
+        "parent": "node-u20",
+        "children": [],
+        "message": {
+          "id": "msg-a20",
+          "author": {"role": "assistant"},
+          "create_time": 1741737960.0,
+          "content": {"content_type": "text", "parts": ["As the beam swept across the cove again, the door swung open. No hand, no wind, no current could explain it. Through the doorway, Elara could see warm light and a staircase descending into somewhere the ocean had no right to contain."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a20",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "3ad1e2f3-a4b5-6789-defa-890123456789",
+    "title": "Kubernetes pod crash troubleshooting",
+    "create_time": 1742342400.0,
+    "update_time": 1742343000.0,
+    "default_model_slug": "gpt-5",
+    "mapping": {
+      "node-root-10": {
+        "id": "node-root-10",
+        "parent": null,
+        "children": ["node-sys-10"],
+        "message": null
+      },
+      "node-sys-10": {
+        "id": "node-sys-10",
+        "parent": "node-root-10",
+        "children": ["node-u21"],
+        "message": {
+          "id": "msg-sys-10",
+          "author": {"role": "system"},
+          "create_time": 1742342400.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u21": {
+        "id": "node-u21",
+        "parent": "node-sys-10",
+        "children": ["node-a21"],
+        "message": {
+          "id": "msg-u21",
+          "author": {"role": "user"},
+          "create_time": 1742342410.0,
+          "content": {"content_type": "text", "parts": ["My Kubernetes pod keeps crashing with OOMKilled. I've set memory limits to 512Mi."]},
+          "metadata": {}
+        }
+      },
+      "node-a21": {
+        "id": "node-a21",
+        "parent": "node-u21",
+        "children": ["node-u22"],
+        "message": {
+          "id": "msg-a21",
+          "author": {"role": "assistant"},
+          "create_time": 1742342450.0,
+          "content": {"content_type": "text", "parts": ["OOMKilled means the container exceeded its memory limit. Check actual usage with kubectl top pod. You may need to increase the limit or optimize your application's memory usage."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u22": {
+        "id": "node-u22",
+        "parent": "node-a21",
+        "children": ["node-a22"],
+        "message": {
+          "id": "msg-u22",
+          "author": {"role": "user"},
+          "create_time": 1742342550.0,
+          "content": {"content_type": "text", "parts": ["It shows 490Mi right before the crash. Should I just raise the limit?"]},
+          "metadata": {}
+        }
+      },
+      "node-a22": {
+        "id": "node-a22",
+        "parent": "node-u22",
+        "children": ["node-u23"],
+        "message": {
+          "id": "msg-a22",
+          "author": {"role": "assistant"},
+          "create_time": 1742342600.0,
+          "content": {"content_type": "text", "parts": ["Raising the limit is a quick fix, but investigate the root cause. Check for memory leaks, unbounded caches, or large file loads. Profile with tools like pprof or memory_profiler."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u23": {
+        "id": "node-u23",
+        "parent": "node-a22",
+        "children": ["node-a23"],
+        "message": {
+          "id": "msg-u23",
+          "author": {"role": "user"},
+          "create_time": 1742342700.0,
+          "content": {"content_type": "text", "parts": ["Found it. We had an in-memory cache with no eviction policy. Fixed now."]},
+          "metadata": {}
+        }
+      },
+      "node-a23": {
+        "id": "node-a23",
+        "parent": "node-u23",
+        "children": [],
+        "message": {
+          "id": "msg-a23",
+          "author": {"role": "assistant"},
+          "create_time": 1742342730.0,
+          "content": {"content_type": "text", "parts": ["Classic issue. Consider using an LRU cache with a max size or moving to Redis for shared caching across pods."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a23",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "4be2f3a4-b5c6-7890-efab-901234567890",
+    "title": "Apartment lease review questions",
+    "create_time": 1742947200.0,
+    "update_time": 1742947400.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-11": {
+        "id": "node-root-11",
+        "parent": null,
+        "children": ["node-sys-11"],
+        "message": null
+      },
+      "node-sys-11": {
+        "id": "node-sys-11",
+        "parent": "node-root-11",
+        "children": ["node-u24"],
+        "message": {
+          "id": "msg-sys-11",
+          "author": {"role": "system"},
+          "create_time": 1742947200.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u24": {
+        "id": "node-u24",
+        "parent": "node-sys-11",
+        "children": ["node-a24"],
+        "message": {
+          "id": "msg-u24",
+          "author": {"role": "user"},
+          "create_time": 1742947210.0,
+          "content": {"content_type": "text", "parts": ["What should I look for in an apartment lease before signing? First time renter."]},
+          "metadata": {}
+        }
+      },
+      "node-a24": {
+        "id": "node-a24",
+        "parent": "node-u24",
+        "children": [],
+        "message": {
+          "id": "msg-a24",
+          "author": {"role": "assistant"},
+          "create_time": 1742947260.0,
+          "content": {"content_type": "text", "parts": ["Key things to check: lease term and renewal terms, security deposit amount and return conditions, maintenance responsibilities, subletting policy, early termination fees, and what utilities are included."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a24",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "5cf3a4b5-c6d7-8901-fabc-012345678901",
+    "title": "Train a custom GPT for my company FAQ",
+    "create_time": 1743552000.0,
+    "update_time": 1743552600.0,
+    "default_model_slug": "gpt-5",
+    "mapping": {
+      "node-root-12": {
+        "id": "node-root-12",
+        "parent": null,
+        "children": ["node-sys-12"],
+        "message": null
+      },
+      "node-sys-12": {
+        "id": "node-sys-12",
+        "parent": "node-root-12",
+        "children": ["node-u25"],
+        "message": {
+          "id": "msg-sys-12",
+          "author": {"role": "system"},
+          "create_time": 1743552000.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u25": {
+        "id": "node-u25",
+        "parent": "node-sys-12",
+        "children": ["node-a25"],
+        "message": {
+          "id": "msg-u25",
+          "author": {"role": "user"},
+          "create_time": 1743552010.0,
+          "content": {"content_type": "text", "parts": ["How do I create a custom GPT that answers questions about my company's internal documentation?"]},
+          "metadata": {}
+        }
+      },
+      "node-a25": {
+        "id": "node-a25",
+        "parent": "node-u25",
+        "children": ["node-u26"],
+        "message": {
+          "id": "msg-a25",
+          "author": {"role": "assistant"},
+          "create_time": 1743552060.0,
+          "content": {"content_type": "text", "parts": ["You can use the GPT Builder in ChatGPT Plus. Upload your documentation files, write clear instructions about the bot's persona and scope, and set conversation starters."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u26": {
+        "id": "node-u26",
+        "parent": "node-a25",
+        "children": ["node-a26"],
+        "message": {
+          "id": "msg-u26",
+          "author": {"role": "user"},
+          "create_time": 1743552200.0,
+          "content": {"content_type": "text", "parts": ["What if I want it to only answer from my docs and not make things up?"]},
+          "metadata": {}
+        }
+      },
+      "node-a26": {
+        "id": "node-a26",
+        "parent": "node-u26",
+        "children": [],
+        "message": {
+          "id": "msg-a26",
+          "author": {"role": "assistant"},
+          "create_time": 1743552260.0,
+          "content": {"content_type": "text", "parts": ["Add explicit instructions like: 'Only answer questions using the uploaded documents. If the answer is not in the documents, say you don't know.' This reduces hallucination but test thoroughly."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a26",
+    "is_archived": false,
+    "gizmo_type": "gpt"
+  },
+  {
+    "id": "6da4b5c6-d7e8-9012-abcd-123456789012",
+    "title": "Translate paragraph to Spanish",
+    "create_time": 1743984000.0,
+    "update_time": 1743984200.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-13": {
+        "id": "node-root-13",
+        "parent": null,
+        "children": ["node-sys-13"],
+        "message": null
+      },
+      "node-sys-13": {
+        "id": "node-sys-13",
+        "parent": "node-root-13",
+        "children": ["node-u27"],
+        "message": {
+          "id": "msg-sys-13",
+          "author": {"role": "system"},
+          "create_time": 1743984000.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u27": {
+        "id": "node-u27",
+        "parent": "node-sys-13",
+        "children": ["node-a27"],
+        "message": {
+          "id": "msg-u27",
+          "author": {"role": "user"},
+          "create_time": 1743984010.0,
+          "content": {"content_type": "text", "parts": ["Translate this to Spanish: 'The project deadline has been moved to next Friday. Please update your task lists accordingly.'"]},
+          "metadata": {}
+        }
+      },
+      "node-a27": {
+        "id": "node-a27",
+        "parent": "node-u27",
+        "children": [],
+        "message": {
+          "id": "msg-a27",
+          "author": {"role": "assistant"},
+          "create_time": 1743984040.0,
+          "content": {"content_type": "text", "parts": ["'La fecha limite del proyecto se ha movido al proximo viernes. Por favor, actualicen sus listas de tareas en consecuencia.'"]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a27",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "7eb5c6d7-e8f9-0123-bcde-234567890123",
+    "title": "Explain machine learning model evaluation",
+    "create_time": 1744156800.0,
+    "update_time": 1744157400.0,
+    "default_model_slug": "gpt-5-2-thinking",
+    "mapping": {
+      "node-root-14": {
+        "id": "node-root-14",
+        "parent": null,
+        "children": ["node-sys-14"],
+        "message": null
+      },
+      "node-sys-14": {
+        "id": "node-sys-14",
+        "parent": "node-root-14",
+        "children": ["node-u28"],
+        "message": {
+          "id": "msg-sys-14",
+          "author": {"role": "system"},
+          "create_time": 1744156800.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u28": {
+        "id": "node-u28",
+        "parent": "node-sys-14",
+        "children": ["node-a28"],
+        "message": {
+          "id": "msg-u28",
+          "author": {"role": "user"},
+          "create_time": 1744156810.0,
+          "content": {"content_type": "text", "parts": ["What metrics should I use to evaluate a classification model? When is accuracy misleading?"]},
+          "metadata": {}
+        }
+      },
+      "node-a28": {
+        "id": "node-a28",
+        "parent": "node-u28",
+        "children": ["node-u29"],
+        "message": {
+          "id": "msg-a28",
+          "author": {"role": "assistant"},
+          "create_time": 1744156870.0,
+          "content": {"content_type": "text", "parts": ["Accuracy is misleading with imbalanced classes. If 99% of samples are negative, a model that always predicts negative gets 99% accuracy but is useless. Use precision, recall, F1, and AUC-ROC instead."]},
+          "metadata": {"model_slug": "gpt-5-2-thinking", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u29": {
+        "id": "node-u29",
+        "parent": "node-a28",
+        "children": ["node-a29"],
+        "message": {
+          "id": "msg-u29",
+          "author": {"role": "user"},
+          "create_time": 1744156950.0,
+          "content": {"content_type": "text", "parts": ["When should I prioritize precision over recall?"]},
+          "metadata": {}
+        }
+      },
+      "node-a29": {
+        "id": "node-a29",
+        "parent": "node-u29",
+        "children": ["node-u30"],
+        "message": {
+          "id": "msg-a29",
+          "author": {"role": "assistant"},
+          "create_time": 1744157000.0,
+          "content": {"content_type": "text", "parts": ["Prioritize precision when false positives are costly, like spam filtering or fraud detection. Prioritize recall when false negatives are dangerous, like medical screening or safety systems."]},
+          "metadata": {"model_slug": "gpt-5-2-thinking", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u30": {
+        "id": "node-u30",
+        "parent": "node-a29",
+        "children": ["node-a30"],
+        "message": {
+          "id": "msg-u30",
+          "author": {"role": "user"},
+          "create_time": 1744157100.0,
+          "content": {"content_type": "text", "parts": ["How do I handle class imbalance in the training data?"]},
+          "metadata": {}
+        }
+      },
+      "node-a30": {
+        "id": "node-a30",
+        "parent": "node-u30",
+        "children": ["node-u33"],
+        "message": {
+          "id": "msg-a30",
+          "author": {"role": "assistant"},
+          "create_time": 1744157150.0,
+          "content": {"content_type": "text", "parts": ["Options include oversampling the minority class with SMOTE, undersampling the majority, using class weights in your loss function, or collecting more data for the rare class."]},
+          "metadata": {"model_slug": "gpt-5-2-thinking", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u33": {
+        "id": "node-u33",
+        "parent": "node-a30",
+        "children": ["node-a33"],
+        "message": {
+          "id": "msg-u33",
+          "author": {"role": "user"},
+          "create_time": 1744157380.0,
+          "content": {"content_type": "text", "parts": ["Perfect, this was really helpful. Thanks for the thorough walkthrough!"]},
+          "metadata": {}
+        }
+      },
+      "node-a33": {
+        "id": "node-a33",
+        "parent": "node-u33",
+        "children": [],
+        "message": {
+          "id": "msg-a33",
+          "author": {"role": "assistant"},
+          "create_time": 1744157400.0,
+          "content": {"content_type": "text", "parts": ["You're welcome! Model evaluation is crucial. Start with a clear understanding of your business objective and pick metrics that align with it."]},
+          "metadata": {"model_slug": "gpt-5-2-thinking", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a33",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "8fc6d7e8-f9a0-1234-cdef-345678901234",
+    "title": "Docker compose for local development",
+    "create_time": 1744761600.0,
+    "update_time": 1744761900.0,
+    "default_model_slug": "gpt-5",
+    "mapping": {
+      "node-root-15": {
+        "id": "node-root-15",
+        "parent": null,
+        "children": ["node-sys-15"],
+        "message": null
+      },
+      "node-sys-15": {
+        "id": "node-sys-15",
+        "parent": "node-root-15",
+        "children": ["node-u34"],
+        "message": {
+          "id": "msg-sys-15",
+          "author": {"role": "system"},
+          "create_time": 1744761600.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u34": {
+        "id": "node-u34",
+        "parent": "node-sys-15",
+        "children": ["node-a34"],
+        "message": {
+          "id": "msg-u34",
+          "author": {"role": "user"},
+          "create_time": 1744761610.0,
+          "content": {"content_type": "text", "parts": ["Create a docker-compose.yml for a Python Flask app with PostgreSQL and Redis."]},
+          "metadata": {}
+        }
+      },
+      "node-a34": {
+        "id": "node-a34",
+        "parent": "node-u34",
+        "children": ["node-u35"],
+        "message": {
+          "id": "msg-a34",
+          "author": {"role": "assistant"},
+          "create_time": 1744761660.0,
+          "content": {"content_type": "text", "parts": ["Here is a docker-compose.yml with three services: web (Flask), db (PostgreSQL 16), and cache (Redis 7). It includes health checks and persistent volumes for the database."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u35": {
+        "id": "node-u35",
+        "parent": "node-a34",
+        "children": ["node-a35"],
+        "message": {
+          "id": "msg-u35",
+          "author": {"role": "user"},
+          "create_time": 1744761750.0,
+          "content": {"content_type": "text", "parts": ["Can you add hot-reload for development so I don't have to rebuild the image each time?"]},
+          "metadata": {}
+        }
+      },
+      "node-a35": {
+        "id": "node-a35",
+        "parent": "node-u35",
+        "children": [],
+        "message": {
+          "id": "msg-a35",
+          "author": {"role": "assistant"},
+          "create_time": 1744761800.0,
+          "content": {"content_type": "text", "parts": ["Mount your source code as a volume and set FLASK_ENV=development. The updated compose file uses a bind mount for ./app:/app and adds the --reload flag to the Flask command."]},
+          "metadata": {"model_slug": "gpt-5", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a35",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "90d7e8f9-a0b1-2345-defa-456789012345",
+    "title": "Budget spreadsheet formulas help",
+    "create_time": 1745366400.0,
+    "update_time": 1745366600.0,
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "node-root-16": {
+        "id": "node-root-16",
+        "parent": null,
+        "children": ["node-sys-16"],
+        "message": null
+      },
+      "node-sys-16": {
+        "id": "node-sys-16",
+        "parent": "node-root-16",
+        "children": ["node-u36"],
+        "message": {
+          "id": "msg-sys-16",
+          "author": {"role": "system"},
+          "create_time": 1745366400.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u36": {
+        "id": "node-u36",
+        "parent": "node-sys-16",
+        "children": ["node-a36"],
+        "message": {
+          "id": "msg-u36",
+          "author": {"role": "user"},
+          "create_time": 1745366410.0,
+          "content": {"content_type": "text", "parts": ["I need a Google Sheets formula that sums expenses by category from a column and highlights cells over $500."]},
+          "metadata": {}
+        }
+      },
+      "node-a36": {
+        "id": "node-a36",
+        "parent": "node-u36",
+        "children": [],
+        "message": {
+          "id": "msg-a36",
+          "author": {"role": "assistant"},
+          "create_time": 1745366460.0,
+          "content": {"content_type": "text", "parts": ["Use SUMIF to sum by category: =SUMIF(A:A, \"Groceries\", B:B). For conditional formatting, select the range and add a rule for 'Greater than 500' with a red fill."]},
+          "metadata": {"model_slug": "gpt-4o", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a36",
+    "is_archived": false,
+    "gizmo_type": null
+  },
+  {
+    "id": "a1e8f9a0-b1c2-3456-efab-567890123456",
+    "title": "Explain REST API design best practices",
+    "create_time": 1745971200.0,
+    "update_time": 1745971500.0,
+    "default_model_slug": "gpt-5-2-thinking",
+    "mapping": {
+      "node-root-17": {
+        "id": "node-root-17",
+        "parent": null,
+        "children": ["node-sys-17"],
+        "message": null
+      },
+      "node-sys-17": {
+        "id": "node-sys-17",
+        "parent": "node-root-17",
+        "children": ["node-u37"],
+        "message": {
+          "id": "msg-sys-17",
+          "author": {"role": "system"},
+          "create_time": 1745971200.0,
+          "content": {"content_type": "text", "parts": ["You are ChatGPT, a large language model."]},
+          "metadata": {}
+        }
+      },
+      "node-u37": {
+        "id": "node-u37",
+        "parent": "node-sys-17",
+        "children": ["node-a37"],
+        "message": {
+          "id": "msg-u37",
+          "author": {"role": "user"},
+          "create_time": 1745971210.0,
+          "content": {"content_type": "text", "parts": ["What are the key best practices for designing a REST API?"]},
+          "metadata": {}
+        }
+      },
+      "node-a37": {
+        "id": "node-a37",
+        "parent": "node-u37",
+        "children": ["node-u38"],
+        "message": {
+          "id": "msg-a37",
+          "author": {"role": "assistant"},
+          "create_time": 1745971260.0,
+          "content": {"content_type": "text", "parts": ["Use nouns for resources, HTTP verbs for actions, proper status codes, versioning, pagination for lists, consistent error format, and HATEOAS where practical."]},
+          "metadata": {"model_slug": "gpt-5-2-thinking", "finish_details": {"type": "stop"}}
+        }
+      },
+      "node-u38": {
+        "id": "node-u38",
+        "parent": "node-a37",
+        "children": ["node-a38"],
+        "message": {
+          "id": "msg-u38",
+          "author": {"role": "user"},
+          "create_time": 1745971350.0,
+          "content": {"content_type": "text", "parts": ["How should I handle authentication and rate limiting?"]},
+          "metadata": {}
+        }
+      },
+      "node-a38": {
+        "id": "node-a38",
+        "parent": "node-u38",
+        "children": [],
+        "message": {
+          "id": "msg-a38",
+          "author": {"role": "assistant"},
+          "create_time": 1745971400.0,
+          "content": {"content_type": "text", "parts": ["Use OAuth2 or API keys with JWTs for auth. Implement rate limiting with token bucket or sliding window algorithms. Return 429 status with Retry-After header when limits are exceeded."]},
+          "metadata": {"model_slug": "gpt-5-2-thinking", "finish_details": {"type": "stop"}}
+        }
+      }
+    },
+    "current_node": "node-a38",
+    "is_archived": false,
+    "gizmo_type": null
+  }
+]
