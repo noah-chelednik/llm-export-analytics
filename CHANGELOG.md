@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.4.0 (June 2026)
+
+### Fixed (privacy) / Changed
+- POE deliverable inventory (§6.3): removed the personal philosophy-paper entry and genericized deliverables that are not public artifacts (freelance articles, academic coursework). Only genuinely public artifacts are named (VCAT, The Muser, this repo, the published papers). The same genericization is applied to the Deep paper's project-attribution table and `results/`.
+- Prompting one-pager: removed the "did not write a single line of the code by hand" claim.
+- Author name standardized to **Noah T. G. Chelednik** across all papers (no full middle names).
+- All four paper PDFs regenerated.
+
 ## v2.3.0 (June 2026)
 
 ### Added

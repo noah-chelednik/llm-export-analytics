@@ -26,7 +26,7 @@ data instead.
 
 Two tables name projects. Personal project codenames are replaced with neutral
 labels (e.g. "Personal project A"); genuinely public portfolio projects (VCAT,
-The Muser, How-To Geek, WGU coursework, and the primary domain pipeline) are
+The Muser, this repo, and the published papers) are
 kept. The one classical-language topic label is generalized to
 "Domain-Specific Processing." These match the redactions in the published PDF
 papers exactly, so the artifacts agree.
