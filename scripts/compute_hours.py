@@ -6,7 +6,7 @@ Computes documented LLM **practice hours** directly from the normalized
 message CSVs produced by ``analyze_chatgpt.py`` / ``analyze_claude.py``.
 
 This is the runnable implementation of the methodology described in
-``LLM_Practice_Hours_Methodology_GIT.pdf``. The paper documents the model and
+``LLM_Practice_Hours_Methodology.pdf``. The paper documents the model and
 the reasoning; this script applies it to export data so the headline figures
 are reproducible push-button rather than by hand.
 
@@ -41,7 +41,7 @@ from pathlib import Path
 import pandas as pd
 
 # ---------------------------------------------------------------------------
-# Methodology constants (see LLM_Practice_Hours_Methodology_GIT.pdf)
+# Methodology constants (see LLM_Practice_Hours_Methodology.pdf)
 # ---------------------------------------------------------------------------
 
 # Method 1 -- Weighted reading time. Reading speeds in words per minute, and

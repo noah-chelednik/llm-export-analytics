@@ -1,8 +1,21 @@
 # LLM Export Analytics
 
-Privacy-first tools for analyzing your personal LLM usage from official ChatGPT and Claude exports. Everything runs locally. Nothing leaves your machine.
+**Reproducible measurement of long-horizon LLM practice.** This repository quantifies 33 months (August 2023 – April 2026) of complete, official ChatGPT and Claude exports — no sampling — and packages the analysis as open, privacy-first tools so anyone can run the same measurement on their own exports.
 
-Turn your raw export data into: model adoption timelines, topic breakdowns, prompt engineering effectiveness metrics, cost efficiency analysis, and formatted reports.
+**Headline figures** (complete exports; every number is reproducible from the scripts here):
+
+| Metric | Value |
+|:---|:---|
+| Conversations / messages | 2,398 / 71,427 |
+| Active days | 883 (88% of the period) |
+| Model output / words written | 12.98M / 2.06M words · 23.4M tokens |
+| External validation | Top 1% of ChatGPT users by messages sent (OpenAI, 2025) |
+| Documented in-chat practice | 3,737 hours (auditable) |
+| Total LLM-assisted practice | 6,465 hours (conservative floor 5,101) |
+
+**Start here:** the [one-page summary](docs/Prompting_One_Pager.pdf) is the 60-second read. Full methodology in the [practice-hours paper](LLM_Practice_Hours_Methodology.pdf), [usage analysis](docs/Deep_LLM_Usage_Analysis.pdf), and [cost-efficiency paper](docs/Productive_Output_Efficiency.pdf).
+
+The tools turn raw export data into model-adoption timelines, topic breakdowns, prompt-technique tracking, and cost-efficiency analysis. Everything runs locally; no conversations, prompts, or PII are ever committed.
 
 ## Try it now
 
@@ -16,11 +29,11 @@ This runs the full pipeline against included sample data so you can see what it 
 
 ## What you get
 
-**Model adoption timeline** shows which AI models you used and when you switched:
+**Model adoption timeline** shows which AI models you used and when you switched (real output, abbreviated):
 ```
-2025-01  ████████████████████████████████ GPT-4o (100%)
-2025-02  ██████████████████████████ GPT-5 (66%)  ████ GPT-4o (21%)
-2025-03  ████████████████████████ GPT-5.2-T (78%)  ████ GPT-5 (22%)
+2024-05  █████████████████████████████ GPT-4o (73%)  ████████ GPT-4 (19%)  ███ GPT-3.5 (8%)
+2025-08  ██████████████████████████ GPT-5 (66%)  ████████ GPT-4o (21%)  ████ GPT-5-T (11%)
+2026-02  ██████████████████████████████████████ GPT-5.2-T (94%)  ██ GPT-5.2 (6%)
 ```
 
 **Prompt technique tracking** measures how your prompting style evolves over time:
@@ -38,20 +51,22 @@ This runs the full pipeline against included sample data so you can see what it 
 
 ## Papers
 
-Three methodology papers are included:
+Four documents, fastest first:
 
-- **[LLM_Practice_Hours_Methodology_GIT.pdf](LLM_Practice_Hours_Methodology_GIT.pdf)** : Rigorous methodology for quantifying LLM practice hours from export data. Tiered claims with sensitivity analysis and stress testing.
+- **[Prompting_One_Pager.pdf](docs/Prompting_One_Pager.pdf)** : One-page summary — headline results and approach at a glance.
 
-- **[Deep_LLM_Usage_Analysis.pdf](docs/Deep_LLM_Usage_Analysis.pdf)** : Comprehensive data-driven usage profile covering model adoption (21 model versions), domain portfolio, prompt engineering effectiveness, and interaction patterns.
+- **[LLM_Practice_Hours_Methodology.pdf](LLM_Practice_Hours_Methodology.pdf)** : Methodology for quantifying LLM practice hours from export data. Tiered claims with sensitivity analysis and stress testing.
 
-- **[Productive_Output_Efficiency.pdf](docs/Productive_Output_Efficiency.pdf)** : The first standardized methodology for measuring individual LLM cost efficiency. Defines Productive Output per Dollar (POD), Deliverable-Linked Output per Dollar (DLOD), and quality-adjusted Productive Output Efficiency (POE).
+- **[Deep_LLM_Usage_Analysis.pdf](docs/Deep_LLM_Usage_Analysis.pdf)** : Data-driven usage profile covering model adoption (21 model versions), domain portfolio, prompt engineering effectiveness, and interaction patterns.
+
+- **[Productive_Output_Efficiency.pdf](docs/Productive_Output_Efficiency.pdf)** : A standardized methodology for measuring individual LLM cost efficiency. Defines Productive Output per Dollar (POD), Deliverable-Linked Output per Dollar (DLOD), and quality-adjusted Productive Output Efficiency (POE).
 
 ### What the scripts produce vs. what the papers are
 
-These are two different things, and it is worth being explicit:
+These are two different things:
 
 - **The scripts produce data**: normalized CSVs, JSON, and the Markdown summary tables and ASCII charts you see under [`examples/sample_output/`](examples/sample_output/). That is the raw, reproducible output anyone gets by running the pipeline on their own exports.
-- **The papers are authored analyses.** The PDFs above were written by me (Noah Chelednik) on top of *my own* export output — the narrative, framing, sensitivity analysis, and conclusions are mine. The pipeline does not generate the PDFs; it generates the numbers they are built from. Every figure in the papers is reproducible from the scripts (see `examples/sample_output/` for what a run looks like, and `compute_hours.py` below for the practice-hours figures specifically).
+- **The papers are authored analyses.** The PDFs above were written by me (Noah T. G. Chelednik) on top of *my own* export output — the narrative, framing, sensitivity analysis, and conclusions are mine. The pipeline does not generate the PDFs; it generates the numbers they are built from. Every figure in the papers is reproducible from the scripts (see `examples/sample_output/` for what a run looks like, and `compute_hours.py` below for the practice-hours figures specifically).
 
 In short: run the scripts and you get the same *kind* of data about yourself; the papers are what I made *with* that data.
 
@@ -138,7 +153,7 @@ python scripts/compute_hours.py \
 
 This prints the Tier 1 (auditable in-chat) and Tier 2 (with offline work)
 hour estimates with their sensitivity ranges, applying the constants
-documented in `LLM_Practice_Hours_Methodology_GIT.pdf`.
+documented in `LLM_Practice_Hours_Methodology.pdf`.
 
 ### 4. Deep analysis
 

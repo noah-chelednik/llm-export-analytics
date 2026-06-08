@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.5.0 (June 2026)
+
+### Changed
+- README restructured for a fast read: a "what this is + headline figures" block now leads, above setup instructions, and the one-page summary is surfaced as the start-here document.
+- Replaced the illustrative model-adoption example in the README, which showed model versions in months before they were released, with real rows from `results/tables/model_migration_chart.md`.
+- Naming standardized to **Technomirrorism** (was "Technomirism" in the POE paper §9).
+- Softened "the first standardized methodology" to "a standardized methodology" in the POE paper and README.
+- Author name standardized to **Noah T. G. Chelednik** in the README.
+- Renamed `LLM_Practice_Hours_Methodology_GIT.pdf` to `LLM_Practice_Hours_Methodology.pdf` (updated all references).
+- Rebuilt the POE PDF.
+
 ## v2.4.0 (June 2026)
 
 ### Fixed (privacy) / Changed
