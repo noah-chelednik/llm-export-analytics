@@ -55,6 +55,8 @@ These are two different things, and it is worth being explicit:
 
 In short: run the scripts and you get the same *kind* of data about yourself; the papers are what I made *with* that data.
 
+For provenance, [`results/`](results/) holds my **own real, aggregate-only output** behind the papers — the actual snapshot, practice-hours, and summary tables the PDFs were written from (no message content; personal project names redacted). `examples/sample_output/` is the synthetic, runnable demo; `results/` is the real thing.
+
 ## Repository layout
 
 ```
@@ -92,9 +94,11 @@ docs/
   Productive_Output_Efficiency.pdf
   Prompting_One_Pager.pdf
 
-results/
+results/                          # My real aggregate output behind the papers
   usage_snapshot_2025-12-09.md    # Historical snapshot
   usage_snapshot_2026-05-26.md    # Current snapshot
+  practice_hours.txt / .json      # Real compute_hours.py output (Tier 1 / Tier 2)
+  tables/                         # Real summary tables + charts the Deep paper is built from
 ```
 
 ## Quick start with your own data

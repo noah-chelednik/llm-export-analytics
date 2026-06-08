@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.3.0 (June 2026)
+
+### Added
+- `results/` now carries the **real aggregate output behind the papers**: `practice_hours.txt`/`.json` (real `compute_hours.py` output) and `results/tables/` (the real summary tables and charts the Deep paper is built from), alongside the existing snapshots. Aggregate-only — no message content. `examples/sample_output/` remains the synthetic runnable demo.
+
+### Fixed (privacy)
+- Scrubbed personal project codenames (e.g. Aurora Build, Operation *, My DNA, The Remembrancer, Technomirrorism, The Great War) from the *Deep LLM Usage Analysis* paper's project-attribution table — they were inadvertently exposed in the published PDF. Replaced with neutral labels; genuinely public portfolio projects (VCAT, The Muser, How-To Geek, coursework, domain pipeline) retained. The `results/` table uses the same redactions, so all artifacts agree.
+
 ## v2.2.0 (June 2026)
 
 ### Added

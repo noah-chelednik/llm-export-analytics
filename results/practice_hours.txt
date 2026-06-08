@@ -1,0 +1,33 @@
+================================================================
+  LLM PRACTICE HOURS
+================================================================
+
+Data foundation (from exports):
+  Assistant words read     :   12,982,012
+  User words written       :    2,061,417
+  Exchanges (user msgs)    :       35,225
+  Unique active days       :          883
+  Conversations (w/ msgs)  :        2,363
+  Depth  <10/10-29/30-99/100+ : 1,173 / 622 / 411 / 157
+
+TIER 1 -- Documented In-Chat Interaction (auditable)
+  Method 1  Weighted reading      :   1,412 h
+  Method 2  Prompt composition    :   1,562 h
+  Method 3  Inter-exchange proc.  :     587 h
+  Method 4  Session overhead      :     177 h
+  -> Baseline                     :   3,737 h
+     Range  3,177 -- 4,298   (stress floor 2,780)
+
+TIER 2 -- Total LLM-Assisted Practice (adds offline work)
+  Offline baseline / stress       : 2,728 / 1,364 h
+  -> Baseline                     :   6,465 h
+     Conservative floor           :   5,101 h
+     Upper (+15%)                 :   7,435 h
+
+Cross-checks:
+  Tier 1 hours / active day       : 4.23
+  Tier 2 hours / active day       : 7.32
+  Words / hour (Tier 1)           : 4,025
+================================================================
+
+Wrote results/practice_hours.json
