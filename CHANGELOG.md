@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.2.0 (June 2026)
+
+### Added
+- `scripts/compute_hours.py` — runnable implementation of the practice-hours methodology (Tier 1 / Tier 2 with sensitivity ranges) directly from the normalized CSVs. The headline hour figures are now reproducible push-button instead of by hand. Wired into `run_pipeline.sh` (also writes `practice_hours.json`/`.txt`).
+- `examples/sample_output/` — the verbatim output of `run_pipeline.sh --sample` (CSVs, JSON, summary tables, ASCII charts, practice-hours), so the raw tool output is visible alongside the authored papers. A scoped `.gitignore` exception allows these synthetic files only.
+- README section distinguishing what the scripts produce (data) from what the papers are (authored analyses built on that data).
+
+### Changed
+- Typography overhaul of all four PDF papers: readable serif body (Noto Serif), block-capable monospace (DejaVu Sans Mono) so the ASCII bar charts render as solid bars instead of missing glyphs, microtype justification, and roomier spacing. No figures changed — presentation only.
+
 ## v2.1.0 (June 2026)
 
 - Methodology paper refreshed to Revision 3: incorporates the complete ChatGPT export through April 2026 (19 JSON shards), replacing the held-over December 2025 ChatGPT figures from the April revision. Both platforms now current through April 2026.

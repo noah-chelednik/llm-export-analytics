@@ -1,0 +1,510 @@
+{
+  "per_conversation": [
+    {
+      "conversation_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "platform": "chatgpt",
+      "title": "Debug React component re-rendering",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 3.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "platform": "chatgpt",
+      "title": "Essay outline for history class",
+      "topics": [
+        {
+          "category": "Writing/Creative",
+          "score": 2.0,
+          "method": "title"
+        },
+        {
+          "category": "Software Engineering",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "platform": "chatgpt",
+      "title": "Python sorting algorithms comparison",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+      "platform": "chatgpt",
+      "title": "Resume feedback for software engineer",
+      "topics": [
+        {
+          "category": "Career/Professional",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "platform": "chatgpt",
+      "title": "Explain quantum computing basics",
+      "topics": [
+        {
+          "category": "Research/Knowledge",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "platform": "chatgpt",
+      "title": "Meal prep ideas for busy week",
+      "topics": [
+        {
+          "category": "Personal/Life",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "07a8b9c0-d1e2-3456-abcd-567890123456",
+      "platform": "chatgpt",
+      "title": "SQL query optimization tips",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "18b9c0d1-e2f3-4567-bcde-678901234567",
+      "platform": "chatgpt",
+      "title": "Help me understand Git rebase vs merge",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 2.0,
+          "method": "title"
+        },
+        {
+          "category": "Personal/Life",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "29c0d1e2-f3a4-5678-cdef-789012345678",
+      "platform": "chatgpt",
+      "title": "Creative writing short story prompt",
+      "topics": [
+        {
+          "category": "Writing/Creative",
+          "score": 4.0,
+          "method": "title"
+        },
+        {
+          "category": "AI/ML/LLM",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "3ad1e2f3-a4b5-6789-defa-890123456789",
+      "platform": "chatgpt",
+      "title": "Kubernetes pod crash troubleshooting",
+      "topics": [
+        {
+          "category": "Systems/Hardware/DevOps",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "4be2f3a4-b5c6-7890-efab-901234567890",
+      "platform": "chatgpt",
+      "title": "Apartment lease review questions",
+      "topics": [
+        {
+          "category": "Personal/Life",
+          "score": 1.0,
+          "method": "title"
+        },
+        {
+          "category": "Legal",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "5cf3a4b5-c6d7-8901-fabc-012345678901",
+      "platform": "chatgpt",
+      "title": "Train a custom GPT for my company FAQ",
+      "topics": [
+        {
+          "category": "AI/ML/LLM",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "6da4b5c6-d7e8-9012-abcd-123456789012",
+      "platform": "chatgpt",
+      "title": "Translate paragraph to Spanish",
+      "topics": [
+        {
+          "category": "Language/Linguistics",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "7eb5c6d7-e8f9-0123-bcde-234567890123",
+      "platform": "chatgpt",
+      "title": "Explain machine learning model evaluation",
+      "topics": [
+        {
+          "category": "AI/ML/LLM",
+          "score": 3.0,
+          "method": "title"
+        },
+        {
+          "category": "Research/Knowledge",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "8fc6d7e8-f9a0-1234-cdef-345678901234",
+      "platform": "chatgpt",
+      "title": "Docker compose for local development",
+      "topics": [
+        {
+          "category": "Systems/Hardware/DevOps",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "90d7e8f9-a0b1-2345-defa-456789012345",
+      "platform": "chatgpt",
+      "title": "Budget spreadsheet formulas help",
+      "topics": [
+        {
+          "category": "Finance/Business",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "a1e8f9a0-b1c2-3456-efab-567890123456",
+      "platform": "chatgpt",
+      "title": "Explain REST API design best practices",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 2.0,
+          "method": "title"
+        },
+        {
+          "category": "Research/Knowledge",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c01a2b3c-4d5e-6f78-9012-abcdef123456",
+      "platform": "claude",
+      "title": "TypeScript generics explained",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c02b3c4d-5e6f-7890-1234-bcdef1234567",
+      "platform": "claude",
+      "title": "Brainstorm blog post ideas",
+      "topics": [
+        {
+          "category": "Writing/Creative",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c03c4d5e-6f78-9012-3456-cdef12345678",
+      "platform": "claude",
+      "title": "Analyze poem structure",
+      "topics": [
+        {
+          "category": "Writing/Creative",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c04d5e6f-7890-1234-5678-def123456789",
+      "platform": "claude",
+      "title": "Python data pipeline architecture",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 1.0,
+          "method": "title"
+        },
+        {
+          "category": "Systems/Hardware/DevOps",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c05e6f78-9012-3456-7890-ef1234567890",
+      "platform": "claude",
+      "title": "Cover letter for marketing role",
+      "topics": [
+        {
+          "category": "Career/Professional",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c06f7890-1234-5678-9012-f01234567890",
+      "platform": "claude",
+      "title": "Explain database normalization",
+      "topics": [
+        {
+          "category": "Software Engineering",
+          "score": 2.0,
+          "method": "title"
+        },
+        {
+          "category": "Research/Knowledge",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c07a8901-2345-6789-0123-a12345678901",
+      "platform": "claude",
+      "title": "Travel itinerary for Tokyo",
+      "topics": [
+        {
+          "category": "Personal/Life",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c08b9012-3456-7890-1234-b23456789012",
+      "platform": "claude",
+      "title": "CSS flexbox alignment issues",
+      "topics": [
+        {
+          "category": "AI/ML/LLM",
+          "score": 1.0,
+          "method": "title"
+        },
+        {
+          "category": "Visual/Design",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c09c0123-4567-8901-2345-c34567890123",
+      "platform": "claude",
+      "title": "Explain statistical significance",
+      "topics": [
+        {
+          "category": "Research/Knowledge",
+          "score": 1.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    },
+    {
+      "conversation_id": "c10d1234-5678-9012-3456-d45678901234",
+      "platform": "claude",
+      "title": "Vegetarian recipe ideas",
+      "topics": [
+        {
+          "category": "Personal/Life",
+          "score": 2.0,
+          "method": "title"
+        }
+      ],
+      "project": null
+    }
+  ],
+  "topic_summary": {
+    "AI/ML/LLM": {
+      "count": 4,
+      "pct": 14.81,
+      "avg_depth": 1.5
+    },
+    "Academic/Coursework": {
+      "count": 0,
+      "pct": 0.0,
+      "avg_depth": 0.0
+    },
+    "Career/Professional": {
+      "count": 2,
+      "pct": 7.41,
+      "avg_depth": 1.0
+    },
+    "Cryptography": {
+      "count": 0,
+      "pct": 0.0,
+      "avg_depth": 0.0
+    },
+    "Finance/Business": {
+      "count": 1,
+      "pct": 3.7,
+      "avg_depth": 1.0
+    },
+    "Gaming/Entertainment": {
+      "count": 0,
+      "pct": 0.0,
+      "avg_depth": 0.0
+    },
+    "Language/Linguistics": {
+      "count": 1,
+      "pct": 3.7,
+      "avg_depth": 2.0
+    },
+    "Legal": {
+      "count": 1,
+      "pct": 3.7,
+      "avg_depth": 1.0
+    },
+    "Military/Strategy": {
+      "count": 0,
+      "pct": 0.0,
+      "avg_depth": 0.0
+    },
+    "Music/Audio": {
+      "count": 0,
+      "pct": 0.0,
+      "avg_depth": 0.0
+    },
+    "Mythology/Philosophy": {
+      "count": 0,
+      "pct": 0.0,
+      "avg_depth": 0.0
+    },
+    "Personal/Life": {
+      "count": 5,
+      "pct": 18.52,
+      "avg_depth": 1.4
+    },
+    "Research/Knowledge": {
+      "count": 5,
+      "pct": 18.52,
+      "avg_depth": 1.2
+    },
+    "Software Engineering": {
+      "count": 9,
+      "pct": 33.33,
+      "avg_depth": 1.89
+    },
+    "Systems/Hardware/DevOps": {
+      "count": 3,
+      "pct": 11.11,
+      "avg_depth": 1.0
+    },
+    "Visual/Design": {
+      "count": 1,
+      "pct": 3.7,
+      "avg_depth": 1.0
+    },
+    "Writing/Creative": {
+      "count": 4,
+      "pct": 14.81,
+      "avg_depth": 2.25
+    },
+    "Other": {
+      "count": 0,
+      "pct": 0.0,
+      "avg_depth": 0
+    }
+  },
+  "project_summary": {},
+  "validation": {
+    "per_category_agreement": {
+      "AI/ML/LLM": 0.0,
+      "Career/Professional": 1.0,
+      "Finance/Business": 1.0,
+      "Language/Linguistics": 1.0,
+      "Personal/Life": 1.0,
+      "Research/Knowledge": 1.0,
+      "Software Engineering": 1.0,
+      "Systems/Hardware/DevOps": 1.0,
+      "Writing/Creative": 1.0
+    },
+    "overall_agreement": 0.8889,
+    "flagged_categories": [
+      "AI/ML/LLM"
+    ]
+  }
+}

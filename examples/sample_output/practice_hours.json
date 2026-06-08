@@ -1,0 +1,42 @@
+{
+  "inputs": {
+    "assistant_words": 1712,
+    "user_words": 739,
+    "user_messages": 56,
+    "active_days": 26,
+    "conversations_with_messages": 27,
+    "depth": {
+      "under_10": 27,
+      "10_to_29": 0,
+      "30_to_99": 0,
+      "100_plus": 0
+    }
+  },
+  "results": {
+    "tier1": {
+      "method1_weighted_reading": 0.18617999999999998,
+      "method2_composition": 0.5598484848484849,
+      "method3_inter_exchange": 0.9333333333333333,
+      "method4_session_overhead": 5.2,
+      "baseline": 6.879361818181819,
+      "conservative_minus_15pct": 5.847457545454546,
+      "upper_plus_15pct": 7.91126609090909,
+      "stress_floor": 4.719175555555555
+    },
+    "offline": {
+      "baseline": 6.75,
+      "stress": 3.375
+    },
+    "tier2": {
+      "baseline": 13.629361818181819,
+      "conservative_floor": 10.254361818181819,
+      "upper_plus_15pct": 15.67376609090909
+    },
+    "cross_checks": {
+      "tier1_hours_per_active_day": 0.2645908391608392,
+      "tier2_hours_per_active_day": 0.5242062237762238,
+      "total_words_read_and_written": 2451,
+      "words_per_hour_tier1": 356.28304845401885
+    }
+  }
+}

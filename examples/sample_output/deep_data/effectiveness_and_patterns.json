@@ -1,0 +1,709 @@
+{
+  "technique_adoption": {
+    "role_assignment": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    },
+    "constraints": {
+      "total_count": 1,
+      "total_pct": 0.017857,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 1,
+          "pct": 0.058824
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 1,
+          "pct": 0.027778
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": "2025-04"
+    },
+    "output_format": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    },
+    "examples_given": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    },
+    "multi_step": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    },
+    "meta_prompting": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    },
+    "code_inclusion": {
+      "total_count": 1,
+      "total_pct": 0.017857,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 1,
+          "pct": 0.058824
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 1,
+          "pct": 0.027778
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": "2025-04"
+    },
+    "prior_reference": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    },
+    "iterative_refinement": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    },
+    "context_frontloading": {
+      "total_count": 0,
+      "total_pct": 0.0,
+      "monthly": {
+        "2025-01": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-02": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-03": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-04": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-05": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "2025-06": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "first_appearance": null
+    }
+  },
+  "conversation_outcomes": {
+    "convergence_distribution": {
+      "converged": 3,
+      "abandoned": 6
+    },
+    "convergence_monthly": {
+      "2025-01": {
+        "converged": 0.5,
+        "abandoned": 0.5
+      },
+      "2025-02": {
+        "converged": 0.5,
+        "abandoned": 0.5
+      },
+      "2025-03": {
+        "abandoned": 1.0
+      },
+      "2025-04": {
+        "converged": 0.5,
+        "abandoned": 0.5
+      }
+    },
+    "correction_density": {
+      "overall_mean": 0.0,
+      "monthly": {
+        "2025-01": 0.0,
+        "2025-02": 0.0,
+        "2025-03": 0.0,
+        "2025-04": 0.0,
+        "2025-05": 0.0,
+        "2025-06": 0.0
+      }
+    },
+    "efficiency_ratio": {
+      "overall_median": 1.928571,
+      "overall_mean": 2.427856,
+      "monthly": {
+        "2025-01": {
+          "median": 2.111677,
+          "mean": 2.178646
+        },
+        "2025-02": {
+          "median": 2.01902,
+          "mean": 2.231559
+        },
+        "2025-03": {
+          "median": 1.918831,
+          "mean": 2.273098
+        },
+        "2025-04": {
+          "median": 2.226753,
+          "mean": 2.483141
+        },
+        "2025-05": {
+          "median": 3.430556,
+          "mean": 3.430556
+        },
+        "2025-06": {
+          "median": 3.083333,
+          "mean": 3.083333
+        }
+      },
+      "by_platform": {
+        "chatgpt": {
+          "median": 1.84375,
+          "mean": 1.930364
+        },
+        "claude": {
+          "median": 3.106686,
+          "mean": 3.27359
+        }
+      }
+    },
+    "iteration_depth": {
+      "mean_last_correction_position": 0.0
+    },
+    "session_types": {
+      "sprint": 27
+    },
+    "session_types_by_platform": {
+      "chatgpt": {
+        "sprint": 17
+      },
+      "claude": {
+        "sprint": 10
+      }
+    }
+  },
+  "interaction_style": {
+    "overall": {
+      "directive": 0.089286,
+      "interrogative": 0.589286,
+      "collaborative": 0.0,
+      "feedback": 0.071429,
+      "informational": 0.25
+    },
+    "by_platform": {
+      "chatgpt": {
+        "directive": 0.083333,
+        "interrogative": 0.555556,
+        "collaborative": 0.0,
+        "feedback": 0.111111,
+        "informational": 0.25
+      },
+      "claude": {
+        "directive": 0.1,
+        "interrogative": 0.65,
+        "collaborative": 0.0,
+        "feedback": 0.0,
+        "informational": 0.25
+      }
+    },
+    "quarterly": {
+      "2025-Q1": {
+        "directive": 0.058824,
+        "interrogative": 0.588235,
+        "collaborative": 0.0,
+        "feedback": 0.088235,
+        "informational": 0.264706
+      },
+      "2025-Q2": {
+        "directive": 0.136364,
+        "interrogative": 0.590909,
+        "collaborative": 0.0,
+        "feedback": 0.045455,
+        "informational": 0.227273
+      }
+    }
+  },
+  "usage_modes": {
+    "mixed": 12,
+    "exploration": 7,
+    "production": 1,
+    "teaching": 6,
+    "synthesis": 1
+  },
+  "platform_comparison": {
+    "monthly_share": {
+      "2025-01": {
+        "chatgpt_pct": 0.875,
+        "claude_pct": 0.125,
+        "chatgpt_count": 14,
+        "claude_count": 2
+      },
+      "2025-02": {
+        "chatgpt_pct": 0.692308,
+        "claude_pct": 0.307692,
+        "chatgpt_count": 18,
+        "claude_count": 8
+      },
+      "2025-03": {
+        "chatgpt_pct": 0.615385,
+        "claude_pct": 0.384615,
+        "chatgpt_count": 16,
+        "claude_count": 10
+      },
+      "2025-04": {
+        "chatgpt_pct": 0.705882,
+        "claude_pct": 0.294118,
+        "chatgpt_count": 24,
+        "claude_count": 10
+      },
+      "2025-05": {
+        "chatgpt_pct": 0.0,
+        "claude_pct": 1.0,
+        "chatgpt_count": 0,
+        "claude_count": 8
+      },
+      "2025-06": {
+        "chatgpt_pct": 0.0,
+        "claude_pct": 1.0,
+        "chatgpt_count": 0,
+        "claude_count": 2
+      }
+    },
+    "technique_comparison": {
+      "role_assignment": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "constraints": {
+        "chatgpt": {
+          "count": 1,
+          "pct": 0.027778
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "output_format": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "examples_given": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "multi_step": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "meta_prompting": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "code_inclusion": {
+        "chatgpt": {
+          "count": 1,
+          "pct": 0.027778
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "prior_reference": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "iterative_refinement": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      },
+      "context_frontloading": {
+        "chatgpt": {
+          "count": 0,
+          "pct": 0.0
+        },
+        "claude": {
+          "count": 0,
+          "pct": 0.0
+        }
+      }
+    },
+    "outcome_comparison": {
+      "chatgpt": {
+        "convergence": {
+          "converged": 0.428571,
+          "abandoned": 0.571429
+        },
+        "correction_density_mean": 0.0,
+        "total_conversations": 17
+      },
+      "claude": {
+        "convergence": {
+          "abandoned": 1.0
+        },
+        "correction_density_mean": 0.0,
+        "total_conversations": 10
+      }
+    }
+  }
+}

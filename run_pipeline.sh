@@ -179,6 +179,17 @@ if [ -f "$OUTPUT_DIR/chatgpt_messages_normalized.csv" ] && [ -f "$OUTPUT_DIR/cla
     echo ""
 fi
 
+# Compute practice hours (Tier 1 / Tier 2) from whatever CSVs we produced.
+if [ -f "$OUTPUT_DIR/chatgpt_messages_normalized.csv" ] || [ -f "$OUTPUT_DIR/claude_messages_normalized.csv" ]; then
+    info "Computing practice hours..."
+    HOURS_ARGS=()
+    [ -f "$OUTPUT_DIR/chatgpt_messages_normalized.csv" ] && HOURS_ARGS+=(--chatgpt "$OUTPUT_DIR/chatgpt_messages_normalized.csv")
+    [ -f "$OUTPUT_DIR/claude_messages_normalized.csv" ] && HOURS_ARGS+=(--claude "$OUTPUT_DIR/claude_messages_normalized.csv")
+    $PYTHON "$SCRIPT_DIR/scripts/compute_hours.py" "${HOURS_ARGS[@]}" \
+        --output "$OUTPUT_DIR/practice_hours.json" | tee "$OUTPUT_DIR/practice_hours.txt"
+    echo ""
+fi
+
 # ── Step 4: Extract ChatGPT metadata ────────────────────────────────────────
 step "4/8  Extracting ChatGPT metadata..."
 
@@ -335,6 +346,13 @@ fi
 if [ -n "$CLAUDE_CSV" ] && [ -f "$CLAUDE_CSV" ]; then
     echo "    $OUTPUT_DIR/claude_messages_normalized.csv"
     echo "    $OUTPUT_DIR/claude_monthly_stats.csv"
+fi
+
+if [ -f "$OUTPUT_DIR/practice_hours.txt" ]; then
+    echo ""
+    echo "  Practice hours (Tier 1 / Tier 2):"
+    echo "    $OUTPUT_DIR/practice_hours.txt"
+    echo "    $OUTPUT_DIR/practice_hours.json"
 fi
 
 echo ""

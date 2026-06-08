@@ -46,6 +46,15 @@ Three methodology papers are included:
 
 - **[Productive_Output_Efficiency.pdf](docs/Productive_Output_Efficiency.pdf)** : The first standardized methodology for measuring individual LLM cost efficiency. Defines Productive Output per Dollar (POD), Deliverable-Linked Output per Dollar (DLOD), and quality-adjusted Productive Output Efficiency (POE).
 
+### What the scripts produce vs. what the papers are
+
+These are two different things, and it is worth being explicit:
+
+- **The scripts produce data**: normalized CSVs, JSON, and the Markdown summary tables and ASCII charts you see under [`examples/sample_output/`](examples/sample_output/). That is the raw, reproducible output anyone gets by running the pipeline on their own exports.
+- **The papers are authored analyses.** The PDFs above were written by me (Noah Chelednik) on top of *my own* export output — the narrative, framing, sensitivity analysis, and conclusions are mine. The pipeline does not generate the PDFs; it generates the numbers they are built from. Every figure in the papers is reproducible from the scripts (see `examples/sample_output/` for what a run looks like, and `compute_hours.py` below for the practice-hours figures specifically).
+
+In short: run the scripts and you get the same *kind* of data about yourself; the papers are what I made *with* that data.
+
 ## Repository layout
 
 ```
@@ -53,6 +62,7 @@ scripts/
   analyze_chatgpt.py              # ChatGPT export normalization and basic stats
   analyze_claude.py               # Claude export normalization and basic stats
   analyze_combined.py             # Combined cross-platform analysis
+  compute_hours.py                # Practice-hours model (Tier 1 / Tier 2) from CSVs
 
 scripts/deep_analysis/
   extract_chatgpt_metadata.py     # Model versions, tools, branching, reasoning
@@ -67,6 +77,7 @@ scripts/deep_analysis/
 examples/
   sample_chatgpt_export.json      # Synthetic sample data for testing
   sample_claude_export.json       # Synthetic sample data for testing
+  sample_output/                  # Verbatim output of `run_pipeline.sh --sample`
 
 templates/
   example_projects.json           # Example project config (customize for your projects)
@@ -111,6 +122,19 @@ python scripts/analyze_combined.py \
   --chatgpt outputs/chatgpt_messages_normalized.csv \
   --claude outputs/claude_messages_normalized.csv --utc
 ```
+
+To reproduce the practice-hours figures from the methodology paper (run the
+basic analyzers with `--include-content` first so word counts are available):
+
+```bash
+python scripts/compute_hours.py \
+  --chatgpt outputs/chatgpt_messages_normalized.csv \
+  --claude outputs/claude_messages_normalized.csv
+```
+
+This prints the Tier 1 (auditable in-chat) and Tier 2 (with offline work)
+hour estimates with their sensitivity ranges, applying the constants
+documented in `LLM_Practice_Hours_Methodology_GIT.pdf`.
 
 ### 4. Deep analysis
 

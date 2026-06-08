@@ -1,0 +1,558 @@
+{
+  "per_conversation": [
+    {
+      "conversation_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "title": "Debug React component re-rendering",
+      "create_time": 1736899200.0,
+      "create_date": "2025-01-15",
+      "create_month": "2025-01",
+      "update_time": 1736899500.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 3
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 8,
+      "assistant_msg_count": 3,
+      "user_msg_count": 3,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 3
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "title": "Essay outline for history class",
+      "create_time": 1737504000.0,
+      "create_date": "2025-01-22",
+      "create_month": "2025-01",
+      "update_time": 1737504300.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 1
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 4,
+      "assistant_msg_count": 1,
+      "user_msg_count": 1,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 1
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "title": "Python sorting algorithms comparison",
+      "create_time": 1738108800.0,
+      "create_date": "2025-01-29",
+      "create_month": "2025-01",
+      "update_time": 1738109400.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 3
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 8,
+      "assistant_msg_count": 3,
+      "user_msg_count": 3,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 3
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+      "title": "Resume feedback for software engineer",
+      "create_time": 1738713600.0,
+      "create_date": "2025-02-05",
+      "create_month": "2025-02",
+      "update_time": 1738713900.0,
+      "default_model_slug": "gpt-5",
+      "model_slugs_used": {
+        "gpt-5": 2
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 6,
+      "assistant_msg_count": 2,
+      "user_msg_count": 2,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 2
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "title": "Explain quantum computing basics",
+      "create_time": 1739318400.0,
+      "create_date": "2025-02-12",
+      "create_month": "2025-02",
+      "update_time": 1739318700.0,
+      "default_model_slug": "gpt-5",
+      "model_slugs_used": {
+        "gpt-5": 3
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 8,
+      "assistant_msg_count": 3,
+      "user_msg_count": 3,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 3
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "title": "Meal prep ideas for busy week",
+      "create_time": 1739923200.0,
+      "create_date": "2025-02-19",
+      "create_month": "2025-02",
+      "update_time": 1739923400.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 1
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 4,
+      "assistant_msg_count": 1,
+      "user_msg_count": 1,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 1
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "07a8b9c0-d1e2-3456-abcd-567890123456",
+      "title": "SQL query optimization tips",
+      "create_time": 1740528000.0,
+      "create_date": "2025-02-26",
+      "create_month": "2025-02",
+      "update_time": 1740528600.0,
+      "default_model_slug": "gpt-5",
+      "model_slugs_used": {
+        "gpt-5": 3
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 8,
+      "assistant_msg_count": 3,
+      "user_msg_count": 3,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 3
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "18b9c0d1-e2f3-4567-bcde-678901234567",
+      "title": "Help me understand Git rebase vs merge",
+      "create_time": 1741132800.0,
+      "create_date": "2025-03-05",
+      "create_month": "2025-03",
+      "update_time": 1741133100.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 1
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 4,
+      "assistant_msg_count": 1,
+      "user_msg_count": 1,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 1
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "29c0d1e2-f3a4-5678-cdef-789012345678",
+      "title": "Creative writing short story prompt",
+      "create_time": 1741737600.0,
+      "create_date": "2025-03-12",
+      "create_month": "2025-03",
+      "update_time": 1741738200.0,
+      "default_model_slug": "gpt-5",
+      "model_slugs_used": {
+        "gpt-5": 3
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 8,
+      "assistant_msg_count": 3,
+      "user_msg_count": 3,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 3
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "3ad1e2f3-a4b5-6789-defa-890123456789",
+      "title": "Kubernetes pod crash troubleshooting",
+      "create_time": 1742342400.0,
+      "create_date": "2025-03-19",
+      "create_month": "2025-03",
+      "update_time": 1742343000.0,
+      "default_model_slug": "gpt-5",
+      "model_slugs_used": {
+        "gpt-5": 3
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 8,
+      "assistant_msg_count": 3,
+      "user_msg_count": 3,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 3
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "4be2f3a4-b5c6-7890-efab-901234567890",
+      "title": "Apartment lease review questions",
+      "create_time": 1742947200.0,
+      "create_date": "2025-03-26",
+      "create_month": "2025-03",
+      "update_time": 1742947400.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 1
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 4,
+      "assistant_msg_count": 1,
+      "user_msg_count": 1,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 1
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "5cf3a4b5-c6d7-8901-fabc-012345678901",
+      "title": "Train a custom GPT for my company FAQ",
+      "create_time": 1743552000.0,
+      "create_date": "2025-04-02",
+      "create_month": "2025-04",
+      "update_time": 1743552600.0,
+      "default_model_slug": "gpt-5",
+      "model_slugs_used": {
+        "gpt-5": 2
+      },
+      "gizmo_type": "gpt",
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 6,
+      "assistant_msg_count": 2,
+      "user_msg_count": 2,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 2
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "6da4b5c6-d7e8-9012-abcd-123456789012",
+      "title": "Translate paragraph to Spanish",
+      "create_time": 1743984000.0,
+      "create_date": "2025-04-07",
+      "create_month": "2025-04",
+      "update_time": 1743984200.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 1
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 4,
+      "assistant_msg_count": 1,
+      "user_msg_count": 1,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 1
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "7eb5c6d7-e8f9-0123-bcde-234567890123",
+      "title": "Explain machine learning model evaluation",
+      "create_time": 1744156800.0,
+      "create_date": "2025-04-09",
+      "create_month": "2025-04",
+      "update_time": 1744157400.0,
+      "default_model_slug": "gpt-5-2-thinking",
+      "model_slugs_used": {
+        "gpt-5-2-thinking": 4
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 10,
+      "assistant_msg_count": 4,
+      "user_msg_count": 4,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 4
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "8fc6d7e8-f9a0-1234-cdef-345678901234",
+      "title": "Docker compose for local development",
+      "create_time": 1744761600.0,
+      "create_date": "2025-04-16",
+      "create_month": "2025-04",
+      "update_time": 1744761900.0,
+      "default_model_slug": "gpt-5",
+      "model_slugs_used": {
+        "gpt-5": 2
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 6,
+      "assistant_msg_count": 2,
+      "user_msg_count": 2,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 2
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "90d7e8f9-a0b1-2345-defa-456789012345",
+      "title": "Budget spreadsheet formulas help",
+      "create_time": 1745366400.0,
+      "create_date": "2025-04-23",
+      "create_month": "2025-04",
+      "update_time": 1745366600.0,
+      "default_model_slug": "gpt-4o",
+      "model_slugs_used": {
+        "gpt-4o": 1
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 4,
+      "assistant_msg_count": 1,
+      "user_msg_count": 1,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 1
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    },
+    {
+      "conversation_id": "a1e8f9a0-b1c2-3456-efab-567890123456",
+      "title": "Explain REST API design best practices",
+      "create_time": 1745971200.0,
+      "create_date": "2025-04-30",
+      "create_month": "2025-04",
+      "update_time": 1745971500.0,
+      "default_model_slug": "gpt-5-2-thinking",
+      "model_slugs_used": {
+        "gpt-5-2-thinking": 2
+      },
+      "gizmo_type": null,
+      "conversation_template_id": null,
+      "is_archived": false,
+      "is_starred": null,
+      "total_nodes": 6,
+      "assistant_msg_count": 2,
+      "user_msg_count": 2,
+      "system_msg_count": 1,
+      "tool_msg_count": 0,
+      "tools_detected": [],
+      "branch_points": 0,
+      "finish_details": {
+        "stop": 2
+      },
+      "has_reasoning": false,
+      "thinking_efforts": null,
+      "reasoning_statuses": null
+    }
+  ],
+  "model_timeline": {
+    "gpt-4o": {
+      "first_used": "2025-01-15",
+      "last_used": "2025-04-23",
+      "msg_count": 12,
+      "conv_count": 8
+    },
+    "gpt-5": {
+      "first_used": "2025-02-05",
+      "last_used": "2025-04-16",
+      "msg_count": 18,
+      "conv_count": 7
+    },
+    "gpt-5-2-thinking": {
+      "first_used": "2025-04-09",
+      "last_used": "2025-04-30",
+      "msg_count": 6,
+      "conv_count": 2
+    }
+  },
+  "monthly_model_distribution": {
+    "2025-01": {
+      "gpt-4o": 7
+    },
+    "2025-02": {
+      "gpt-5": 8,
+      "gpt-4o": 1
+    },
+    "2025-03": {
+      "gpt-5": 6,
+      "gpt-4o": 2
+    },
+    "2025-04": {
+      "gpt-5-2-thinking": 6,
+      "gpt-5": 4,
+      "gpt-4o": 2
+    }
+  },
+  "tool_usage": {},
+  "custom_gpt_stats": {
+    "total_custom_gpt_conversations": 0,
+    "unique_template_count": 0,
+    "template_ids": []
+  },
+  "branching_stats": {
+    "conversations_with_branches": 0,
+    "total_branch_points": 0,
+    "distribution": {}
+  },
+  "finish_details": {
+    "counts": {
+      "stop": 36
+    },
+    "total": 36,
+    "percentages": {
+      "stop": 100.0
+    }
+  },
+  "reasoning_stats": {
+    "conversations_with_reasoning": 0
+  }
+}

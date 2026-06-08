@@ -37,3 +37,6 @@ dist/
 build/
 .env
 .DS_Store
+
+# Exception: the synthetic sample-output showcase is safe to publish (no real data)
+!examples/sample_output/**
