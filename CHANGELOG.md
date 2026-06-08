@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.0 (June 2026)
+
+- Methodology paper refreshed to Revision 3: incorporates the complete ChatGPT export through April 2026 (19 JSON shards), replacing the held-over December 2025 ChatGPT figures from the April revision. Both platforms now current through April 2026.
+- Combined corpus updated to 2,398 conversations / 71,427 messages / 23,392,755 tokens (from 2,180 / 65,400 / 20,583,230).
+- Practice-hour figures recomputed on the refreshed data (constants and formulas unchanged): Tier 1 baseline 3,737 h (was 3,264), Tier 2 baseline 6,465 h (was 5,755), Tier 2 conservative floor 5,101 h (was 4,509). The "5,000+" claim is now satisfied by the conservative floor.
+
 ## v2.0.0 (May 2026)
 
 Major expansion: deep analysis pipeline, cost efficiency methodology, config-driven architecture.
